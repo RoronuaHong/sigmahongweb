@@ -29,9 +29,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(morgan('tiny'));
 app.use('/api', routes);
 
-if(process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
-}
+app.use(express.static('client/build'));
+// if(process.env.NODE_ENV === 'production') {
+//     app.use(express.static('client/build'));
+// }
 
 app.listen(PORT, ()=> {
     console.log(`Server Listening on port ${PORT}`);
