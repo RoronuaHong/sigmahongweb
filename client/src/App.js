@@ -1,12 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/antd.css';
+
+import HomeApp from './Containers/HomePageContainer';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        12345
-      </header>
+        <HomeApp />
     </div>
   );
 }
