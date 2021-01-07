@@ -3,6 +3,14 @@ import './index.scss';
 import { Component, Fragment } from 'react';
 import ReactFullpage from '@fullpage/react-fullpage';
 
+import CppImage from '../../Images/HomePage/cpp.jpg'
+import UeImage from '../../Images/HomePage/ue.jpg'
+import PaintingImage from '../../Images/HomePage/painting.jpg'
+import dota2Image from '../../Images/HomePage/dota2.jpg'
+import gameImage from '../../Images/HomePage/game.jpg'
+import toolsImage from '../../Images/HomePage/tools.jpg'
+import othersImage from '../../Images/HomePage/others.jpg'
+
 import Header from '../../Components/HomePageComponents/Header'
 
 const SEL = 'custom-section';
@@ -46,24 +54,38 @@ class HomePageContainer extends Component {
     fullpageList: [{
       id: 0,
       text: 'C / C++',
+      anchors: `cpp`,
+      image: CppImage
     }, {
       id: 1,
       text: 'Unreal Engine',
+      anchors: `ue`,
+      image: UeImage
     }, {
       id: 2,
       text: 'Painting',
+      anchors: `painting`,
+      image: PaintingImage,
     }, {
       id: 3,
-      text: 'DOTA2',
+      text: 'Dota2',
+      anchors: `dota2`,
+      image: dota2Image,
     }, {
       id: 4,
       text: 'Games',
+      anchors: `games`,
+      image: gameImage,
     }, {
       id: 5,
       text: 'Tools',
+      anchors: `tools`,
+      image: toolsImage,
     }, {
       id: 6,
       text: 'Others',
+      anchors: `others`,
+      image: othersImage,
     }]
   }
 
@@ -93,39 +115,42 @@ class HomePageContainer extends Component {
         <Header>
           <NavComponent />
         </Header> 
-        <ReactFullpage
-          navigation
-          loopTop={true}
-          menu={`#myMenu`}
-          loopBottom={true}
-          lazyLoading={true}
-          lockAnchors={false}
-          easingcss3={`ease`}
-          scrollingSpeed={1000}
-          loopHorizontal={true}
-          showActiveTooltip={true}
-          licenseKey={'HomePageKey'}
-          sectionSelector={SECTION_SEL}
-          pluginWrapper={pluginWrapper}
-          sectionsColor={this.state.sectionsColor}
-          anchors={navList.map(({ anchors }) => (anchors))}
-          navigationTooltips={['firstSlide', 'secondSlide']}
-          onLeave={() => this.onLeave}
+        <div className={`main-page`}>
+          <ReactFullpage
+            navigation
+            loopTop={true}
+            menu={`#myMenu`}
+            loopBottom={true}
+            lazyLoading={true}
+            lockAnchors={false}
+            easingcss3={`ease`}
+            scrollingSpeed={1000}
+            loopHorizontal={true}
+            licenseKey={'HomePageKey'}
+            sectionSelector={SECTION_SEL}
+            pluginWrapper={pluginWrapper}
+            sectionsColor={this.state.sectionsColor}
+            anchors={navList.map(({ anchors }) => (anchors))}
+            navigationTooltips={['firstSlide', 'secondSlide']}
+            onLeave={() => this.onLeave}
 
-          render={component=> (
-            <ReactFullpage.Wrapper>
-              {fullpageList.map(({ id, text}) => (
-                <div 
-                  key={id} 
-                  className={SEL}
-                >
-                  <h1>{text}</h1>
-                  <img src={``} alt={``} />
-                </div>
-              ))}
-            </ReactFullpage.Wrapper>
-          )}
-        />
+            render={component=> (
+              <ReactFullpage.Wrapper>
+                {fullpageList.map(({id, text, anchors, image}) => (
+                  <div 
+                    key={id} 
+                    className={SEL}
+                  >
+                    <img className={`fullpage-img`} src={image} alt={`${image}-${anchors}`} />
+                    <div className={`fullpage-content`}>
+                      <h1>{text}</h1>
+                    </div> 
+                  </div>
+                ))}
+              </ReactFullpage.Wrapper>
+            )}
+          />
+        </div>
       </Fragment>  
     )
   }

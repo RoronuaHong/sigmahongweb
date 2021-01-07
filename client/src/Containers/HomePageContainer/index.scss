@@ -1,8 +1,12 @@
 .home-nav {
+  position: relative;
+  top: 0;
+  left: 0;
   display: block;
   padding: 10px;
   height: 80px;
   background: #000;
+  z-index: 10000;
   .homeMenu {
     position: 'fixed';
     top: 0px;
@@ -57,5 +61,21 @@
           display: block;
       }
     }
+  }
+}
+
+.main-page {
+  .fullpage-content {
+    width: 100%;
+    height: 100%;
+    padding: 30px 10px;
+  }
+  .fullpage-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
   }
 }
