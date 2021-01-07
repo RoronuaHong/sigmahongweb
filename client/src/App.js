@@ -12,6 +12,7 @@ function App() {
 
     // to report page view
     ReactGa.pageview('/');
+    console.log(1);
   }, []);
 
   return (
