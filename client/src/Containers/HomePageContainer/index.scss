@@ -2,6 +2,7 @@
   display: block;
   padding: 10px;
   height: 80px;
+  background: #000;
   .homeMenu {
     position: 'fixed';
     top: 0px;
@@ -23,19 +24,21 @@
   }
   .homePage-nav {
     position: fixed;
-    top: 15px;
-    right: 20px;
+    right: 0;
     z-index: 70;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
     letter-spacing: 1px;
     font-size: 1.1em;
+    .actions {
+      background: #000;
+    }
     li {
       display: inline-block;
       margin: 10px 0;
       position: relative;
       a {
-        color: #000;
+        color: #fff;
         padding: 0 1.1em 1.1em 1.1em;
         font-size: 24px;
       }
@@ -45,7 +48,7 @@
         content: '';
           margin: 0 1.1em 0 1.1em;
           height: 2px;
-          background: #000;
+          background: #fff;
           display: block;
           position: absolute;
           bottom: -6px;
