@@ -1,13 +1,29 @@
 .home-nav {
+  display: block;
+  padding: 10px;
+  height: 80px;
   .homeMenu {
     position: 'fixed';
     top: 0px;
-    zIndex: 100;
+    z-index: 100;
   }
-  
+  .nav-logo {
+    position: fixed;
+    top: 15px;
+    left: 20px;
+    z-index: 100;
+    a {
+      display: block;
+      .nav-img {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+      }
+    }
+  }
   .homePage-nav {
     position: fixed;
-    top: 20px;
+    top: 15px;
     right: 20px;
     z-index: 70;
     -webkit-font-smoothing: antialiased;
@@ -21,6 +37,7 @@
       a {
         color: #000;
         padding: 0 1.1em 1.1em 1.1em;
+        font-size: 24px;
       }
     }
     .active {

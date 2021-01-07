@@ -28,7 +28,7 @@ class HomePageContainer extends Component {
       anchors: `painting`,
     }, {
       id: 3,
-      name: `DOTA2`,
+      name: `Dota2`,
       anchors: `dota2`,
     }, {
       id: 4,
@@ -36,32 +36,34 @@ class HomePageContainer extends Component {
       anchors: `games`,
     }, {
       id: 5,
+      name: `Tools`,
+      anchors: `tools`,
+    }, {
+      id: 6,
       name: `Others`,
       anchors: `others`,
     }],
     fullpageList: [{
       id: 0,
-      text: 'Section 1',
-    },
-    {
+      text: 'C / C++',
+    }, {
       id: 1,
-      text: 'Section 2',
-    },
-    {
+      text: 'Unreal Engine',
+    }, {
       id: 2,
-      text: 'Section 3',
-    },
-    {
+      text: 'Painting',
+    }, {
       id: 3,
-      text: 'Section 4',
-    },
-    {
+      text: 'DOTA2',
+    }, {
       id: 4,
-      text: 'Section 5',
-    },
-    {
+      text: 'Games',
+    }, {
       id: 5,
-      text: 'Section 6',
+      text: 'Tools',
+    }, {
+      id: 6,
+      text: 'Others',
     }]
   }
 
@@ -75,12 +77,7 @@ class HomePageContainer extends Component {
     const NavComponent = () => (
       <div
         id={`myMenu`}
-        className={`homePage-nav`}
-        style={{
-          position: 'fixed',
-          top: 0,
-          zIndex: 100,
-        }}>
+        className={`homePage-nav`}>
         <ul className='actions'>
           {navList.map(({id, name, anchors}) => (
             <li data-menuanchor={anchors} key={id}>
