@@ -6,13 +6,12 @@ import ReactGa from 'react-ga';
 import HomeApp from './Containers/HomePageContainer';
 import { useEffect, React } from 'react';
 
+ReactGa.initialize('G-R5JQHPKSLG');
+
 function App() {
   useEffect(() => {
-    ReactGa.initialize('G-R5JQHPKSLG');
-
     // to report page view
-    ReactGa.pageview('/');
-    console.log(1);
+    ReactGa.pageview(window.location.pathname + window.location.search);
   }, []);
 
   return (
