@@ -76,6 +76,8 @@ axios.interceptors.response.use(res => {
         break
       case 404:
         break
+      default:
+        break
     }
   } else {
     // 断网处理

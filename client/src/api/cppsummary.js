@@ -4,6 +4,8 @@ function getName() {
   return axios.get(`/user`)
 }
 
-export default {
+const cppsummary = {
   getName
 }
+
+export default cppsummary

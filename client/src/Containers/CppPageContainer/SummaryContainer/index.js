@@ -2,9 +2,7 @@ import { Component } from 'react'
 import JSONPretty from 'react-json-pretty'
 import { inject, observer } from 'mobx-react'
 
-import api from './../../../api/api'
-
-@inject('cppSummaryStore') 
+@inject('cppSummaryStore')
 @observer
 class SummaryContainer extends Component {
   handleTodos(type) {
@@ -32,6 +30,8 @@ class SummaryContainer extends Component {
 
   render() {
     let { cppSummaryStore } = this.props
+
+    cppSummaryStore.getMyName()
 
     return (
       <div className={`summary-content`}>

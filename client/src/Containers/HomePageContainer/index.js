@@ -133,7 +133,6 @@ class HomePageContainer extends Component {
             pluginWrapper={pluginWrapper}
             sectionsColor={this.state.sectionsColor}
             anchors={navList.map(({ anchors }) => (anchors))}
-            navigationTooltips={['firstSlide', 'secondSlide']}
             onLeave={() => this.onLeave}
 
             render={component=> (

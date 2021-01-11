@@ -1,7 +1,8 @@
 import { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 
-@inject('algorithmStore') @observer
+@inject('algorithmStore') 
+@observer
 class AlgorithmContainer extends Component {
   render() {
     let { algorithmStore } = this.props

@@ -8,7 +8,8 @@ class AlgorithmStore {
     makeObservable(this)
   } 
 
-  @observable others = '456'
+  @observable 
+  others = '456'
 }
 
 export default AlgorithmStore

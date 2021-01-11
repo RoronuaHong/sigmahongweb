@@ -5,6 +5,7 @@ const Header = ({...props}) => (
     <div className='nav-logo'>
       <a href='/'>
         <img className='nav-img' src={MyLogo} alt={`myLogo`} />
+        <span className={`nav-name`}>SigmaHong</span>
       </a>
     </div>
     {props.children}

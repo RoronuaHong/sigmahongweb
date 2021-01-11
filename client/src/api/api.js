@@ -3,6 +3,8 @@
  */
 import cppsummary from './cppsummary'
 
-export default {
+const api = {
   cppsummary
 }
+
+export default api
