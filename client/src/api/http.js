@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { refStructEnhancer } from 'mobx/dist/internal'
 
 /** 
  * 根据环境变量区分接口的默认地址
