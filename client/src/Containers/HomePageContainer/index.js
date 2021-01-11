@@ -12,6 +12,7 @@ import toolsImage from '../../Images/HomePage/tools.jpg'
 import othersImage from '../../Images/HomePage/others.jpg'
 
 import Header from '../../Components/HomePageComponents/Header'
+import MainList from '../../Components/HomePageComponents/Cpp/MainList'
 
 const SEL = 'custom-section';
 const SECTION_SEL = `.${SEL}`;
@@ -55,7 +56,8 @@ class HomePageContainer extends Component {
       id: 0,
       text: 'C / C++',
       anchors: `cpp`,
-      image: CppImage
+      image: CppImage,
+      child: <MainList />,
     }, {
       id: 1,
       text: 'Unreal Engine',
@@ -114,7 +116,7 @@ class HomePageContainer extends Component {
       <Fragment>
         <Header>
           <NavComponent />
-        </Header> 
+        </Header>
         <div className={`main-page`}>
           <ReactFullpage
             navigation
@@ -136,7 +138,7 @@ class HomePageContainer extends Component {
 
             render={component=> (
               <ReactFullpage.Wrapper>
-                {fullpageList.map(({id, text, anchors, image}) => (
+                {fullpageList.map(({id, text, anchors, image,child}) => (
                   <div 
                     key={id} 
                     className={SEL}
@@ -144,6 +146,9 @@ class HomePageContainer extends Component {
                     <img className={`fullpage-img`} src={image} alt={`${image}-${anchors}`} />
                     <div className={`fullpage-content`}>
                       <h1>{text}</h1>
+                      <div className={`fullpage-main-content`}>
+                        {child && child}
+                      </div>
                     </div> 
                   </div>
                 ))}
