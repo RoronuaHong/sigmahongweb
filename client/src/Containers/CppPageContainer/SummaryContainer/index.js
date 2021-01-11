@@ -2,7 +2,7 @@ import { Component } from 'react'
 import JSONPretty from 'react-json-pretty'
 import { inject, observer } from 'mobx-react'
 
-// import api from './../../../api/api'
+import api from './../../../api/api'
 
 @inject('cppSummaryStore') 
 @observer
