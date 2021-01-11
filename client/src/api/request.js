@@ -1,4 +1,4 @@
-import { refStructEnhancer } from "mobx/dist/internal"
+import qs from 'qs'
 
 let baseURL = ''
 let baseURLArr = [{

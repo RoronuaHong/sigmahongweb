@@ -1,4 +1,5 @@
 import axios from 'axios'
+import qs from 'qs'
 
 /** 
  * 根据环境变量区分接口的默认地址
@@ -22,7 +23,7 @@ switch(process.env.NODE_ENV) {
 /**
  * 设置超时请求时间
  */
-axois.default.timeout = 10000
+axios.default.timeout = 10000
 
 /**
  * 设置COS跨域允许携带资源凭证
