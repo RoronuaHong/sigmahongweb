@@ -1,12 +1,12 @@
 import qs from 'qs'
 
-let baseURL = ''
+let baseURL = 'http://127.0.0.1:8080'
 let baseURLArr = [{
   type: 'development',
-  url: 'http://127.0.0.1:3000'
+  url: 'http://127.0.0.1:8080'
 }, {
   type: 'test',
-  url: 'http://127.0.0.1:3000'
+  url: 'http://127.0.0.1:8080'
 }, {
   type: 'production',
   url: 'https://sigmahongweb.herokuapp.com/'
@@ -40,11 +40,12 @@ export default function request(url, option = {}) {
    * 合并配置项
    */
   options = Object.assign({
+    // FIXME:
     // 允许跨域携带资源凭证 same-origin同源可以 omit都拒绝
-    credentials: 'include',
+    // credentials: 'include',
 
     // 设置请求头
-    headers: {} 
+    headers: {}
   }, options)
 
   options.headers.Accept = 'application/json'

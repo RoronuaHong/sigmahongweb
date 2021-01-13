@@ -36,7 +36,6 @@ class SummaryContainer extends Component {
     return (
       <div className={`summary-content`}>
         <h1>在React中使用mobx</h1>
-        <div>{cppSummaryStore.desc}</div>
         <button onClick={() => this.handleTodos('add')}>添加</button>
         <button onClick={() => this.handleTodos('del')}>删除</button>
         <button onClick={() => this.handleTodos('reset')}>重置</button>

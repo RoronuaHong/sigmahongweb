@@ -1,4 +1,5 @@
-import { 
+import {
+  toJS,
   action,
   computed,
   observable,
@@ -16,7 +17,7 @@ class CppSummaryStore {
   @observable name = 'None'
   @observable todoList = []
 
-  @computed 
+  @computed
   get desc() {
     return `${this.time} 还有 ${this.todoList.length} 条任务待完成`
   }
@@ -26,11 +27,11 @@ class CppSummaryStore {
     api.cppsummary.getName().then(res => {
       this.name = res
       
-      console.log(this.name)
+      console.log(toJS(this.name))
     })
   }
 
-  @action 
+  @action
   addTodo(todo) {
     this.todoList.push(todo)
   }

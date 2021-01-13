@@ -4,18 +4,19 @@ import qs from 'qs'
 /** 
  * 根据环境变量区分接口的默认地址
  */
+axios.defaults.baseURL = 'HTTP://127.0.0.1:8080'
 
 switch(process.env.NODE_ENV) {
   case 'production':
-    axios.default.baseURL = 'https://sigmahongweb.herokuapp.com/'
+    axios.defaults.baseURL = 'https://sigmahongweb.herokuapp.com/'
 
     break
   case 'test':
-    axios.default.baseURL = 'HTTP://127.0.0.1:3000'
+    axios.defaults.baseURL = 'HTTP://127.0.0.1:8080'
 
     break
   default:
-    axios.default.baseURL = 'HTTP://127.0.0.1:3000'
+    axios.defaults.baseURL = 'HTTP://127.0.0.1:8080'
 
     break
 }
@@ -23,12 +24,13 @@ switch(process.env.NODE_ENV) {
 /**
  * 设置超时请求时间
  */
-axios.default.timeout = 10000
+axios.defaults.timeout = 10000
 
 /**
  * 设置COS跨域允许携带资源凭证
  */
-axios.defaults.withCredentials = true
+// FIXME:
+// axios.defaults.withCredentials = true
 
 /**
  * 设置POST请求头, 告知服务器请求主体的数据格式
