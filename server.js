@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 
 const userRouter = require('./routes/user')
+const loginRouter = require('./routes/login')
 const cppsryRouter = require('./routes/cppsry')
 
 require('dotenv').config()
@@ -34,6 +35,7 @@ connection.on('error', (error) => {
 
 // HTTP request logger
 app.use(morgan('tiny'))
+app.use('/login', loginRouter)
 app.use('/user', userRouter)
 app.use('/cppsummary', cppsryRouter)
 
