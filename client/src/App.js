@@ -21,13 +21,13 @@ export default function App() {
     <Provider {...RootStore}>
       <Router>
         <Switch>
-          <Route path='/' exact component={HomeApp} />
-          <Route path='/cpp-summary' component={SummaryContainer} />
-          <Route path='/cpp-algorithm' component={AlgorithmContainer} />
+          <Route exact path='/' exact component={HomeApp} />
+          <Route exact path='/cpp-summary' component={SummaryContainer} />
+          <Route exact path='/cpp-algorithm' component={AlgorithmContainer} />
 
-          <Route path='/admin/login' component={LoginContainer} />
-          <Route path='/admin/dashboard' component={DashboardContainer} />
-          <Route path='/admin' component={DashboardContainer} />
+          <Route exact path='/admin/login' component={LoginContainer} />
+          <Route exact path='/admin/dashboard' component={DashboardContainer} />
+          <Route exact path='/admin' component={DashboardContainer} />
           <Redirect from="/admin/*" to="/admin/dashboard" />
           <Redirect from="/*" to="/" component={HomeApp} />
         </Switch>
