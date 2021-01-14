@@ -35,14 +35,6 @@ class CppSummaryStore {
   addTodo(todo) {
     this.todoList.push(todo)
   }
-  @action 
-  delTodo(todo) {
-    this.todoList.pop()
-  }
-  @action 
-  resetTodo() {
-    this.todoList = []
-  }
 }
 
 

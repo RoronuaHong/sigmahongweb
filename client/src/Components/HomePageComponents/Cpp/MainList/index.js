@@ -9,6 +9,14 @@ const MainList = () => {
     id: 1,
     name: `Algorithm`,
     link: `/cpp-algorithm`
+  }, {
+    id: 2,
+    name: `Test`,
+    link: `/test`
+  }, {
+    id: 3,
+    name: `Login`,
+    link: `/admin/login`
   }];
 
   return (

@@ -16,7 +16,7 @@ class LoginContainer extends Component {
 
     const onFinish = (values) => {
       loginStore.getLoginUser({ values })
-      
+
       console.log('Received values of form: ', values)
     }
 

@@ -24,12 +24,11 @@ export default function App() {
           <Route path='/' exact component={HomeApp} />
           <Route path='/cpp-summary' component={SummaryContainer} />
           <Route path='/cpp-algorithm' component={AlgorithmContainer} />
-          <Route path='/test' component={SummaryContainer} />
-          <Route path='/admins' component={DashboardContainer} />
-          <Route path='/admins/login' component={LoginContainer} />
-          <Route path='/admins/dashboard' component={DashboardContainer} />
-          {/* <Redirect from="/admin" to="/admin/dashboard" /> */}
-          <Redirect from="/admins/*" to="/admin/dashboard" />
+
+          <Route path='/admin/login' component={LoginContainer} />
+          <Route path='/admin/dashboard' component={DashboardContainer} />
+          <Route path='/admin' component={DashboardContainer} />
+          <Redirect from="/admin/*" to="/admin/dashboard" />
           <Redirect from="/*" to="/" component={HomeApp} />
         </Switch>
       </Router>
