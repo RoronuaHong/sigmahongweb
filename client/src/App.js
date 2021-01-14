@@ -6,7 +6,7 @@ import 'ant-design-pro/dist/ant-design-pro.css'
 
 import { React } from 'react'
 import { Provider } from 'mobx-react'
-import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
 import RootStore from './Stores/index.js'
 
