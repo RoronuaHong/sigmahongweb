@@ -26,6 +26,7 @@ export default function App() {
           <Route path='/cpp-algorithm' component={AlgorithmContainer} />
           <Route path='/admin/login' component={LoginContainer} />
           <Route path='/admin/dashboard' component={DashboardContainer} />
+          <Redirect from="/admin" to="/admin/dashboard" />
           <Redirect from="/admin/*" to="/admin/dashboard" />
         </Switch>
       </Router>
