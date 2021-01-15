@@ -1,14 +1,12 @@
 import './Styles/main.css'
 import './Styles.css'
-import './Styles/umi.css'
 import 'antd/dist/antd.css'
-import 'ant-design-pro/dist/ant-design-pro.css'
 
 import { React } from 'react'
 import { Provider } from 'mobx-react'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
-import RootStore from './Stores/index.js'
+import RootStore from './Stores/index'
 
 import HomeApp from './Containers/HomePageContainer'
 import LoginContainer from './Containers/LoginContainer/index'

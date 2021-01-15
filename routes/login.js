@@ -6,8 +6,6 @@ router.route('/').post((req, res) => {
   const password = req.body.password
 
   Login.findOne({ username, password }, (err, data) => {
-    console.log(`123`)
-
     if(err) {
       console.log(err)
 

@@ -2,6 +2,7 @@ import './index.scss'
 import logo from '../../Images/MyLogo.png'
 
 import { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import {Form, Input, Button, message} from 'antd'
 import { inject, observer } from 'mobx-react'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
@@ -13,6 +14,12 @@ const Item = Form.Item
 @observer
 class LoginContainer extends Component {
   render() {
+    const user = storageUtils.getUser()
+
+    if(user._id) {
+      return <Redirect to='/admin/dashboard' />
+    }
+
     let { loginStore } = this.props
 
     const onFinish = async (values) => {
@@ -21,7 +28,9 @@ class LoginContainer extends Component {
       if(loginStore.loginStatus.isLogin) {
         storageUtils.saveUser(loginStore.loginStatus.data)
 
-        this.props.history.replace('/admin/dashboard')
+        message.success(loginStore.loginStatus.msg, 2).then(() => {
+          this.props.history.replace('/admin/dashboard')
+        })
       } else {
         message.error(loginStore.loginStatus.msg)
       }

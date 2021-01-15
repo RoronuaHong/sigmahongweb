@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "@ant-design/pro-layout": "^6.10.9",
     "ant-design-pro": "^2.3.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
