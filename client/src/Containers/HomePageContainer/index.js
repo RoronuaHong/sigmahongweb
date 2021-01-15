@@ -3,13 +3,13 @@ import './index.scss';
 import { Component, Fragment } from 'react';
 import ReactFullpage from '@fullpage/react-fullpage';
 
-import CppImage from '../../Images/HomePage/cpp.jpg'
-import UeImage from '../../Images/HomePage/ue.jpg'
-import PaintingImage from '../../Images/HomePage/painting.jpg'
-import dota2Image from '../../Images/HomePage/dota2.jpg'
-import gameImage from '../../Images/HomePage/game.jpg'
-import toolsImage from '../../Images/HomePage/tools.jpg'
-import othersImage from '../../Images/HomePage/others.jpg'
+import CppImage from '../../assets/Images/HomePage/cpp.jpg'
+import UeImage from '../../assets/Images/HomePage/ue.jpg'
+import PaintingImage from '../../assets/Images/HomePage/painting.jpg'
+import dota2Image from '../../assets/Images/HomePage/dota2.jpg'
+import gameImage from '../../assets/Images/HomePage/game.jpg'
+import toolsImage from '../../assets/Images/HomePage/tools.jpg'
+import othersImage from '../../assets/Images/HomePage/others.jpg'
 
 import Header from '../../Components/HomePageComponents/Header'
 import MainList from '../../Components/HomePageComponents/Cpp/MainList'

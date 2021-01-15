@@ -1,4 +1,4 @@
-import MyLogo from '../../../Images/MyLogo.png';
+import MyLogo from '../../../assets/Images/MyLogo.png'
 
 const Header = ({...props}) => (
   <div className='home-nav'>
@@ -10,6 +10,6 @@ const Header = ({...props}) => (
     </div>
     {props.children}
   </div>
-);
+)
 
 export default Header;

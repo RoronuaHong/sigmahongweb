@@ -1,5 +1,5 @@
 import './index.scss'
-import logo from '../../Images/MyLogo.png'
+import logo from '../../assets/Images/MyLogo.png'
 
 import { Component } from 'react'
 import { Redirect } from 'react-router-dom'
