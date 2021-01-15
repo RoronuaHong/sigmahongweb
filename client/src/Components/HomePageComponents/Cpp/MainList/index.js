@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const MainList = () => {
   const cppList = [{
@@ -9,7 +9,7 @@ const MainList = () => {
     id: 1,
     name: `Algorithm`,
     link: `/cpp-algorithm`
-  }];
+  }]
 
   return (
     <ul className={`cpp-main-list`}>
@@ -22,4 +22,4 @@ const MainList = () => {
   )
 }
 
-export default MainList;
+export default MainList
