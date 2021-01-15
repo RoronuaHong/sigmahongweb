@@ -14,8 +14,8 @@ import othersImage from '../../Images/HomePage/others.jpg'
 import Header from '../../Components/HomePageComponents/Header'
 import MainList from '../../Components/HomePageComponents/Cpp/MainList'
 
-const SEL = 'custom-section';
-const SECTION_SEL = `.${SEL}`;
+const SEL = 'custom-section'
+const SECTION_SEL = `.${SEL}`
 
 const pluginWrapper = () => {
   
@@ -96,7 +96,7 @@ class HomePageContainer extends Component {
 
     if (!fullpageList.length) {
       return null;
-    };
+    }
 
     const NavComponent = () => (
       <div
@@ -110,7 +110,7 @@ class HomePageContainer extends Component {
           ))}
         </ul>
       </div>
-    );
+    )
 
     return (
       <Fragment>
@@ -160,4 +160,4 @@ class HomePageContainer extends Component {
   }
 }
 
-export default HomePageContainer;
+export default HomePageContainer

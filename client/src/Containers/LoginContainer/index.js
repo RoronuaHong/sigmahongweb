@@ -2,9 +2,10 @@ import './index.scss'
 import logo from '../../Images/MyLogo.png'
 
 import { Component } from 'react'
-import {Form, Input, Button} from 'antd'
+import {Form, Input, Button, message} from 'antd'
 import { inject, observer } from 'mobx-react'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import storageUtils from '../../utils/storageUtils'
 
 const Item = Form.Item
 
@@ -14,10 +15,16 @@ class LoginContainer extends Component {
   render() {
     let { loginStore } = this.props
 
-    const onFinish = (values) => {
-      loginStore.getLoginUser({ values })
+    const onFinish = async (values) => {
+      await loginStore.getLoginUser(values)
 
-      console.log('Received values of form: ', values)
+      if(loginStore.loginStatus.isLogin) {
+        storageUtils.saveUser(loginStore.loginStatus.data)
+
+        this.props.history.replace('/admin/dashboard')
+      } else {
+        message.error(loginStore.loginStatus.msg)
+      }
     }
 
     return (

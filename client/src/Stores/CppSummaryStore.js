@@ -26,8 +26,6 @@ class CppSummaryStore {
   getMyName() {
     api.cppsummary.getName().then(res => {
       this.name = res
-      
-      console.log(toJS(this.name))
     })
   }
 

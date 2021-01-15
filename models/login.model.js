@@ -6,14 +6,13 @@ const loginSchema = new Schema({
   username: {
     type: String,
     require: true,
-    unique: true,
+    unique: false,
     trim: true,
     minlength: 3
   },
   password: {
     type: String,
     require: true,
-    unique: true,
     trim: true,
     minlength: 6
   }

@@ -1,11 +1,11 @@
 import axios from './http'
 
 function getLoginUser(params) {
-  return axios.get(`/login`, params)
+  return axios.post(`/login`, params)
 }
 
 function addLoginUser(params) {
-  return axios.post(`/login/add`, params)
+  return axios.post(`/login/register`, params)
 }
 
 const login = {

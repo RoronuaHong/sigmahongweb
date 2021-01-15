@@ -1,11 +1,8 @@
 import {
-  toJS,
   action,
-  computed,
   observable,
   makeObservable,
 } from 'mobx'
-
 import api from './../api/api'
 
 class LoginStore {
@@ -13,20 +10,22 @@ class LoginStore {
     makeObservable(this)
   } 
 
-  @observable isLogin = false
+  @observable loginStatus = {
+    isLogin: false,
+    msg: '',
+    data: {}
+  }
+  
+  @action
+  async getLoginUser(params) {
+      const result = await api.login.getLoginUser(params)
+      const { msg, data, status } = result
 
- @action
-  getLoginUser(params) {
-    api.login.getLoginUser().then(res => {
-      const username = res[0].username
-      const password = res[0].password
-
-      if(params.username === username && params.password === password) {
-        this.isLogin = true
-      } else {
-         this.isLogin = false
+      this.loginStatus = {
+        msg,
+        data,
+        isLogin: Boolean(status)
       }
-    })
   }
 
   @action
