@@ -28,6 +28,14 @@ class LoginStore {
       }
   }
 
+  @action clearLoginUser() {
+    this.loginStatus = {
+      msg: ``,
+      data: {},
+      isLogin: false
+    }
+  }
+
   @action
   addLoginUser(params) {
     api.login.addLoginUser(params).then(res => {

@@ -1,21 +1,12 @@
 import './index.scss';
 
-import { Component, Fragment } from 'react';
+import { Component, Fragment } from 'react'
 import ReactFullpage from '@fullpage/react-fullpage'
-
-// import CppImage from '../../assets/Images/HomePage/cpp.jpg'
-// import UeImage from '../../assets/Images/HomePage/ue.jpg'
-// import PaintingImage from '../../assets/Images/HomePage/painting.jpg'
-// import dota2Image from '../../assets/Images/HomePage/dota2.jpg'
-// import gameImage from '../../assets/Images/HomePage/game.jpg'
-// import toolsImage from '../../assets/Images/HomePage/tools.jpg'
-// import othersImage from '../../assets/Images/HomePage/others.jpg'
 
 import { navList, fullpageList } from '../../config/NavConfig'
 
 
 import Header from '../../Components/HomePageComponents/Header'
-import MainList from '../../Components/HomePageComponents/Cpp/MainList'
 
 const SEL = 'custom-section'
 const SECTION_SEL = `.${SEL}`
@@ -25,37 +16,7 @@ const pluginWrapper = () => {
 };
 
 class HomePageContainer extends Component {
-  state = {
-    navList: [{
-      id: 0,
-      name: `C / C++`,
-      anchors: `cpp`,
-    }, {
-      id: 1,
-      name: `Unreal Engine`,
-      anchors: `ue`,
-    }, {
-      id: 2,
-      name: `Painting`,
-      anchors: `painting`,
-    }, {
-      id: 3,
-      name: `Dota2`,
-      anchors: `dota2`,
-    }, {
-      id: 4,
-      name: `Games`,
-      anchors: `games`,
-    }, {
-      id: 5,
-      name: `Tools`,
-      anchors: `tools`,
-    }, {
-      id: 6,
-      name: `Others`,
-      anchors: `others`,
-    }]
-  }
+  state = {}
 
   renderNavList = (navList) => {
     return navList.map(({id, name, anchors}) => (

@@ -6,7 +6,7 @@ class BCppSummaryEditor extends Component {
   render() {
     return (
       <div className={`cppsummaryeditor-wrapper`}>
-        Cppsummaryeditor
+        
       </div>
     )
   }

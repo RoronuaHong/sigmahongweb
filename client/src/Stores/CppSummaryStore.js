@@ -1,5 +1,4 @@
 import {
-  toJS,
   action,
   computed,
   observable,

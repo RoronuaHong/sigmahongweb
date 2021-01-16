@@ -27,7 +27,10 @@ class DashboardContainer extends Component {
         </Sider>
         <Layout>
           <HeaderContainer />
-          <Content style={{ background: `white` }}>
+          <Content style={{
+            margin: `10px 20px`,
+            background: `white` 
+          }}>
             <Switch>
               <Route path={`/admin/dashboard/home`} component={BHomeContainer} />
               <Route path={`/admin/dashboard/cppsummaryeditor`} component={BCppSummaryEditor} />

@@ -4,7 +4,7 @@
 import store from 'store'
 const USER_KEY = `user_key`
 
-export default {
+const modules = {
   /**
    * 保存user
    */
@@ -27,3 +27,5 @@ export default {
     store.remove(USER_KEY)
   }
 }
+
+export default modules

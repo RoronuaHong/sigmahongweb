@@ -1,6 +1,6 @@
 import { React, Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { Menu, Icon, Button } from 'antd'
+import { Menu } from 'antd'
 
 import '../index.scss'
 import MyLogo from '../../../assets/Images/MyLogo.png'

@@ -19,7 +19,7 @@ export default function App() {
     <Provider {...RootStore}>
       <Router>
         <Switch>
-          <Route exact path='/' exact component={HomeApp} />
+          <Route path='/' exact component={HomeApp} />
           <Route path='/cpp-summary' component={SummaryContainer} />
           <Route path='/cpp-algorithm' component={AlgorithmContainer} />
 

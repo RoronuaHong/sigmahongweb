@@ -6,7 +6,7 @@ class BHomeContainer extends Component {
   render() {
     return (
       <div className={`home-wrapper`}>
-        Home
+        
       </div>
     )
   }
