@@ -2,7 +2,6 @@ import { Component } from 'react'
 import { Layout } from 'antd'
 import { Redirect, Switch, Route } from 'react-router-dom'
 
-import logo from '../../assets/Images/logo.svg'
 import storageUtils from '../../utils/storageUtils'
 
 import LeftNavContainer from './LeftNavContainer/index'
@@ -32,6 +31,8 @@ class DashboardContainer extends Component {
             <Switch>
               <Route path={`/admin/dashboard/home`} component={BHomeContainer} />
               <Route path={`/admin/dashboard/cppsummaryeditor`} component={BCppSummaryEditor} />
+              <Route path={`/admin/dashboard/others-1`} component={BCppSummaryEditor} />
+              <Route path={`/admin/dashboard/others-2`} component={BHomeContainer} />
               <Redirect to={`/admin/dashboard/home`} />
             </Switch>
           </Content>
