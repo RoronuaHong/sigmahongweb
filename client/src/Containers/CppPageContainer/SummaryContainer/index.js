@@ -40,7 +40,7 @@ class SummaryContainer extends Component {
         <button onClick={() => this.handleTodos('del')}>删除</button>
         <button onClick={() => this.handleTodos('reset')}>重置</button>
         {
-          cppSummaryStore.todoList.map((ele, index, arr) => {
+          cppSummaryStore.todoList.map((ele, index) => {
             return (
               <div key={index}>{ele}</div>
             )

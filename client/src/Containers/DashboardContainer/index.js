@@ -33,9 +33,10 @@ class DashboardContainer extends Component {
           }}>
             <Switch>
               <Route path={`/admin/dashboard/home`} component={BHomeContainer} />
-              <Route path={`/admin/dashboard/cppsummaryeditor`} component={BCppSummaryEditor} />
-              <Route path={`/admin/dashboard/others-1`} component={BCppSummaryEditor} />
-              <Route path={`/admin/dashboard/others-2`} component={BHomeContainer} />
+              <Route path={`/admin/dashboard/cppsummaryeditor/add`} component={BCppSummaryEditor} />
+              <Route path={`/admin/dashboard/cppsummaryeditor/edit`} component={BCppSummaryEditor} />
+              <Route path={`/admin/dashboard/cppsummaryeditor/delete`} component={BCppSummaryEditor} />
+              <Route path={`/admin/dashboard/cppsummaryeditor/search`} component={BCppSummaryEditor} />
               <Redirect to={`/admin/dashboard/home`} />
             </Switch>
           </Content>

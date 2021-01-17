@@ -1,7 +1,9 @@
 import {
   HomeOutlined,
   EditOutlined,
-  FormOutlined,
+  DeleteOutlined,
+  FileAddOutlined,
+  FileSearchOutlined,
 } from '@ant-design/icons'
 
 const menuList = [{
@@ -11,19 +13,23 @@ const menuList = [{
 }, {
   title: `CppSummaryEditor`,
   key: `/admin/dashboard/cppsummaryeditor`,
-  icon: <EditOutlined />
-}, {
-  title: `Others`,
-  key: `/admin/dashboard/others`,
-  icon: <FormOutlined />,
+  icon: <EditOutlined />,
   children: [{
-    title: `1`,
-    key: `/admin/dashboard/others-1`,
+    title: `Add`,
+    key: `/admin/dashboard/cppsummaryeditor/add`,
+    icon: <FileAddOutlined />
+  }, {
+    title: `Edit`,
+    key: `/admin/dashboard/cppsummaryeditor/edit`,
     icon: <EditOutlined />
   }, {
-    title: `2`,
-    key: `/admin/dashboard/others-2`,
-    icon: <EditOutlined />
+    title: `Delete`,
+    key: `/admin/dashboard/cppsummaryeditor/delete`,
+    icon: <DeleteOutlined />
+  }, {
+    title: `Search`,
+    key: `/admin/dashboard/cppsummaryeditor/search`,
+    icon: <FileSearchOutlined />
   }]
 }]
 

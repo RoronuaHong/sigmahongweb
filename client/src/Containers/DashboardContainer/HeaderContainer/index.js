@@ -76,7 +76,6 @@ class HeaderContainer extends Component {
         <div className={`header-top`}>
           欢迎, {user.username} &nbsp;&nbsp;
           <LinkButton onClick={() => this.handleLogout()}>退出</LinkButton>
-          {/* <a onClick={() => this.handleLogout()}>退出</a> */}
         </div>
         <div className={`header-bottom`}>
         <div className={`header-bottom-left`}>{title}</div>
