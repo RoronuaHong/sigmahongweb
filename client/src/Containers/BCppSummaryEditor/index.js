@@ -22,17 +22,6 @@ class BCppSummaryEditor extends Component {
     bcppSummaryStore.setCppSummaryInput(value)
   }
 
-  handleSaveConfirm() {
-    const { bcppSummaryStore } = this.props
-    const { title, value } = bcppSummaryStore
-
-    if(title && value) {
-      bcppSummaryStore.setCppSummaryEditorContent({ title, value })
-    } else {
-      message.error(`plz infilling title and value`)
-    }
-  }
-
   handleResetConfirm() {
     const { bcppSummaryStore } = this.props
 
@@ -42,6 +31,17 @@ class BCppSummaryEditor extends Component {
   render() {
     const { bcppSummaryStore } = this.props
     const { title, value } = bcppSummaryStore
+
+    const handleSaveConfirm = async() =>  {
+      const { bcppSummaryStore } = this.props
+      const { title, value } = bcppSummaryStore
+  
+      if(title && value) {
+        await bcppSummaryStore.setCppSummaryEditorContent({ title, value })
+      } else {
+        message.error(`plz infilling title and value`)
+      }
+    }
 
     return (
       <>
@@ -73,7 +73,7 @@ class BCppSummaryEditor extends Component {
           <Button 
             type={`primary`} 
             className={`confirm-save`}
-            onClick={() => this.handleSaveConfirm()}
+            onClick={handleSaveConfirm}
           >
             保存
           </Button>

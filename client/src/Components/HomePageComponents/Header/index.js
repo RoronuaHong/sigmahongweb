@@ -1,15 +1,10 @@
-import MyLogo from '../../../assets/Images/MyLogo.png'
+import NavLogoWidgets from '../../../Widgets/NavLogo/index'
 
 const Header = ({...props}) => (
   <div className='home-nav'>
-    <div className='nav-logo'>
-      <a href='/'>
-        <img className='nav-img' src={MyLogo} alt={`myLogo`} />
-        <span className={`nav-name`}>SigmaHong</span>
-      </a>
-    </div>
+    <NavLogoWidgets />
     {props.children}
   </div>
 )
 
-export default Header;
+export default Header

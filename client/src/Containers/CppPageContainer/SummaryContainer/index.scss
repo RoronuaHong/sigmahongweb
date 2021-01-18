@@ -1,0 +1,36 @@
+.summary-wrapper {
+  .summary-header {
+    position: fixed;
+    width: 100%;
+    .nav-logo {
+      position: fixed;
+    }
+    display: flex;
+    height: 250px;
+    background-color: #000;
+    .header-title {
+      width: 100%;
+      padding-top: 50px;
+      font-size: 4rem;
+      line-height: 130px;
+      font-weight: 700;
+      text-align: center;
+      color: #fff;
+    }
+  }
+  .summary-content {
+    display: flex;
+    min-height: 100vh;
+    margin-top: 250px;
+    padding: 30px;
+    .content-left {
+      flex: 1;
+    }
+    .content-main {
+      flex: 2;
+    }
+    .content-right {
+      flex: 1;
+    }
+  }
+}

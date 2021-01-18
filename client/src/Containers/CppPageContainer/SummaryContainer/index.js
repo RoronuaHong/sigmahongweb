@@ -1,6 +1,13 @@
+import { Layout } from 'antd'
 import { Component } from 'react'
-import JSONPretty from 'react-json-pretty'
 import { inject, observer } from 'mobx-react'
+
+import HeaderComponents from '../../../Components/CppPageComponents/HeaderComponents/index'
+import ContentComponents from '../../../Components/CppPageComponents/ContentComponents/index'
+
+import './index.scss'
+
+const { Footer } = Layout
 
 @inject('cppSummaryStore')
 @observer
@@ -34,21 +41,17 @@ class SummaryContainer extends Component {
     cppSummaryStore.getMyName()
 
     return (
-      <div className={`summary-content`}>
-        <h1>在React中使用mobx</h1>
-        <button onClick={() => this.handleTodos('add')}>添加</button>
-        <button onClick={() => this.handleTodos('del')}>删除</button>
-        <button onClick={() => this.handleTodos('reset')}>重置</button>
-        {
-          cppSummaryStore.todoList.map((ele, index) => {
-            return (
-              <div key={index}>{ele}</div>
-            )
-          })
-        }
-        <div className={`content`}>
-          <JSONPretty json={cppSummaryStore.todoList}></JSONPretty>
-        </div>
+      <div className={`summary-wrapper`}>
+        <Layout>
+          <HeaderComponents />
+          <ContentComponents />
+          <Footer style={{
+            textAlign: `center`,
+            color: `rgba(0, 0, 0, 0.5)`
+          }}>
+            SigmaHongWeb CppSummary
+          </Footer>
+        </Layout>
       </div>
     )
   }

@@ -3,10 +3,10 @@ import logo from '../../assets/Images/MyLogo.png'
 
 import { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import {Form, Input, Button, message} from 'antd'
 import { inject, observer } from 'mobx-react'
-import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import {Form, Input, Button, message} from 'antd'
 import storageUtils from '../../utils/storageUtils'
+import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
 const Item = Form.Item
 
