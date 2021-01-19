@@ -75,7 +75,11 @@ router.route('/content').post((req, res) => {
     if(err) {
       console.log(err)
 
-      return res.status(500).send()
+      return res.status(500).send({
+        msg: 'error',
+        status: -1,
+        data: {}
+      })
     }
 
     if(!data) {

@@ -109,7 +109,7 @@ const Components = ({ value, language }) => {
     <SyntaxHighlighter language={language ?? null} style={docco}>
       {value ?? ''}
     </SyntaxHighlighter>
-  );
-};
+  )
+}
 
 export default BCppSummaryEditor

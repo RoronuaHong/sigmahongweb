@@ -15,8 +15,8 @@ class BCppSummaryStore {
   @observable value = ``
   @observable preview = ``
   @observable gettingValue = ``
-  @observable gettingTitle = ``
-  @observable gettingContent = ``
+  @observable gettingTitle = `Loading`
+  @observable gettingContent = `Loading`
 
   @action
   setCppSummaryTitleInput(title) {
@@ -54,6 +54,9 @@ class BCppSummaryStore {
       if(data && data.status) {
         this.gettingTitle = data ? data.data.title : ``
         this.gettingContent = data ? data.data.value : ``
+      } else {
+        this.gettingTitle = ``
+        this.gettingContent = ``
       }
     })
   }

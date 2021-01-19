@@ -12,11 +12,17 @@ const { Footer } = Layout
 @inject('bcppSummaryStore')
 @observer
 class SummaryContentContainer extends Component {
-  componentWillMount() {
-    const { match, bcppSummaryStore } = this.props
+  async componentWillMount() {
+    const { match, history, bcppSummaryStore } = this.props
     const id = match.params.id
 
-    bcppSummaryStore.getCppSummaryContentById({ id })
+    await bcppSummaryStore.getCppSummaryContentById({ id, history })
+
+    const { gettingTitle, gettingContent } = bcppSummaryStore
+
+    if(!gettingTitle && !gettingContent) {
+      history.replace('/cpp-summary')
+    }
   }
 
   render() {

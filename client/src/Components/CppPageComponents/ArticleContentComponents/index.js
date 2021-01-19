@@ -2,6 +2,8 @@ import { Component } from 'react'
 
 import ReactMarkdown from 'react-markdown'
 import MarkdownNavbar from 'markdown-navbar'
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 
 import 'markdown-navbar/dist/navbar.css'
 
@@ -15,7 +17,15 @@ class ArticleContentComponents extends Component {
           <MarkdownNavbar source={content} />
         </div>
         <div className={`content-main`}>
-          <ReactMarkdown source={content} escapeHtml={false}></ReactMarkdown>
+          <ReactMarkdown 
+            source={content} 
+            escapeHtml={false}
+            renderers={{
+              code: Components
+            }}
+          >
+
+          </ReactMarkdown>
         </div>
         <div className={`content-right`}>
           
@@ -23,6 +33,14 @@ class ArticleContentComponents extends Component {
       </div>
     )
   }
+}
+
+const Components = ({ value, language }) => {
+  return (
+    <SyntaxHighlighter language={language ?? null} style={docco}>
+      {value ?? ''}
+    </SyntaxHighlighter>
+  )
 }
 
 export default ArticleContentComponents
