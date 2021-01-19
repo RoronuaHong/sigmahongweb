@@ -17,7 +17,7 @@ a:active { color: #3990e6; }
 audio, canvas, progress, video { display: inline-block; vertical-align: baseline; }
 audio:not([controls]) { display: none; height: 0; }svg:not(:root) { overflow: hidden; }
 
-hr { -moz-box-sizing: content-box; box-sizing: content-box; height: 0; }pre { overflow: auto; white-space: pre; white-space: pre-wrap; word-wrap: break-word; }code, kbd, pre, samp { font-family: monospace; font-size: 1rem}mark { background: #ff0; color: #1a1a1a; }dfn { font-style: italic; }
+hr { -moz-box-sizing: content-box; box-sizing: content-box; height: 0; }pre { overflow: auto; white-space: pre; white-space: pre-wrap; word-wrap: break-word; }code, kbd, pre, samp { font-family: monospace; font-size: 1em}mark { background: #ff0; color: #1a1a1a; }dfn { font-style: italic; }
 table { border-collapse: collapse; border-spacing: 0; }td, th { padding: 0; }
 ul, ol { list-style: none outside none; }h1, h2, h3,strong {font-weight: 600; }
 
