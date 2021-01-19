@@ -32,9 +32,6 @@ router.route('/add').post((req, res) => {
 router.route('/get').get((req, res) => {
   const id = req.body.id
 
-  console.log(req)
-  console.log(id)
-
   if(id) {
     CppSry.findOne({ id }, (err, data) => {
       if(err) {
@@ -68,6 +65,27 @@ router.route('/get').get((req, res) => {
   }
 })
 
+/**
+ * Update
+ */
+router.route('/update').post((req, res) => {
+  const conditions = { _id: req.body.id }
+  const title = req.body.title
+  const value = req.body.value
+  const preview = req.body.preview
+
+  CppSry.update(conditions, req.body)
+    .then(() => res.status(200).json({
+      msg: 'cppsummaryeditor update success',
+      status: 1,
+      data: { title, value, preview }
+    }))
+    .catch(err => res.status(400).json('Error: ' + err))
+})
+
+/**
+ * Content
+ */
 router.route('/content').post((req, res) => {
   const _id = req.body.id
 

@@ -3,6 +3,7 @@
  */
 import store from 'store'
 const USER_KEY = `user_key`
+const ID_KEY = `id_key`
 
 const modules = {
   /**
@@ -25,6 +26,28 @@ const modules = {
   removeUser() {
     // localStorage.removeItem(USER_KEY)
     store.remove(USER_KEY)
+  },
+
+  /**
+   * 保存id
+   */
+  saveId(id) {
+    // localStorage.setItem(ID_KEY, JSON.stringify(id))
+    store.set(ID_KEY, id)
+  },
+  /**
+   * 返回一个id对象, 如果没有的话返回{}
+   */
+  getId() {
+    // return JSON.parse(localStorage.getItem(ID_KEY)) || {}
+    return store.get(ID_KEY) || {}
+  },
+  /**
+   * 删除保存的id
+   */
+  removeId() {
+    // localStorage.removeItem(ID_KEY)
+    store.remove(ID_KEY)
   }
 }
 

@@ -9,6 +9,7 @@ import HeaderContainer from './HeaderContainer/index'
 
 import BHomeContainer from '../BHomeContainer/index'
 import BCppSummaryEditor from '../BCppSummaryEditor/index'
+import BCppSummaryLists from '../BCppSummaryLists/index'
 
 const { Footer, Sider, Content } = Layout
 
@@ -33,10 +34,9 @@ class DashboardContainer extends Component {
           }}>
             <Switch>
               <Route path={`/admin/dashboard/home`} component={BHomeContainer} />
+              <Route path={`/admin/dashboard/cppsummaryeditor/search`} component={BCppSummaryLists} />
               <Route path={`/admin/dashboard/cppsummaryeditor/add`} component={BCppSummaryEditor} />
               <Route path={`/admin/dashboard/cppsummaryeditor/edit`} component={BCppSummaryEditor} />
-              <Route path={`/admin/dashboard/cppsummaryeditor/delete`} component={BCppSummaryEditor} />
-              <Route path={`/admin/dashboard/cppsummaryeditor/search`} component={BCppSummaryEditor} />
               <Redirect to={`/admin/dashboard/home`} />
             </Switch>
           </Content>

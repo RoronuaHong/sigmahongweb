@@ -8,6 +8,10 @@ function setCppSummaryEditorContent(params) {
   return axios.post(`/cppsummary/add`, params)
 }
 
+function updateCppSummaryEditorContent(params) {
+  return axios.post(`/cppsummary/update`, params)
+}
+
 function getCppSummaryEditorContent(params) {
   return axios.get(`/cppsummary/get`, params)
 }
@@ -20,7 +24,8 @@ const cppsummary = {
   getName,
   setCppSummaryEditorContent,
   getCppSummaryEditorContent,
-  getCppSummaryContentById
+  getCppSummaryContentById,
+  updateCppSummaryEditorContent
 }
 
 export default cppsummary

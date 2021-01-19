@@ -1,3 +1,4 @@
+import { message } from 'antd'
 import {
   action,
   observable,
@@ -16,6 +17,7 @@ class BCppSummaryStore {
   @observable preview = ``
   @observable gettingValue = ``
   @observable gettingTitle = `Loading...`
+  @observable gettingPreview = `Loading...`
   @observable gettingContent = `Loading...`
 
   @action
@@ -38,7 +40,22 @@ class BCppSummaryStore {
 
   @action
   setCppSummaryEditorContent(params) {
-    api.cppsummary.setCppSummaryEditorContent(params)
+    api.cppsummary.setCppSummaryEditorContent(params).then(data => {
+      if(data && data.status) {
+        message.success(data.msg)
+      }
+    })
+  }
+
+  @action
+  updateCppSummaryEditorContent(params) {
+    message.destroy()
+
+    api.cppsummary.updateCppSummaryEditorContent(params).then(data => {
+      if(data && data.status) {
+        message.success(data.msg)
+      }
+    })
   }
 
   @action
@@ -54,9 +71,11 @@ class BCppSummaryStore {
       if(data && data.status) {
         this.gettingTitle = data ? data.data.title : ``
         this.gettingContent = data ? data.data.value : ``
+        this.gettingPreview = data ? data.data.preview : ``
       } else {
         this.gettingTitle = ``
         this.gettingContent = ``
+        this.gettingPreview = ``
       }
     })
   }

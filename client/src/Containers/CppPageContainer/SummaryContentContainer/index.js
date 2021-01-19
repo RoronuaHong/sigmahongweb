@@ -16,7 +16,7 @@ class SummaryContentContainer extends Component {
     const { match, history, bcppSummaryStore } = this.props
     const id = match.params.id
 
-    await bcppSummaryStore.getCppSummaryContentById({ id, history })
+    await bcppSummaryStore.getCppSummaryContentById({ id })
 
     const { gettingTitle, gettingContent } = bcppSummaryStore
 

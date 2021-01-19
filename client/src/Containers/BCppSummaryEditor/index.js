@@ -5,11 +5,56 @@ import { inject, observer } from 'mobx-react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 
+import storageUtils from '../../utils/storageUtils'
+
 import './index.scss'
+
+let id = ``
+let isAddPageChange = false
 
 @inject('bcppSummaryStore')
 @observer
 class BCppSummaryEditor extends Component {
+  async componentWillMount() {
+    const { match, bcppSummaryStore } = this.props
+    const path = match.path
+
+    if(path.indexOf(`add`) > -1) {
+      storageUtils.removeId()
+    } else {
+      id = storageUtils.getId()
+
+      await bcppSummaryStore.getCppSummaryContentById({ id })
+
+      setTimeout(() => {
+        const { gettingTitle, gettingPreview, gettingContent } = bcppSummaryStore
+
+        this.handleTitleInput(gettingTitle)
+        this.handlePreviewInput(gettingPreview)
+        this.handleCppSummaryInput(gettingContent)
+      }, 1000)
+    }
+  }
+
+  componentDidUpdate() {
+    const { match } = this.props
+
+    if(match.path.indexOf(`add`) > -1) {
+      id = ``
+      storageUtils.removeId()
+
+      if(!isAddPageChange) {
+        this.handleTitleInput(``)
+        this.handlePreviewInput(``)
+        this.handleCppSummaryInput(``)
+
+        isAddPageChange = true
+      }
+    } else {
+      isAddPageChange = false
+    }
+  }
+
   handleTitleInput(value) {
     const { bcppSummaryStore } = this.props
 
@@ -42,10 +87,14 @@ class BCppSummaryEditor extends Component {
       const { bcppSummaryStore } = this.props
       const { title, value, preview } = bcppSummaryStore
   
-      if(title && value) {
-        await bcppSummaryStore.setCppSummaryEditorContent({ title, value, preview })
+      if(id) {
+        await bcppSummaryStore.updateCppSummaryEditorContent({ id, title, value, preview })
       } else {
-        message.error(`plz infilling title and value`)
+        if(title && value && preview) {
+          await bcppSummaryStore.setCppSummaryEditorContent({ title, value, preview })
+        } else {
+          message.error(`plz infilling title and value`)
+        }
       }
     }
 
@@ -53,7 +102,7 @@ class BCppSummaryEditor extends Component {
       <>
         <div className={`cppsummaryeditor-header`}>
           <div className={`cppsummaryeditor-title`}>
-            <Input 
+            <Input
               value={title}
               placeholder={`Title`}
               onChange={e => this.handleTitleInput(e.target.value)}
