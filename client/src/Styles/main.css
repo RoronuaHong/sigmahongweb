@@ -59,6 +59,11 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { color: #
   height: 100%;
 }
 
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
 pre {
   margin-top: 0;
   margin-bottom: 1em;
