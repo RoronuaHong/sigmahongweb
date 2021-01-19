@@ -15,6 +15,10 @@ const menuList = [{
   key: `/admin/dashboard/cppsummaryeditor`,
   icon: <EditOutlined />,
   children: [{
+    title: `Search`,
+    key: `/admin/dashboard/cppsummaryeditor/search`,
+    icon: <FileSearchOutlined />
+  }, {
     title: `Add`,
     key: `/admin/dashboard/cppsummaryeditor/add`,
     icon: <FileAddOutlined />
@@ -22,14 +26,6 @@ const menuList = [{
     title: `Edit`,
     key: `/admin/dashboard/cppsummaryeditor/edit`,
     icon: <EditOutlined />
-  }, {
-    title: `Delete`,
-    key: `/admin/dashboard/cppsummaryeditor/delete`,
-    icon: <DeleteOutlined />
-  }, {
-    title: `Search`,
-    key: `/admin/dashboard/cppsummaryeditor/search`,
-    icon: <FileSearchOutlined />
   }]
 }]
 

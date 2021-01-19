@@ -16,20 +16,17 @@ class ArticleContentComponents extends Component {
         <div className={`content-left`}>
           <MarkdownNavbar source={content} />
         </div>
-        <div className={`content-main`}>
+        <div className={`content-main content-overflow`}>
           <ReactMarkdown 
             source={content} 
             escapeHtml={false}
             renderers={{
               code: Components
             }}
-          >
-
-          </ReactMarkdown>
+            className={`cppsummaryeditor-markdown`}
+          ></ReactMarkdown>
         </div>
-        <div className={`content-right`}>
-          
-        </div>
+        <div className={`content-right`}></div>
       </div>
     )
   }

@@ -15,8 +15,8 @@ class BCppSummaryStore {
   @observable value = ``
   @observable preview = ``
   @observable gettingValue = ``
-  @observable gettingTitle = `Loading`
-  @observable gettingContent = `Loading`
+  @observable gettingTitle = `Loading...`
+  @observable gettingContent = `Loading...`
 
   @action
   setCppSummaryTitleInput(title) {
