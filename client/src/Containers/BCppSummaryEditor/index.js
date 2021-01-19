@@ -16,6 +16,12 @@ class BCppSummaryEditor extends Component {
     bcppSummaryStore.setCppSummaryTitleInput(value)
   }
 
+  handlePreviewInput(value) {
+    const { bcppSummaryStore } = this.props
+
+    bcppSummaryStore.setCppSummaryPreviewInput(value)
+  }
+
   handleCppSummaryInput(value) {
     const { bcppSummaryStore } = this.props
 
@@ -30,14 +36,14 @@ class BCppSummaryEditor extends Component {
 
   render() {
     const { bcppSummaryStore } = this.props
-    const { title, value } = bcppSummaryStore
+    const { title, value, preview } = bcppSummaryStore
 
     const handleSaveConfirm = async() =>  {
       const { bcppSummaryStore } = this.props
-      const { title, value } = bcppSummaryStore
+      const { title, value, preview } = bcppSummaryStore
   
       if(title && value) {
-        await bcppSummaryStore.setCppSummaryEditorContent({ title, value })
+        await bcppSummaryStore.setCppSummaryEditorContent({ title, value, preview })
       } else {
         message.error(`plz infilling title and value`)
       }
@@ -51,6 +57,15 @@ class BCppSummaryEditor extends Component {
               value={title}
               placeholder={`Title`}
               onChange={e => this.handleTitleInput(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className={`cppsummaryeditor-content`}>
+          <div className={`cppsummaryeditor-preview`}>
+            <Input
+              value={preview}
+              placeholder={`Preview`}
+              onChange={e => this.handlePreviewInput(e.target.value)}
             />
           </div>
         </div>

@@ -29,7 +29,7 @@ class DashboardContainer extends Component {
           <HeaderContainer />
           <Content style={{
             margin: `10px 20px`,
-            background: `white` 
+            background: `white`
           }}>
             <Switch>
               <Route path={`/admin/dashboard/home`} component={BHomeContainer} />

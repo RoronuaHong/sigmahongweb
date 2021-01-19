@@ -1,5 +1,5 @@
-import API from '../config/api'
+// import API from '../config/api'
 
-export const login = (params) => {
-  return instance.get(API.DEMO_API, { params: params })
-}
+// export const login = (params) => {
+//   return instance.get(API.DEMO_API, { params: params })
+// }

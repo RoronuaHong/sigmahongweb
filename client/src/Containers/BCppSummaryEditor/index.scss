@@ -6,10 +6,17 @@
     
   }
 }
-
+.cppsummaryeditor-content {
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  .cppsummaryeditor-preview {
+    width: 60%;
+  }
+}
 .cppsummaryeditor-wrapper {
   display: flex;
-  height: 89%;
+  height: 83%;
   .cppsummaryeditor-textarea {
     width: 50%;
     height: 100%;

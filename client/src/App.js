@@ -13,6 +13,7 @@ import LoginContainer from './Containers/LoginContainer/index'
 import DashboardContainer from './Containers/DashboardContainer/index'
 import SummaryContainer from './Containers/CppPageContainer/SummaryContainer/index'
 import AlgorithmContainer from './Containers/CppPageContainer/AlgorithmContainer/index'
+import SummaryContentContainer from './Containers/CppPageContainer/SummaryContentContainer/index'
 
 export default function App() {
   return (
@@ -20,7 +21,8 @@ export default function App() {
       <Router>
         <Switch>
           <Route path='/' exact component={HomeApp} />
-          <Route path='/cpp-summary' component={SummaryContainer} />
+          <Route exact path='/cpp-summary' component={SummaryContainer} />
+          <Route path='/cpp-summary/content/:id' component={SummaryContentContainer} />
           <Route path='/cpp-algorithm' component={AlgorithmContainer} />
 
           <Route path='/admin/login' component={LoginContainer} />

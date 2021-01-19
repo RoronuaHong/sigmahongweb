@@ -1,11 +1,13 @@
 import NavLogoWidgets from '../../../Widgets/NavLogo/index'
 
-const HeaderComponents = () => {
+const HeaderComponents = props => {
+  const { title } = props
+
   return (
     <div className={`summary-header`}>
       <NavLogoWidgets />
       <div className={`header-title`}>
-        Cpp Summary list
+        {title || `Cpp Summary list`}
       </div>
     </div>
   )

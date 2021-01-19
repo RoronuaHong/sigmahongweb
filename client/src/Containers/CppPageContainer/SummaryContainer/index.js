@@ -12,29 +12,6 @@ const { Footer } = Layout
 @inject('cppSummaryStore')
 @observer
 class SummaryContainer extends Component {
-  handleTodos(type) {
-    let { cppSummaryStore } = this.props
-  
-    switch(type) {
-      case 'add':
-        cppSummaryStore.addTodo(`一条新任务`)
-
-        break
-      case 'del':
-        cppSummaryStore.delTodo()
-
-        break
-      case 'reset':
-        cppSummaryStore.resetTodo()
-
-        break
-      default:
-        cppSummaryStore.addTodo(`一条新任务`)
-
-        break
-    }
-  }
-
   render() {
     let { cppSummaryStore } = this.props
 

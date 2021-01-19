@@ -8,6 +8,11 @@ const cppsrySchema = new Schema({
     require: true,
     trim: true
   },
+  preview: {
+    type: String,
+    require: true,
+    trim: true,
+  },
   value: {
     type: String,
     require: true,
