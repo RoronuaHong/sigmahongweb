@@ -1,22 +1,22 @@
 import { Link } from 'react-router-dom'
 
+
+import cppList from '../../../../config/CppConfig'
+
 const MainList = () => {
-  const cppList = [{
-    id: 0,
-    name: `Summary`,
-    link: `/cpp-summary`
-  }, {
-    id: 1,
-    name: `Algorithm`,
-    link: `/cpp-algorithm`
-  }]
+  const style = { background: '#0092ff', padding: '8px 0' }
 
   return (
     <ul className={`cpp-main-list`}>
-      {cppList.map(({id, name, link}) => (
-        <Link to={link} key={id}>
-          <li>{name}</li>
-        </Link>
+      {cppList.map(({id, img, name, link}) => (
+        <li className={`cpp-list-li`} key={id}>
+          <Link to={link}>
+            <div className={`cpp-main-li`}>
+              <img className={`cpp-main-img`} src={img} alt={name} />
+              <p className={`cpp-main-name`}>{name}</p>
+            </div>
+          </Link>
+        </li>
       ))}
     </ul>
   )

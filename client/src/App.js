@@ -24,6 +24,7 @@ export default function App() {
           <Route exact path='/cpp-summary' component={SummaryContainer} />
           <Route path='/cpp-summary/content/:id' component={SummaryContentContainer} />
           <Route path='/cpp-algorithm' component={AlgorithmContainer} />
+          <Route path='/cpp-datastructure' component={AlgorithmContainer} />
 
           <Route path='/admin/login' component={LoginContainer} />
           <Route path='/admin/dashboard' component={DashboardContainer} />

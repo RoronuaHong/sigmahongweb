@@ -39,8 +39,10 @@ class BCppSummaryLists extends Component {
     history.replace(`/admin/dashboard/cppsummaryeditor/edit`)
   }
 
-  handleDelete = () => {
-    console.log(2)
+  handleDelete = id => {
+    const { bcppSummaryStore } = this.props
+
+    bcppSummaryStore.delCppSummaryEditorContent({ id })
   }
 
   initColumns = () => {
@@ -67,7 +69,7 @@ class BCppSummaryLists extends Component {
           <>
             <LinkButton onClick={() => this.handleEdit(record._id)}>Edit</LinkButton>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <LinkButton onClick={this.handleDelete}>Delete</LinkButton>
+            <LinkButton onClick={() => this.handleDelete(record._id)}>Delete</LinkButton>
           </>
         )
       },
@@ -126,7 +128,7 @@ class BCppSummaryLists extends Component {
           key: 'odd',
           text: 'Select Odd Row',
           onSelect: changableRowKeys => {
-            const newSelectedRowKeys = []
+            let newSelectedRowKeys = []
 
             newSelectedRowKeys = changableRowKeys.filter((key, index) => {
               if(index % 2 !== 0) {
@@ -143,7 +145,7 @@ class BCppSummaryLists extends Component {
           key: 'even',
           text: 'Select Even Row',
           onSelect: changableRowKeys => {
-            const newSelectedRowKeys = []
+            let newSelectedRowKeys = []
 
             newSelectedRowKeys = changableRowKeys.filter((key, index) => {
               if(index % 2 !== 0) {

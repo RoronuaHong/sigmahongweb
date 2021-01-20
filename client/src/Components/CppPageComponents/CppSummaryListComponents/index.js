@@ -20,7 +20,7 @@ class CppSummaryListComponents extends Component {
 
     return gettingValue && gettingValue.map(item => (
       <div className={`summary-li`} key={item._id}>
-        <a href={`/cpp-summary/content/${item._id}`} target='_blank'>
+        <a href={`/cpp-summary/content/${item._id}`} target='_blank' rel='noreferrer'>
           <h2>
             {/* <font color={`#EE0000`}>{`[置顶]`}</font> */}
             {item.title}

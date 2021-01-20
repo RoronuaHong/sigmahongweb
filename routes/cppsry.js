@@ -74,13 +74,29 @@ router.route('/update').post((req, res) => {
   const value = req.body.value
   const preview = req.body.preview
 
-  CppSry.update(conditions, req.body)
+  CppSry.updateOne(conditions, req.body)
     .then(() => res.status(200).json({
       msg: 'cppsummaryeditor update success',
       status: 1,
       data: { title, value, preview }
     }))
     .catch(err => res.status(400).json('Error: ' + err))
+})
+
+/**
+ * Delete
+ */
+router.route('/delete').post((req, res) => {
+  const conditions = { _id: req.body.id }
+
+  CppSry.deleteOne(conditions)
+    .then(delRes => {
+      return res.status(200).json({
+        msg: 'cppsummaryeditor delete success',
+        status: 1
+      })
+    }
+   ).catch(err => res.status(400).json('Error: ' + err))
 })
 
 /**

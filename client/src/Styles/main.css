@@ -69,3 +69,12 @@ pre {
   margin-bottom: 1em;
   overflow: auto;
 }
+
+ul.reset,
+ul.reset li,
+ul.reset ul li {
+   margin:0;
+   padding: 0;
+   text-indent: 0;
+   list-style-type: 0;
+}

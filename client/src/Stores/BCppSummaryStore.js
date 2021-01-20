@@ -34,8 +34,12 @@ class BCppSummaryStore {
   setCppSummaryInput(value) {
     this.value = value
   }
+
+  @action
   clearCppSummaryInput() {
+    this.title = ``
     this.value = ``
+    this.preview = ``
   }
 
   @action
@@ -76,6 +80,21 @@ class BCppSummaryStore {
         this.gettingTitle = ``
         this.gettingContent = ``
         this.gettingPreview = ``
+      }
+    })
+  }
+
+  @action
+  delCppSummaryEditorContent(params) {
+    message.destroy()
+
+    api.cppsummary.delCppSummaryEditorContent(params).then(data => {
+      if(data.status) {
+        message.success(data.msg)
+
+        this.gettingValue = this.gettingValue.filter(item => params.id !== item._id)
+
+        console.log(this.gettingValue)
       }
     })
   }
