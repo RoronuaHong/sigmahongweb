@@ -84,8 +84,7 @@ class BCppSummaryLists extends Component {
     const { selectedRowKeys } = this.state
     const { bcppSummaryStore } = this.props
 
-    bcppSummaryStore.delManyCppSummaryEditorContent({ ids: selectedRowKeys })
-    console.log(selectedRowKeys)
+    bcppSummaryStore.delManyCppSummaryEditorContent({ ids: JSON.stringify(selectedRowKeys) })
   }
 
   render() {

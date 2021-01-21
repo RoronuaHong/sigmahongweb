@@ -93,8 +93,6 @@ class BCppSummaryStore {
         message.success(data.msg)
 
         this.gettingValue = this.gettingValue.filter(item => params.id !== item._id)
-
-        console.log(this.gettingValue)
       }
     })
   }
@@ -107,7 +105,7 @@ class BCppSummaryStore {
       if(data.status) {
         message.success(data.msg)
 
-        this.gettingValue = this.gettingValue.filter(item => params.id !== item._id)
+        this.gettingValue = ``
       }
     })
   }

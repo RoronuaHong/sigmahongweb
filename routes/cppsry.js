@@ -103,9 +103,11 @@ router.route('/delete').post((req, res) => {
  * Delete
  */
 router.route('/deletemany').post((req, res) => {
-  const conditions = { _id: { $in: [req.body.ids] }}
+  const conditions = { _id: { $in: JSON.parse(req.body.ids) }}
 
-  CppSry.deleteMany(conditions)
+  console.log(JSON.parse(req.body.ids))
+
+  CppSry.remove(conditions)
     .then(delRes => {
       return res.status(200).json({
         msg: 'cppsummaryeditor deletemany success',
