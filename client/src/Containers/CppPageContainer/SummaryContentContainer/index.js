@@ -2,8 +2,8 @@ import { Layout } from 'antd'
 import { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 
-import HeaderComponents from '../../../Components/AlgorithmComponents/HeaderComponents/index'
-import ArticleContentComponents from '../../../Components/AlgorithmComponents/ArticleContentComponents/index'
+import HeaderComponents from '../../../Components/CppPageComponents/HeaderComponents/index'
+import ArticleContentComponents from '../../../Components/CppPageComponents/ArticleContentComponents/index'
 
 import './index.scss'
 

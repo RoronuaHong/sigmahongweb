@@ -17,8 +17,8 @@ class ArticleContentComponents extends Component {
           <MarkdownNavbar source={content} />
         </div>
         <div className={`content-main content-overflow`}>
-          <ReactMarkdown 
-            source={content} 
+          <ReactMarkdown
+            source={content}
             escapeHtml={false}
             renderers={{
               code: Components

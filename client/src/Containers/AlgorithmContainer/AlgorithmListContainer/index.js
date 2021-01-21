@@ -2,9 +2,9 @@ import { Layout } from 'antd'
 import { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 
-import CppSummaryListComponents from '../../../Components/CppPageComponents/CppSummaryListComponents/index'
-import HeaderComponents from '../../../Components/CppPageComponents/HeaderComponents/index'
-import ContentComponents from '../../../Components/CppPageComponents/ContentComponents/index'
+import AlgorithmListComponentes from '../../../Components/AlgorithmComponents/AlgorithmListComponentes/index'
+import HeaderComponents from '../../../Components/AlgorithmComponents/HeaderComponents/index'
+import ContentComponents from '../../../Components/AlgorithmComponents/ContentComponents/index'
 
 import './index.scss'
 
@@ -21,7 +21,7 @@ class AlgorithmContainer extends Component {
         <Layout>
           <HeaderComponents title={`Algorithm List`} />
           <ContentComponents>
-            <CppSummaryListComponents />
+            <AlgorithmListComponentes />
           </ContentComponents>
           <Footer style={{
             textAlign: `center`,
