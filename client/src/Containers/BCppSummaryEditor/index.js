@@ -20,6 +20,10 @@ class BCppSummaryEditor extends Component {
     const path = match.path
 
     if(path.indexOf(`add`) > -1) {
+      this.handleTitleInput(``)
+      this.handlePreviewInput(``)
+      this.handleCppSummaryInput(``)
+
       storageUtils.removeId()
     } else {
       id = storageUtils.getId()
