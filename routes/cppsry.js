@@ -100,7 +100,7 @@ router.route('/delete').post((req, res) => {
 })
 
 /**
- * Delete
+ * DeleteMany
  */
 router.route('/deletemany').post((req, res) => {
   const conditions = { _id: { $in: JSON.parse(req.body.ids) }}

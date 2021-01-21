@@ -132,4 +132,20 @@ router.route('/content').post((req, res) => {
   })
 })
 
+/**
+ * DeleteMany
+ */
+router.route('/deletemany').post((req, res) => {
+  const conditions = { _id: { $in: JSON.parse(req.body.ids) }}
+
+  Algorithm.remove(conditions)
+    .then(delRes => {
+      return res.status(200).json({
+        msg: 'algorithmeditor deletemany success',
+        status: 1
+      })
+    }
+   ).catch(err => res.status(400).json('Error: ' + err))
+})
+
 module.exports = router

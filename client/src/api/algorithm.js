@@ -20,12 +20,17 @@ function updateAlgorithmContent(params) {
   return axios.post(`/algorithm/update`, params)
 }
 
+function delManyAlgorithmEditorContent(params) {
+  return axios.post(`/algorithm/deletemany`, params)
+}
+
 const algorithm = {
   getAlgorithmContent,
   setAlgorithmContent,
   getAlgorithmById,
   delAlgorithmContent,
   updateAlgorithmContent,
+  delManyAlgorithmEditorContent,
 }
 
 export default algorithm

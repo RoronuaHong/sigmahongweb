@@ -82,8 +82,9 @@ class BAlgorithmLists extends Component {
 
   onDeleteChange = () => {
     const { selectedRowKeys } = this.state
-    
-    console.log(selectedRowKeys)
+    const { balgorithmStore } = this.props
+
+    balgorithmStore.delManyAlgorithmEditorContent({ ids: JSON.stringify(selectedRowKeys) })
   }
 
   render() {

@@ -98,6 +98,19 @@ class BAlgorithmStore {
       }
     })
   }
+
+  @action
+  delManyAlgorithmEditorContent(params) {
+    message.destroy()
+
+    api.algorithm.delManyAlgorithmEditorContent(params).then(data => {
+      if(data.status) {
+        message.success(data.msg)
+
+        this.gettingValue = ``
+      }
+    })
+  }
 }
 
 export default BAlgorithmStore

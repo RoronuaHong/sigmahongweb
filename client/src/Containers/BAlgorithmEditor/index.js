@@ -86,7 +86,7 @@ class BAlgorithmEditor extends Component {
     const handleSaveConfirm = async() =>  {
       const { balgorithmStore } = this.props
       const { title, value, preview } = balgorithmStore
-  
+
       if(id) {
         await balgorithmStore.updateAlgorithmContent({ id, title, value, preview })
       } else {
