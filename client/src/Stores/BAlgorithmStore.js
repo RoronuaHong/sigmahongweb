@@ -21,8 +21,30 @@ class BAlgorithmStore {
   @observable gettingContent = `Loading...`
 
   @action
+  setAlgorithmTitleInput(title) {
+    this.title = title
+  }
+
+  @action
+  setAlgorithmPreviewInput(preview) {
+    this.preview = preview
+  }
+
+  @action
+  setAlgorithmInput(value) {
+    this.value = value
+  }
+
+  @action
+  clearAlgorithmInput() {
+    this.title = ``
+    this.value = ``
+    this.preview = ``
+  }
+
+  @action
   setAlgorithmContent(params) {
-    api.cppsummary.setAlgorithmContent(params).then(data => {
+    api.algorithm.setAlgorithmContent(params).then(data => {
       if(data && data.status) {
         message.success(data.msg)
       }
@@ -31,7 +53,7 @@ class BAlgorithmStore {
 
   @action
   getAlgorithmContent(params) {
-    api.cppsummary.getAlgorithmContent(params).then(value => {
+    api.algorithm.getAlgorithmContent(params).then(value => {
       this.gettingValue = value.data
     })
   }
@@ -40,7 +62,7 @@ class BAlgorithmStore {
   updateAlgorithmContent(params) {
     message.destroy()
 
-    api.cppsummary.updateAlgorithmContent(params).then(data => {
+    api.algorithm.updateAlgorithmContent(params).then(data => {
       if(data && data.status) {
         message.success(data.msg)
       }
@@ -49,7 +71,7 @@ class BAlgorithmStore {
 
   @action
   getAlgorithmById(params) {
-    api.cppsummary.getAlgorithmById(params).then(data => {
+    api.algorithm.getAlgorithmById(params).then(data => {
       if(data && data.status) {
         this.gettingTitle = data ? data.data.title : ``
         this.gettingContent = data ? data.data.value : ``
@@ -58,6 +80,21 @@ class BAlgorithmStore {
         this.gettingTitle = ``
         this.gettingContent = ``
         this.gettingPreview = ``
+      }
+    })
+  }
+
+  @action
+  delAlgorithmContent(params) {
+    message.destroy()
+
+    api.algorithm.delAlgorithmContent(params).then(data => {
+      if(data.status) {
+        message.success(data.msg)
+
+        this.gettingValue = this.gettingValue.filter(item => params.id !== item._id)
+
+        console.log(this.gettingValue)
       }
     })
   }

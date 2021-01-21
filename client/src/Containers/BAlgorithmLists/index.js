@@ -14,7 +14,7 @@ import storageUtils from '../../utils/storageUtils'
 
 import './index.scss'
 
-@inject('bcppSummaryStore')
+@inject('balgorithmStore')
 @observer
 class BAlgorithmLists extends Component {
   state = {
@@ -26,13 +26,13 @@ class BAlgorithmLists extends Component {
 
     storageUtils.saveId(id)
 
-    history.replace(`/admin/dashboard/cppsummaryeditor/edit`)
+    history.replace(`/admin/dashboard/algorithmeditor/edit`)
   }
 
   handleDelete = id => {
-    const { bcppSummaryStore } = this.props
+    const { balgorithmStore } = this.props
 
-    bcppSummaryStore.delCppSummaryEditorContent({ id })
+    balgorithmStore.delAlgorithmContent({ id })
   }
 
   initColumns = () => {
@@ -71,9 +71,9 @@ class BAlgorithmLists extends Component {
   }
 
   async componentWillMount() {
-    const { bcppSummaryStore } = this.props
+    const { balgorithmStore } = this.props
 
-    await bcppSummaryStore.getCppSummaryEditorContent()
+    await balgorithmStore.getAlgorithmContent()
   }
 
   onSelectChange = selectedRowKeys => {
@@ -88,14 +88,14 @@ class BAlgorithmLists extends Component {
 
   render() {
     const { selectedRowKeys } = this.state
-    const { bcppSummaryStore } = this.props
-    const { gettingValue } = bcppSummaryStore
+    const { balgorithmStore } = this.props
+    const { gettingValue } = balgorithmStore
 
     gettingValue && gettingValue.map(item => item.key = item._id)
 
     const extra = (
       <>
-        <Link to={`/admin/dashboard/cppsummaryeditor/add`}>
+        <Link to={`/admin/dashboard/algorithm/add`}>
           <Button type={`primary`} style={{marginRight: `10px`}}>
             <PlusOutlined /> Add
           </Button>

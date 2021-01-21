@@ -12,11 +12,11 @@ import './index.scss'
 let id = ``
 let isAddPageChange = false
 
-@inject('bcppSummaryStore')
+@inject('balgorithmStore')
 @observer
 class BAlgorithmEditor extends Component {
   async componentWillMount() {
-    const { match, bcppSummaryStore } = this.props
+    const { match, balgorithmStore } = this.props
     const path = match.path
 
     if(path.indexOf(`add`) > -1) {
@@ -24,14 +24,14 @@ class BAlgorithmEditor extends Component {
     } else {
       id = storageUtils.getId()
 
-      await bcppSummaryStore.getCppSummaryContentById({ id })
+      await balgorithmStore.getAlgorithmById({ id })
 
       setTimeout(() => {
-        const { gettingTitle, gettingPreview, gettingContent } = bcppSummaryStore
+        const { gettingTitle, gettingPreview, gettingContent } = balgorithmStore
 
         this.handleTitleInput(gettingTitle)
         this.handlePreviewInput(gettingPreview)
-        this.handleCppSummaryInput(gettingContent)
+        this.handleAlgorithmInput(gettingContent)
       }, 1000)
     }
   }
@@ -46,7 +46,7 @@ class BAlgorithmEditor extends Component {
       if(!isAddPageChange) {
         this.handleTitleInput(``)
         this.handlePreviewInput(``)
-        this.handleCppSummaryInput(``)
+        this.handleAlgorithmInput(``)
 
         isAddPageChange = true
       }
@@ -56,42 +56,42 @@ class BAlgorithmEditor extends Component {
   }
 
   handleTitleInput(value) {
-    const { bcppSummaryStore } = this.props
+    const { balgorithmStore } = this.props
 
-    bcppSummaryStore.setCppSummaryTitleInput(value)
+    balgorithmStore.setAlgorithmTitleInput(value)
   }
 
   handlePreviewInput(value) {
-    const { bcppSummaryStore } = this.props
+    const { balgorithmStore } = this.props
 
-    bcppSummaryStore.setCppSummaryPreviewInput(value)
+    balgorithmStore.setAlgorithmPreviewInput(value)
   }
 
-  handleCppSummaryInput(value) {
-    const { bcppSummaryStore } = this.props
+  handleAlgorithmInput(value) {
+    const { balgorithmStore } = this.props
 
-    bcppSummaryStore.setCppSummaryInput(value)
+    balgorithmStore.setAlgorithmInput(value)
   }
 
   handleResetConfirm() {
-    const { bcppSummaryStore } = this.props
+    const { balgorithmStore } = this.props
 
-    bcppSummaryStore.clearCppSummaryInput()
+    balgorithmStore.clearAlgorithmInput()
   }
 
   render() {
-    const { bcppSummaryStore } = this.props
-    const { title, value, preview } = bcppSummaryStore
+    const { balgorithmStore } = this.props
+    const { title, value, preview } = balgorithmStore
 
     const handleSaveConfirm = async() =>  {
-      const { bcppSummaryStore } = this.props
-      const { title, value, preview } = bcppSummaryStore
+      const { balgorithmStore } = this.props
+      const { title, value, preview } = balgorithmStore
   
       if(id) {
-        await bcppSummaryStore.updateCppSummaryEditorContent({ id, title, value, preview })
+        await balgorithmStore.updateAlgorithmContent({ id, title, value, preview })
       } else {
         if(title && value && preview) {
-          await bcppSummaryStore.setCppSummaryEditorContent({ title, value, preview })
+          await balgorithmStore.setAlgorithmContent({ title, value, preview })
         } else {
           message.error(`plz infilling title and value`)
         }
@@ -123,7 +123,7 @@ class BAlgorithmEditor extends Component {
             autoFocus
             value={value}
             className={`cppsummaryeditor-textarea`}
-            onChange={e => this.handleCppSummaryInput(e.target.value)}
+            onChange={e => this.handleAlgorithmInput(e.target.value)}
           />
           <ReactMarkdown
             source={value}

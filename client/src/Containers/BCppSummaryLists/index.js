@@ -82,7 +82,9 @@ class BCppSummaryLists extends Component {
 
   onDeleteChange = () => {
     const { selectedRowKeys } = this.state
-    
+    const { bcppSummaryStore } = this.props
+
+    bcppSummaryStore.delManyCppSummaryEditorContent({ ids: selectedRowKeys })
     console.log(selectedRowKeys)
   }
 

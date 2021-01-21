@@ -20,12 +20,17 @@ function delCppSummaryEditorContent(params) {
   return axios.post(`/cppsummary/delete`, params)
 }
 
+function delManyCppSummaryEditorContent(params) {
+  return axios.post(`/cppsummary/deletemany`, params)
+}
+
 const cppsummary = {
   getCppSummaryContentById,
   setCppSummaryEditorContent,
   getCppSummaryEditorContent,
-  delCppSummaryEditorContent,
   updateCppSummaryEditorContent,
+  delCppSummaryEditorContent,
+  delManyCppSummaryEditorContent,
 }
 
 export default cppsummary

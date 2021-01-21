@@ -1,7 +1,6 @@
 import axios from './http'
 
 function getAlgorithmContent(params) {
-  console.log(123)
   return axios.get(`/algorithm/get`, params)
 }
 
@@ -9,7 +8,7 @@ function setAlgorithmContent(params) {
   return axios.post(`/algorithm/add`, params)
 }
 
-function getAlgorithmtById(params) {
+function getAlgorithmById(params) {
   return axios.post(`/algorithm/content`, params)
 }
 
@@ -24,7 +23,7 @@ function updateAlgorithmContent(params) {
 const algorithm = {
   getAlgorithmContent,
   setAlgorithmContent,
-  getAlgorithmtById,
+  getAlgorithmById,
   delAlgorithmContent,
   updateAlgorithmContent,
 }

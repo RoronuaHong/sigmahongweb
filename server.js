@@ -7,6 +7,7 @@ const path = require('path')
 const userRouter = require('./routes/user')
 const loginRouter = require('./routes/login')
 const cppsryRouter = require('./routes/cppsry')
+const algorithmRouter = require('./routes/algorithm')
 
 require('dotenv').config()
 
@@ -39,6 +40,7 @@ app.use(morgan('tiny'))
 app.use('/login', loginRouter)
 app.use('/user', userRouter)
 app.use('/cppsummary', cppsryRouter)
+app.use('/algorithm', algorithmRouter)
 
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'))

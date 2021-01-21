@@ -98,6 +98,19 @@ class BCppSummaryStore {
       }
     })
   }
+
+  @action
+  delManyCppSummaryEditorContent(params) {
+    message.destroy()
+
+    api.cppsummary.delManyCppSummaryEditorContent(params).then(data => {
+      if(data.status) {
+        message.success(data.msg)
+
+        this.gettingValue = this.gettingValue.filter(item => params.id !== item._id)
+      }
+    })
+  }
 }
 
 export default BCppSummaryStore

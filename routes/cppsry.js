@@ -100,6 +100,22 @@ router.route('/delete').post((req, res) => {
 })
 
 /**
+ * Delete
+ */
+router.route('/deletemany').post((req, res) => {
+  const conditions = { _id: { $in: [req.body.ids] }}
+
+  CppSry.deleteMany(conditions)
+    .then(delRes => {
+      return res.status(200).json({
+        msg: 'cppsummaryeditor deletemany success',
+        status: 1
+      })
+    }
+   ).catch(err => res.status(400).json('Error: ' + err))
+})
+
+/**
  * Content
  */
 router.route('/content').post((req, res) => {
