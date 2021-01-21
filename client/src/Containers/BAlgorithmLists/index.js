@@ -16,7 +16,7 @@ import './index.scss'
 
 @inject('bcppSummaryStore')
 @observer
-class BCppSummaryLists extends Component {
+class BAlgorithmLists extends Component {
   state = {
     selectedRowKeys: [],
   }
@@ -163,4 +163,4 @@ class BCppSummaryLists extends Component {
   }
 }
 
-export default BCppSummaryLists
+export default BAlgorithmLists

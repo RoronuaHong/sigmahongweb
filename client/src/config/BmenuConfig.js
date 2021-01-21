@@ -26,6 +26,23 @@ const menuList = [{
     key: `/admin/dashboard/cppsummaryeditor/edit`,
     icon: <EditOutlined />
   }]
+}, {
+  title: `AlgorithmEditor`,
+  key: `/admin/dashboard/algorithmeditor`,
+  icon: <EditOutlined />,
+  children: [{
+    title: `List`,
+    key: `/admin/dashboard/algorithmeditor/search`,
+    icon: <UnorderedListOutlined />
+  }, {
+    title: `Add`,
+    key: `/admin/dashboard/algorithmeditor/add`,
+    icon: <FileAddOutlined />
+  }, {
+    title: `Edit`,
+    key: `/admin/dashboard/algorithmeditor/edit`,
+    icon: <EditOutlined />
+  }]
 }]
 
 export default menuList
