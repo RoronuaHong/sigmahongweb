@@ -1,15 +1,15 @@
-import { 
+import {
+  action,
+  computed,
   observable,
   makeObservable,
 } from 'mobx'
 
-class AlgorithmStore {
-  constructor() {
-    makeObservable(this)
-  } 
+import api from './../api/api'
 
-  @observable 
-  others = '456'
+class CppSummaryStore {
+ 
 }
 
-export default AlgorithmStore
+
+export default CppSummaryStore

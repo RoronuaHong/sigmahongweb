@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 import cppList from '../../../../config/CppConfig'
 
 const MainList = () => {
-  const style = { background: '#0092ff', padding: '8px 0' }
-
   return (
     <ul className={`cpp-main-list`}>
       {cppList.map(({id, img, name, link}) => (

@@ -10,14 +10,16 @@ import './index.scss'
 
 const { Footer } = Layout
 
-@inject('cppSummaryStore')
+@inject('algorithmStore') 
 @observer
-class SummaryContainer extends Component {
+class AlgorithmContainer extends Component {
   render() {
+    const { algorithmStore } = this.props
+
     return (
-      <div className={`summary-wrapper`}>
+      <div className={`algorithm-wrapper`}>
         <Layout>
-          <HeaderComponents />
+          <HeaderComponents title={`Algorithm List`} />
           <ContentComponents>
             <CppSummaryListComponents />
           </ContentComponents>
@@ -25,7 +27,7 @@ class SummaryContainer extends Component {
             textAlign: `center`,
             color: `rgba(0, 0, 0, 0.5)`
           }}>
-            SigmaHongWeb CppSummary
+            SigmaHongWeb Algorithm
           </Footer>
         </Layout>
       </div>
@@ -33,4 +35,4 @@ class SummaryContainer extends Component {
   }
 }
 
-export default SummaryContainer
+export default AlgorithmContainer

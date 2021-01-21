@@ -4,10 +4,10 @@ const HeaderComponents = props => {
   const { title } = props
 
   return (
-    <div className={`summary-header`}>
+    <div className={`algorithm-header`}>
       <NavLogoWidgets />
       <div className={`header-title`}>
-        {title || `Cpp Summary List`}
+        {title || `Algorithm List`}
       </div>
     </div>
   )

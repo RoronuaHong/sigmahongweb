@@ -12,7 +12,7 @@ import HomeApp from './Containers/HomePageContainer'
 import LoginContainer from './Containers/LoginContainer/index'
 import DashboardContainer from './Containers/DashboardContainer/index'
 import SummaryContainer from './Containers/CppPageContainer/SummaryContainer/index'
-import AlgorithmContainer from './Containers/CppPageContainer/AlgorithmContainer/index'
+import AlgorithmContainer from './Containers/AlgorithmContainer/AlgorithmListContainer/index'
 import SummaryContentContainer from './Containers/CppPageContainer/SummaryContentContainer/index'
 
 export default function App() {
@@ -29,9 +29,9 @@ export default function App() {
           <Route path='/admin/login' component={LoginContainer} />
           <Route path='/admin/dashboard' component={DashboardContainer} />
           <Route exact path='/admin' component={DashboardContainer} />
-          <Redirect from="/admin/dashboard/*" to="/admin/dashboard" />
-          <Redirect from="/admin/*" to="/admin/dashboard" />
-          <Redirect to="/"/>
+          <Redirect from='/admin/dashboard/*' to='/admin/dashboard' />
+          <Redirect from='/admin/*' to='/admin/dashboard' />
+          <Redirect to='/' />
         </Switch>
       </Router>
     </Provider>

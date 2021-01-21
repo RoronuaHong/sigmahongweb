@@ -1,6 +1,6 @@
 const ContentComponents = props => {
   return (
-    <div className={`summary-content`}>
+    <div className={`algorithm-content`}>
       <div className={`content-left`}></div>
       <div className={`content-main`}>
         {props.children}

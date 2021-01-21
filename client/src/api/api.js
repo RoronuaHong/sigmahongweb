@@ -3,10 +3,12 @@
  */
 import login from './login'
 import cppsummary from './cppsummary'
+import algorithm from './algorithm'
 
 const api = {
   login,
-  cppsummary
+  algorithm,
+  cppsummary,
 }
 
 export default api
