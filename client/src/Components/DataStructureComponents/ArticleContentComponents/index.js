@@ -12,7 +12,7 @@ class ArticleContentComponents extends Component {
     const { content } = this.props
 
     return (
-      <div className={`algorithm-content`}>
+      <div className={`datastructure-content`}>
         <div className={`content-left`}>
           <MarkdownNavbar source={content} />
         </div>

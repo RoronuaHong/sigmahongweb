@@ -86,7 +86,7 @@ class BDataStructureContainer extends Component {
     const handleSaveConfirm = async() =>  {
       const { bdatastructureStore } = this.props
       const { title, value, preview } = bdatastructureStore
-  
+
       if(id) {
         await bdatastructureStore.updateDatastructureEditorContent({ id, title, value, preview })
       } else {

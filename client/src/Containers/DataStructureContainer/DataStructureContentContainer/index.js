@@ -2,9 +2,8 @@ import { Layout } from 'antd'
 import { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 
-import CppSummaryListComponents from '../../../Components/CppPageComponents/CppSummaryListComponents/index'
-import HeaderComponents from '../../../Components/CppPageComponents/HeaderComponents/index'
-import ContentComponents from '../../../Components/CppPageComponents/ContentComponents/index'
+import HeaderComponents from '../../../Components/DataStructureComponents/HeaderComponents/index'
+import ArticleContentComponents from '../../../Components/DataStructureComponents/ArticleContentComponents/index'
 
 import './index.scss'
 
@@ -12,20 +11,34 @@ const { Footer } = Layout
 
 @inject('bdatastructureStore')
 @observer
-class SummaryContainer extends Component {
+class DatastructureContentContainer extends Component {
+  async componentWillMount() {
+    const { match, history, bdatastructureStore } = this.props
+    const id = match.params.id
+
+    await bdatastructureStore.getDatastructureContentById({ id })
+
+    const { gettingTitle, gettingContent } = bdatastructureStore
+
+    if(!gettingTitle && !gettingContent) {
+      history.replace('/cpp-datastructure')
+    }
+  }
+
   render() {
+    const { bdatastructureStore } = this.props
+    const { gettingTitle, gettingContent } = bdatastructureStore
+
     return (
-      <div className={`summary-wrapper`}>
+      <div className={`datastructure-wrapper`}>
         <Layout>
-          <HeaderComponents />
-          <ContentComponents>
-            <CppSummaryListComponents />
-          </ContentComponents>
+          <HeaderComponents title={gettingTitle} />
+          <ArticleContentComponents content={gettingContent} />
           <Footer style={{
             textAlign: `center`,
             color: `rgba(0, 0, 0, 0.5)`
           }}>
-            SigmaHongWeb CppSummary
+            SigmaHongWeb DataStructure
           </Footer>
         </Layout>
       </div>
@@ -33,4 +46,4 @@ class SummaryContainer extends Component {
   }
 }
 
-export default SummaryContainer
+export default DatastructureContentContainer
