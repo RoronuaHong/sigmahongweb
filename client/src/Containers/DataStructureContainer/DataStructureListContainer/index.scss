@@ -1,0 +1,50 @@
+.datastructure-wrapper {
+  .datastructure-header {
+    position: fixed;
+    width: 100%;
+    .nav-logo {
+      position: fixed;
+    }
+    display: flex;
+    height: 250px;
+    background-color: #000;
+    .header-title {
+      width: 100%;
+      padding-top: 50px;
+      font-size: 4rem;
+      line-height: 130px;
+      font-weight: 700;
+      text-align: center;
+      color: #fff;
+    }
+  }
+  .datastructure-content {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 250px;
+    padding: 30px;
+    background: #fff;
+    .content-left {
+      flex: 1;
+      .markdown-navigation  {
+        width: 70%;
+      }
+    }
+    .content-main {
+      flex: 2;
+      .cppsummaryeditor-markdown {
+        width: 100%;
+      }
+    }
+    .content-right {
+      flex: 1;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .content-overflow {
+      overflow-x: scroll;
+    }
+  }
+}

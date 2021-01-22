@@ -7,10 +7,10 @@ import {
 
 import api from '../api/api'
 
-class BAlgorithmStore {
+class BDatastructureStore {
   constructor() {
     makeObservable(this)
-  } 
+  }
 
   @observable title = ``
   @observable value = ``
@@ -21,30 +21,30 @@ class BAlgorithmStore {
   @observable gettingContent = `Loading...`
 
   @action
-  setAlgorithmTitleInput(title) {
+  setDatastructureTitleInput(title) {
     this.title = title
   }
 
   @action
-  setAlgorithmPreviewInput(preview) {
+  setDatastructurePreviewInput(preview) {
     this.preview = preview
   }
 
   @action
-  setAlgorithmInput(value) {
+  setDatastructureInput(value) {
     this.value = value
   }
 
   @action
-  clearAlgorithmInput() {
+  clearDatastructureInput() {
     this.title = ``
     this.value = ``
     this.preview = ``
   }
 
   @action
-  setAlgorithmContent(params) {
-    api.algorithm.setAlgorithmContent(params).then(data => {
+  setDatastructureContent(params) {
+    api.datastructure.setDatastructureContent(params).then(data => {
       if(data && data.status) {
         message.success(data.msg)
       }
@@ -52,17 +52,17 @@ class BAlgorithmStore {
   }
 
   @action
-  getAlgorithmContent(params) {
-    api.algorithm.getAlgorithmContent(params).then(value => {
+  getDatastructureContent(params) {
+    api.datastructure.getDatastructureContent(params).then(value => {
       this.gettingValue = value.data
     })
   }
 
   @action
-  updateAlgorithmContent(params) {
+  updateDatastructureContent(params) {
     message.destroy()
 
-    api.algorithm.updateAlgorithmContent(params).then(data => {
+    api.datastructure.updateDatastructureContent(params).then(data => {
       if(data && data.status) {
         message.success(data.msg)
       }
@@ -70,8 +70,8 @@ class BAlgorithmStore {
   }
 
   @action
-  getAlgorithmById(params) {
-    api.algorithm.getAlgorithmById(params).then(data => {
+  getDatastructureById(params) {
+    api.datastructure.getDatastructureById(params).then(data => {
       if(data && data.status) {
         this.gettingTitle = data ? data.data.title : ``
         this.gettingContent = data ? data.data.value : ``
@@ -85,10 +85,10 @@ class BAlgorithmStore {
   }
 
   @action
-  delAlgorithmContent(params) {
+  delDatastructureContent(params) {
     message.destroy()
 
-    api.algorithm.delAlgorithmContent(params).then(data => {
+    api.datastructure.delDatastructureContent(params).then(data => {
       if(data.status) {
         message.success(data.msg)
 
@@ -98,10 +98,10 @@ class BAlgorithmStore {
   }
 
   @action
-  delManyAlgorithmEditorContent(params) {
+  delManyDatastructureEditorContent(params) {
     message.destroy()
 
-    api.algorithm.delManyAlgorithmEditorContent(params).then(data => {
+    api.datastructure.delManyDatastructureEditorContent(params).then(data => {
       if(data.status) {
         message.success(data.msg)
 
@@ -111,4 +111,4 @@ class BAlgorithmStore {
   }
 }
 
-export default BAlgorithmStore
+export default BDatastructureStore

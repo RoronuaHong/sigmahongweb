@@ -10,12 +10,12 @@ import './index.scss'
 
 const { Footer } = Layout
 
-@inject('cppSummaryStore')
+@inject('bdatastructureStore')
 @observer
 class DataStructureListContainer extends Component {
   render() {
     return (
-      <div className={`summary-wrapper`}>
+      <div className={`datastructure-wrapper`}>
         <Layout>
           <HeaderComponents />
           <ContentComponents>
@@ -25,7 +25,7 @@ class DataStructureListContainer extends Component {
             textAlign: `center`,
             color: `rgba(0, 0, 0, 0.5)`
           }}>
-            SigmaHongWeb CppSummary
+            SigmaHongWeb DataStructure
           </Footer>
         </Layout>
       </div>

@@ -5,18 +5,18 @@ import { inject, observer } from 'mobx-react'
 
 import './index.scss'
 
-@inject('balgorithmStore')
+@inject('bdatastructureStore')
 @observer
 class DataStructureListComponentes extends Component {
   componentWillMount() {
-    const { balgorithmStore } = this.props
+    const { bdatastructureStore } = this.props
 
-    // balgorithmStore.getAlgorithmContent()
+    bdatastructureStore.getDatastructureContent()
   }
 
   renderSummaryList = () => {
-    const { balgorithmStore } = this.props
-    const { gettingValue } = balgorithmStore
+    const { bdatastructureStore } = this.props
+    const { gettingValue } = bdatastructureStore
 
     return gettingValue && gettingValue.map(item => (
       <div className={`summary-li`} key={item._id}>

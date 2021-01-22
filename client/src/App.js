@@ -29,7 +29,7 @@ export default function App() {
 
           <Route exact path='/cpp-algorithm' component={AlgorithmContainer} />
           <Route path='/cpp-algorithm/content/:id' component={AlgorithmContentContainer} />
-          
+
           <Route exact path='/cpp-datastructure' component={DataStructureContainer} />
 
           <Route path='/admin/login' component={LoginContainer} />
