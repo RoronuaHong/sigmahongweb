@@ -5,7 +5,6 @@ import ReactFullpage from '@fullpage/react-fullpage'
 
 import { navList, fullpageList } from '../../config/NavConfig'
 
-
 import Header from '../../Components/HomePageComponents/Header'
 
 const SEL = 'custom-section'
@@ -13,7 +12,7 @@ const SECTION_SEL = `.${SEL}`
 
 const pluginWrapper = () => {
   
-};
+}
 
 class HomePageContainer extends Component {
   state = {}
@@ -27,7 +26,7 @@ class HomePageContainer extends Component {
   }
 
   renderFullpageList = () => {
-    return fullpageList.map(({id, text, anchors, image,child}) => (
+    return fullpageList.map(({ id, text, anchors, image, child }) => (
       <div 
         key={id} 
         className={SEL}
@@ -81,7 +80,7 @@ class HomePageContainer extends Component {
             anchors={navList.map(({ anchors }) => (anchors))}
             onLeave={() => this.onLeave}
 
-            render={component=> (
+            render={() => (
               <ReactFullpage.Wrapper>
                 {this.renderFullpageList(fullpageList)}
               </ReactFullpage.Wrapper>

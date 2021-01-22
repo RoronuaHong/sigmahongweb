@@ -1,4 +1,5 @@
 import MainList from '../Components/HomePageComponents/Cpp/MainList'
+import UEMainList from '../Components/HomePageComponents/UE/MainList'
 
 import CppImage from '../assets/Images/HomePage/cpp.jpg'
 import UeImage from '../assets/Images/HomePage/ue.jpg'
@@ -48,7 +49,8 @@ const fullpageList = [{
   id: 1,
   text: 'Unreal Engine',
   anchors: `ue`,
-  image: UeImage
+  image: UeImage,
+  child: <UEMainList />,
 }, {
   id: 2,
   text: 'Painting',
