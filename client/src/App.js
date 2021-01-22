@@ -14,6 +14,9 @@ import DashboardContainer from './Containers/DashboardContainer/index'
 import SummaryContainer from './Containers/CppPageContainer/SummaryContainer/index'
 import AlgorithmContainer from './Containers/AlgorithmContainer/AlgorithmListContainer/index'
 import DataStructureContainer from './Containers/DataStructureContainer/DataStructureListContainer/index'
+
+import UEbasisContainer from './Containers/UEPageContainer/UEbasisContainer/index'
+
 import DataStructureContentContainer from './Containers/DataStructureContainer/DataStructureContentContainer/index'
 
 import AlgorithmContentContainer from './Containers/AlgorithmContainer/AlgorithmContentContainer/index'
@@ -33,6 +36,8 @@ export default function App() {
 
           <Route exact path='/cpp-datastructure' component={DataStructureContainer} />
           <Route path='/cpp-datastructure/content/:id' component={DataStructureContentContainer} />
+
+          <Route exact path='/ue-basis' component={UEbasisContainer} />
 
           <Route path='/admin/login' component={LoginContainer} />
           <Route path='/admin/dashboard' component={DashboardContainer} />
