@@ -7,14 +7,14 @@ import './index.scss'
 
 @inject('balgorithmStore')
 @observer
-class CppSummaryListComponents extends Component {
+class AlgorithmListComponents extends Component {
   componentWillMount() {
     const { balgorithmStore } = this.props
 
     balgorithmStore.getAlgorithmContent()
   }
 
-  renderSummaryList = () => {
+  renderAlgorithmList = () => {
     const { balgorithmStore } = this.props
     const { gettingValue } = balgorithmStore
 
@@ -39,10 +39,10 @@ class CppSummaryListComponents extends Component {
   render() {
     return (
       <div className={`algorithm-list`}>
-        {this.renderSummaryList()}
+        {this.renderAlgorithmList()}
       </div>
     )
   }
 }
 
-export default withRouter(CppSummaryListComponents)
+export default withRouter(AlgorithmListComponents)

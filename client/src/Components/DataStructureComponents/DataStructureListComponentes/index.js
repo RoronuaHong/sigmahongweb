@@ -14,13 +14,13 @@ class DataStructureListComponentes extends Component {
     bdatastructureStore.getDatastructureContent()
   }
 
-  renderSummaryList = () => {
+  renderDataStructureList = () => {
     const { bdatastructureStore } = this.props
     const { gettingValue } = bdatastructureStore
 
     return gettingValue && gettingValue.map(item => (
-      <div className={`summary-li`} key={item._id}>
-        <a href={`/cpp-summary/content/${item._id}`} target='_blank' rel='noreferrer'>
+      <div className={`datastructure-li`} key={item._id}>
+        <a href={`/cpp-datastructure/content/${item._id}`} target='_blank' rel='noreferrer'>
           <h2>
             {item.title}
           </h2>
@@ -38,8 +38,8 @@ class DataStructureListComponentes extends Component {
 
   render() {
     return (
-      <div className={`summary-list`}>
-        {this.renderSummaryList()}
+      <div className={`datastructure-list`}>
+        {this.renderDataStructureList()}
       </div>
     )
   }

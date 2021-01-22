@@ -1,36 +1,36 @@
 import axios from './http'
 
-function setDatastructureEditorContent(params) {
+function getDatastructureContent(params) {
+  return axios.get(`/datastructure/get`, params)
+}
+
+function setDatastructureContent(params) {
   return axios.post(`/datastructure/add`, params)
 }
 
-function updateDatastructureEditorContent(params) {
+function updateDatastructureContent(params) {
   return axios.post(`/datastructure/update`, params)
-}
-
-function getDatastructureEditorContent(params) {
-  return axios.get(`/datastructure/get`, params)
 }
 
 function getDatastructureContentById(params) {
   return axios.post(`/datastructure/content`, params)
 }
 
-function delDatastructureEditorContent(params) {
+function delDatastructureContent(params) {
   return axios.post(`/datastructure/delete`, params)
 }
 
-function delManyDatastructureEditorContent(params) {
+function delManyDatastructureContent(params) {
   return axios.post(`/datastructure/deletemany`, params)
 }
 
 const datastructure = {
   getDatastructureContentById,
-  setDatastructureEditorContent,
-  getDatastructureEditorContent,
-  updateDatastructureEditorContent,
-  delDatastructureEditorContent,
-  delManyDatastructureEditorContent,
+  setDatastructureContent,
+  getDatastructureContent,
+  updateDatastructureContent,
+  delDatastructureContent,
+  delManyDatastructureContent,
 }
 
-export default cppsummary
+export default datastructure

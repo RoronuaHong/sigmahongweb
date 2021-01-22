@@ -43,6 +43,23 @@ const menuList = [{
     key: `/admin/dashboard/algorithmeditor/edit`,
     icon: <EditOutlined />
   }]
+}, {
+  title: `DataStructureEditor`,
+  key: `/admin/dashboard/datastructureditor`,
+  icon: <EditOutlined />,
+  children: [{
+    title: `List`,
+    key: `/admin/dashboard/datastructureeditor/search`,
+    icon: <UnorderedListOutlined />
+  }, {
+    title: `Add`,
+    key: `/admin/dashboard/datastructureeditor/add`,
+    icon: <FileAddOutlined />
+  }, {
+    title: `Edit`,
+    key: `/admin/dashboard/datastructureeditor/edit`,
+    icon: <EditOutlined />
+  }]
 }]
 
 export default menuList

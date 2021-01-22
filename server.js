@@ -8,6 +8,7 @@ const userRouter = require('./routes/user')
 const loginRouter = require('./routes/login')
 const cppsryRouter = require('./routes/cppsry')
 const algorithmRouter = require('./routes/algorithm')
+const datastructureRouter = require('./routes/datastructure')
 
 require('dotenv').config()
 
@@ -41,6 +42,7 @@ app.use('/login', loginRouter)
 app.use('/user', userRouter)
 app.use('/cppsummary', cppsryRouter)
 app.use('/algorithm', algorithmRouter)
+app.use('/datastructure', datastructureRouter)
 
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'))

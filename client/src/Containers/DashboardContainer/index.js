@@ -15,6 +15,9 @@ import BCppSummaryLists from '../BCppSummaryLists/index'
 import BAlgorithmEditor from '../BAlgorithmEditor/index'
 import BAlgorithmLists from '../BAlgorithmLists/index'
 
+import BDataStructureEditor from '../BDataStructureEditor/index'
+import BDataStructureLists from '../BDataStructureLists/index'
+
 const { Footer, Sider, Content } = Layout
 
 class DashboardContainer extends Component {
@@ -45,6 +48,11 @@ class DashboardContainer extends Component {
               <Route path={`/admin/dashboard/algorithmeditor/search`} component={BAlgorithmLists} />
               <Route path={`/admin/dashboard/algorithmeditor/add`} component={BAlgorithmEditor} />
               <Route path={`/admin/dashboard/algorithmeditor/edit`} component={BAlgorithmEditor} />
+
+              <Route path={`/admin/dashboard/datastructureditor/search`} component={BDataStructureLists} />
+              <Route path={`/admin/dashboard/datastructureditor/add`} component={BAlgorithmEditor} />
+              <Route path={`/admin/dashboard/datastructureditor/edit`} component={BAlgorithmEditor} />
+
               <Redirect to={`/admin/dashboard/home`} />
             </Switch>
           </Content>
