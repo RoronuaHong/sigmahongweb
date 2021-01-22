@@ -12,30 +12,30 @@ import './index.scss'
 let id = ``
 let isAddPageChange = false
 
-@inject('bcppSummaryStore')
+@inject('bdatastructureStore')
 @observer
-class BCppSummaryEditor extends Component {
+class BDataStructureEditor extends Component {
   async componentWillMount() {
-    const { match, bcppSummaryStore } = this.props
+    const { match, bdatastructureStore } = this.props
     const path = match.path
 
     if(path.indexOf(`add`) > -1) {
       this.handleTitleInput(``)
       this.handlePreviewInput(``)
-      this.handleCppSummaryInput(``)
+      this.handleDatastructureInput(``)
 
       storageUtils.removeId()
     } else {
       id = storageUtils.getId()
 
-      await bcppSummaryStore.getCppSummaryContentById({ id })
+      await bdatastructureStore.getDatastructureContentById({ id })
 
       setTimeout(() => {
-        const { gettingTitle, gettingPreview, gettingContent } = bcppSummaryStore
+        const { gettingTitle, gettingPreview, gettingContent } = bdatastructureStore
 
         this.handleTitleInput(gettingTitle)
         this.handlePreviewInput(gettingPreview)
-        this.handleCppSummaryInput(gettingContent)
+        this.handleDatastructureInput(gettingContent)
       }, 1000)
     }
   }
@@ -50,7 +50,7 @@ class BCppSummaryEditor extends Component {
       if(!isAddPageChange) {
         this.handleTitleInput(``)
         this.handlePreviewInput(``)
-        this.handleCppSummaryInput(``)
+        this.handleDatastructureInput(``)
 
         isAddPageChange = true
       }
@@ -60,42 +60,42 @@ class BCppSummaryEditor extends Component {
   }
 
   handleTitleInput(value) {
-    const { bcppSummaryStore } = this.props
+    const { bdatastructureStore } = this.props
 
-    bcppSummaryStore.setCppSummaryTitleInput(value)
+    bdatastructureStore.setDatastructureTitleInput(value)
   }
 
   handlePreviewInput(value) {
-    const { bcppSummaryStore } = this.props
+    const { bdatastructureStore } = this.props
 
-    bcppSummaryStore.setCppSummaryPreviewInput(value)
+    bdatastructureStore.setDatastructurePreviewInput(value)
   }
 
-  handleCppSummaryInput(value) {
-    const { bcppSummaryStore } = this.props
+  handleDatastructureInput(value) {
+    const { bdatastructureStore } = this.props
 
-    bcppSummaryStore.setCppSummaryInput(value)
+    bdatastructureStore.setDatastructureInput(value)
   }
 
   handleResetConfirm() {
-    const { bcppSummaryStore } = this.props
+    const { bdatastructureStore } = this.props
 
-    bcppSummaryStore.clearCppSummaryInput()
+    bdatastructureStore.clearDatastructureInput()
   }
 
   render() {
-    const { bcppSummaryStore } = this.props
-    const { title, value, preview } = bcppSummaryStore
+    const { bdatastructureStore } = this.props
+    const { title, value, preview } = bdatastructureStore
 
     const handleSaveConfirm = async() =>  {
-      const { bcppSummaryStore } = this.props
-      const { title, value, preview } = bcppSummaryStore
+      const { bdatastructureStore } = this.props
+      const { title, value, preview } = bdatastructureStore
   
       if(id) {
-        await bcppSummaryStore.updateCppSummaryEditorContent({ id, title, value, preview })
+        await bdatastructureStore.updateDatastructureContent({ id, title, value, preview })
       } else {
         if(title && value && preview) {
-          await bcppSummaryStore.setCppSummaryEditorContent({ title, value, preview })
+          await bdatastructureStore.setDatastructureContent({ title, value, preview })
         } else {
           message.error(`plz infilling title and value`)
         }
@@ -127,7 +127,7 @@ class BCppSummaryEditor extends Component {
             autoFocus
             value={value}
             className={`cppsummaryeditor-textarea`}
-            onChange={e => this.handleCppSummaryInput(e.target.value)}
+            onChange={e => this.handleDatastructureInput(e.target.value)}
           />
           <ReactMarkdown
             source={value}
@@ -165,4 +165,4 @@ const Components = ({ value, language }) => {
   )
 }
 
-export default BCppSummaryEditor
+export default BDataStructureEditor

@@ -105,7 +105,7 @@ class BAlgorithmStore {
       if(data.status) {
         message.success(data.msg)
 
-        this.gettingValue = ``
+        JSON.parse(params.ids) && JSON.parse(params.ids).map(id => this.gettingValue = this.gettingValue.filter(item => id !== item._id))
       }
     })
   }

@@ -10,7 +10,7 @@ import './index.scss'
 
 const { Footer } = Layout
 
-@inject('cppSummaryStore')
+@inject('bdatastructureStore')
 @observer
 class SummaryContainer extends Component {
   render() {

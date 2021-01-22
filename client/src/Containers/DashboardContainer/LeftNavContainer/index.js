@@ -38,7 +38,7 @@ class LeftNavContainer extends Component {
         )
       } else {
         const cItem = item.children.find(cItem => cItem.key === path )
-        
+
         if(cItem) {
           this.openKey = item.key
         }

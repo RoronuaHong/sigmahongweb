@@ -70,8 +70,8 @@ class BDatastructureStore {
   }
 
   @action
-  getDatastructureById(params) {
-    api.datastructure.getDatastructureById(params).then(data => {
+  getDatastructureContentById(params) {
+    api.datastructure.getDatastructureContentById(params).then(data => {
       if(data && data.status) {
         this.gettingTitle = data ? data.data.title : ``
         this.gettingContent = data ? data.data.value : ``
@@ -98,14 +98,14 @@ class BDatastructureStore {
   }
 
   @action
-  delManyDatastructureEditorContent(params) {
+  delManyDatastructureContent(params) {
     message.destroy()
 
-    api.datastructure.delManyDatastructureEditorContent(params).then(data => {
+    api.datastructure.delManyDatastructureContent(params).then(data => {
       if(data.status) {
         message.success(data.msg)
 
-        this.gettingValue = ``
+        JSON.parse(params.ids) && JSON.parse(params.ids).map(id => this.gettingValue = this.gettingValue.filter(item => id !== item._id))
       }
     })
   }

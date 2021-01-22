@@ -33,13 +33,13 @@ router.route('/get').get((req, res) => {
   const id = req.body.id
 
   if(id) {
-    Algorithm.findOne({ id }, (err, data) => {
+    DataStructure.findOne({ id }, (err, data) => {
       if(err) {
         console.log(err)
-  
+
         return res.status(500).send()
       }
-  
+
       if(!data) {
         return res.status(200).json({
           msg: 'id error',
@@ -47,7 +47,7 @@ router.route('/get').get((req, res) => {
           data: {}
         })
       }
-  
+
       return res.status(200).json({
         msg: 'datastructure content get success',
         status: 1,
@@ -89,7 +89,7 @@ router.route('/update').post((req, res) => {
 router.route('/delete').post((req, res) => {
   const conditions = { _id: req.body.id }
 
-  Algorithm.deleteOne(conditions)
+  DataStructure.deleteOne(conditions)
     .then(delRes => {
       return res.status(200).json({
         msg: 'datastructureeditor delete success',
@@ -105,7 +105,7 @@ router.route('/delete').post((req, res) => {
 router.route('/content').post((req, res) => {
   const _id = req.body.id
 
-  Algorithm.findOne({ _id }, (err, data) => {
+  DataStructure.findOne({ _id }, (err, data) => {
     if(err) {
       console.log(err)
 
@@ -138,7 +138,7 @@ router.route('/content').post((req, res) => {
 router.route('/deletemany').post((req, res) => {
   const conditions = { _id: { $in: JSON.parse(req.body.ids) }}
 
-  Algorithm.remove(conditions)
+  DataStructure.remove(conditions)
     .then(delRes => {
       return res.status(200).json({
         msg: 'datastructureeditor deletemany success',

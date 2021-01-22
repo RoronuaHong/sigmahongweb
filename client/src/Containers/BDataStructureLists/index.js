@@ -26,7 +26,7 @@ class BDataStructureLists extends Component {
 
     storageUtils.saveId(id)
 
-    history.replace(`/admin/dashboard/datastructureStoreeditor/edit`)
+    history.replace(`/admin/dashboard/datastructureeditor/edit`)
   }
 
   handleDelete = id => {

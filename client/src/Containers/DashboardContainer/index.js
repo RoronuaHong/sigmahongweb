@@ -49,9 +49,9 @@ class DashboardContainer extends Component {
               <Route path={`/admin/dashboard/algorithmeditor/add`} component={BAlgorithmEditor} />
               <Route path={`/admin/dashboard/algorithmeditor/edit`} component={BAlgorithmEditor} />
 
-              <Route path={`/admin/dashboard/datastructureditor/search`} component={BDataStructureLists} />
-              <Route path={`/admin/dashboard/datastructureditor/add`} component={BAlgorithmEditor} />
-              <Route path={`/admin/dashboard/datastructureditor/edit`} component={BAlgorithmEditor} />
+              <Route path={`/admin/dashboard/datastructureeditor/search`} component={BDataStructureLists} />
+              <Route path={`/admin/dashboard/datastructureeditor/add`} component={BDataStructureEditor} />
+              <Route path={`/admin/dashboard/datastructureeditor/edit`} component={BDataStructureEditor} />
 
               <Redirect to={`/admin/dashboard/home`} />
             </Switch>
