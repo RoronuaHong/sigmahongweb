@@ -7,11 +7,11 @@ import './index.scss'
 
 @inject('balgorithmStore')
 @observer
-class CppSummaryListComponents extends Component {
+class DataStructureListComponentes extends Component {
   componentWillMount() {
     const { balgorithmStore } = this.props
 
-    balgorithmStore.getAlgorithmContent()
+    // balgorithmStore.getAlgorithmContent()
   }
 
   renderSummaryList = () => {
@@ -19,8 +19,8 @@ class CppSummaryListComponents extends Component {
     const { gettingValue } = balgorithmStore
 
     return gettingValue && gettingValue.map(item => (
-      <div className={`algorithm-li`} key={item._id}>
-        <a href={`/cpp-algorithm/content/${item._id}`} target='_blank' rel='noreferrer'>
+      <div className={`summary-li`} key={item._id}>
+        <a href={`/cpp-summary/content/${item._id}`} target='_blank' rel='noreferrer'>
           <h2>
             {item.title}
           </h2>
@@ -38,11 +38,11 @@ class CppSummaryListComponents extends Component {
 
   render() {
     return (
-      <div className={`algorithm-list`}>
+      <div className={`summary-list`}>
         {this.renderSummaryList()}
       </div>
     )
   }
 }
 
-export default withRouter(CppSummaryListComponents)
+export default withRouter(DataStructureListComponentes)

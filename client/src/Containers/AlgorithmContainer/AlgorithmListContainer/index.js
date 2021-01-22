@@ -14,8 +14,6 @@ const { Footer } = Layout
 @observer
 class AlgorithmContainer extends Component {
   render() {
-    const { algorithmStore } = this.props
-
     return (
       <div className={`algorithm-wrapper`}>
         <Layout>

@@ -13,6 +13,9 @@ import LoginContainer from './Containers/LoginContainer/index'
 import DashboardContainer from './Containers/DashboardContainer/index'
 import SummaryContainer from './Containers/CppPageContainer/SummaryContainer/index'
 import AlgorithmContainer from './Containers/AlgorithmContainer/AlgorithmListContainer/index'
+import DataStructureContainer from './Containers/DataStructureContainer/DataStructureListContainer/index'
+
+import AlgorithmContentContainer from './Containers/AlgorithmContainer/AlgorithmContentContainer/index'
 import SummaryContentContainer from './Containers/CppPageContainer/SummaryContentContainer/index'
 
 export default function App() {
@@ -23,8 +26,11 @@ export default function App() {
           <Route path='/' exact component={HomeApp} />
           <Route exact path='/cpp-summary' component={SummaryContainer} />
           <Route path='/cpp-summary/content/:id' component={SummaryContentContainer} />
-          <Route path='/cpp-algorithm' component={AlgorithmContainer} />
-          <Route path='/cpp-datastructure' component={AlgorithmContainer} />
+
+          <Route exact path='/cpp-algorithm' component={AlgorithmContainer} />
+          <Route path='/cpp-algorithm/content/:id' component={AlgorithmContentContainer} />
+          
+          <Route exact path='/cpp-datastructure' component={DataStructureContainer} />
 
           <Route path='/admin/login' component={LoginContainer} />
           <Route path='/admin/dashboard' component={DashboardContainer} />
