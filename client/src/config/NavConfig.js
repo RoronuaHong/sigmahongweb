@@ -7,7 +7,7 @@ import PaintingImage from '../assets/Images/HomePage/painting.jpg'
 import dota2Image from '../assets/Images/HomePage/dota2.jpg'
 import gameImage from '../assets/Images/HomePage/game.jpg'
 import toolsImage from '../assets/Images/HomePage/tools.jpg'
-import othersImage from '../assets/Images/HomePage/others.jpg'
+import musicImage from '../assets/Images/HomePage/music.jpg'
 
 const navList = [{
   id: 0,
@@ -35,8 +35,8 @@ const navList = [{
   anchors: `tools`,
 }, {
   id: 6,
-  name: `Others`,
-  anchors: `others`,
+  name: `Music`,
+  anchors: `music`,
 }]
 
 const fullpageList = [{
@@ -73,9 +73,9 @@ const fullpageList = [{
   image: toolsImage,
 }, {
   id: 6,
-  text: 'Others',
-  anchors: `others`,
-  image: othersImage,
+  text: 'Music',
+  anchors: `nusic`,
+  image: musicImage,
 }]
 
 export {
