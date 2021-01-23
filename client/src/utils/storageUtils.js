@@ -40,7 +40,7 @@ const modules = {
    */
   getId() {
     // return JSON.parse(localStorage.getItem(ID_KEY)) || {}
-    return store.get(ID_KEY) || {}
+    return store.get(ID_KEY) || ``
   },
   /**
    * 删除保存的id

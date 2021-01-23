@@ -19,7 +19,7 @@ router.route('/add').post((req, res) => {
 
   newChromeExtensions.save()
     .then(() => res.status(200).json({
-      msg: 'basiseditor save success',
+      msg: 'chromeeditor save success',
       status: 1,
       data: { title, value, preview }
     }))
@@ -49,7 +49,7 @@ router.route('/get').get((req, res) => {
       }
 
       return res.status(200).json({
-        msg: 'ue basis content get success',
+        msg: 'chrome extensions content get success',
         status: 1,
         data
       })
@@ -57,7 +57,7 @@ router.route('/get').get((req, res) => {
   } else {
     ChromeExtensions.find()
       .then(data => res.json({
-        msg: 'ue basis list get success',
+        msg: 'chrome extensions list get success',
         status: 1,
         data
       }))
@@ -76,7 +76,7 @@ router.route('/update').post((req, res) => {
 
   ChromeExtensions.updateOne(conditions, req.body)
     .then(() => res.status(200).json({
-      msg: 'ue basis update success',
+      msg: 'chrome extensions update success',
       status: 1,
       data: { title, value, preview }
     }))
@@ -92,7 +92,7 @@ router.route('/delete').post((req, res) => {
   ChromeExtensions.deleteOne(conditions)
     .then(delRes => {
       return res.status(200).json({
-        msg: 'ue basis delete success',
+        msg: 'chrome extensions delete success',
         status: 1
       })
     }
@@ -125,7 +125,7 @@ router.route('/content').post((req, res) => {
     }
 
     return res.status(200).json({
-      msg: 'ue basis content get success',
+      msg: 'chrome extensions content get success',
       status: 1,
       data
     })
@@ -141,7 +141,7 @@ router.route('/deletemany').post((req, res) => {
   ChromeExtensions.remove(conditions)
     .then(delRes => {
       return res.status(200).json({
-        msg: 'ue basis deletemany success',
+        msg: 'chrome extensions deletemany success',
         status: 1
       })
     }

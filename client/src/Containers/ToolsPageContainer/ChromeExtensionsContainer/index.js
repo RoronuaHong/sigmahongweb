@@ -13,10 +13,9 @@ const { Footer } = Layout
 @observer
 class ChromeExtensionsContainer extends Component {
   async componentWillMount() {
-    const { match, history, bChromeStore } = this.props
-    const id = match.params.id
+    const { history, bChromeStore } = this.props
 
-    await bChromeStore.getChromeById({ id })
+    await bChromeStore.getChromeContentById({ id: `600c16b1f415767b80ed4e9b` })
 
     const { gettingTitle, gettingContent } = bChromeStore
 

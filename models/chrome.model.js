@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const uebasisSchema = new Schema({
+const chromeSchema = new Schema({
   title: {
     type: String,
     require: true,
@@ -22,6 +22,6 @@ const uebasisSchema = new Schema({
   timestamps: true
 })
 
-const UEBasis = mongoose.model('UEBasis', uebasisSchema)
+const ChromeExtensions = mongoose.model('Chrome', chromeSchema)
 
-module.exports = UEBasis
+module.exports = ChromeExtensions

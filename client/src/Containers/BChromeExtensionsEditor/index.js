@@ -10,53 +10,24 @@ import storageUtils from '../../utils/storageUtils'
 import './index.scss'
 
 let id = ``
-let isAddPageChange = false
 
 @inject('bChromeStore')
 @observer
 class BDataStructureEditor extends Component {
   async componentWillMount() {
-    const { match, bChromeStore } = this.props
-    const path = match.path
+    const { bChromeStore } = this.props
 
-    if(path.indexOf(`add`) > -1) {
-      this.handleTitleInput(``)
-      this.handlePreviewInput(``)
-      this.handleChromeInput(``)
+    id = storageUtils.getId()
 
-      storageUtils.removeId()
-    } else {
-      id = storageUtils.getId()
+    await bChromeStore.getChromeContentById({ id: `600c16b1f415767b80ed4e9b` })
 
-      await bChromeStore.getChromeContentById({ id })
+    setTimeout(() => {
+      const { gettingTitle, gettingPreview, gettingContent } = bChromeStore
 
-      setTimeout(() => {
-        const { gettingTitle, gettingPreview, gettingContent } = bChromeStore
-
-        this.handleTitleInput(gettingTitle)
-        this.handlePreviewInput(gettingPreview)
-        this.handleChromeInput(gettingContent)
-      }, 1000)
-    }
-  }
-
-  componentDidUpdate() {
-    const { match } = this.props
-
-    if(match.path.indexOf(`add`) > -1) {
-      id = ``
-      storageUtils.removeId()
-
-      if(!isAddPageChange) {
-        this.handleTitleInput(``)
-        this.handlePreviewInput(``)
-        this.handleChromeInput(``)
-
-        isAddPageChange = true
-      }
-    } else {
-      isAddPageChange = false
-    }
+      this.handleTitleInput(gettingTitle)
+      this.handlePreviewInput(gettingPreview)
+      this.handleChromeInput(gettingContent)
+    }, 1000)
   }
 
   handleTitleInput(value) {
@@ -90,16 +61,8 @@ class BDataStructureEditor extends Component {
     const handleSaveConfirm = async() =>  {
       const { bChromeStore } = this.props
       const { title, value, preview } = bChromeStore
-  
-      if(id) {
-        await bChromeStore.updateChromeContent({ id, title, value, preview })
-      } else {
-        if(title && value && preview) {
-          await bChromeStore.setChromeContent({ title, value, preview })
-        } else {
-          message.error(`plz infilling title and value`)
-        }
-      }
+
+      await bChromeStore.updateChromeContent({ id: `600c16b1f415767b80ed4e9b`, title, value, preview })
     }
 
     return (
@@ -139,14 +102,14 @@ class BDataStructureEditor extends Component {
           />
         </div>
         <div className={`cppsummaryeditor-confirm-content`}>
-          <Button 
+          <Button
             type={`primary`} 
             className={`confirm-save`}
             onClick={handleSaveConfirm}
           >
             保存
           </Button>
-          <Button 
+          <Button
             className={`confirm-reset`}
             onClick={() => this.handleResetConfirm()}
           >
