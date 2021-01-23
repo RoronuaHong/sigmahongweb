@@ -43,8 +43,8 @@ class BUEBasisStore {
   }
 
   @action
-  setUEBasisEditorContent(params) {
-    api.uebasis.setUEBasisEditorContent(params).then(data => {
+  setUEBasisContent(params) {
+    api.uebasis.setUEBasisContent(params).then(data => {
       if(data && data.status) {
         message.success(data.msg)
       }
@@ -52,10 +52,10 @@ class BUEBasisStore {
   }
 
   @action
-  updateUEBasisEditorContent(params) {
+  updateUEBasisContent(params) {
     message.destroy()
 
-    api.uebasis.updateUEBasisEditorContent(params).then(data => {
+    api.uebasis.updateUEBasisContent(params).then(data => {
       if(data && data.status) {
         message.success(data.msg)
       }
@@ -85,10 +85,10 @@ class BUEBasisStore {
   }
 
   @action
-  delUEBasisEditorContent(params) {
+  delUEBasisContent(params) {
     message.destroy()
 
-    api.uebasis.delUEBasisEditorContent(params).then(data => {
+    api.uebasis.delUEBasisContent(params).then(data => {
       if(data.status) {
         message.success(data.msg)
 
@@ -98,10 +98,10 @@ class BUEBasisStore {
   }
 
   @action
-  delManyUEBasisEditorContent(params) {
+  delManyUEBasisContent(params) {
     message.destroy()
 
-    api.uebasis.delManyUEBasisEditorContent(params).then(data => {
+    api.uebasis.delManyUEBasisContent(params).then(data => {
       if(data.status) {
         message.success(data.msg)
 

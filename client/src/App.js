@@ -16,6 +16,7 @@ import AlgorithmContainer from './Containers/AlgorithmContainer/AlgorithmListCon
 import DataStructureContainer from './Containers/DataStructureContainer/DataStructureListContainer/index'
 
 import UEbasisContainer from './Containers/UEPageContainer/UEbasisContainer/index'
+import UEbasisContentContainer from './Containers/UEPageContainer/UEbasisContentContainer/index'
 
 import DataStructureContentContainer from './Containers/DataStructureContainer/DataStructureContentContainer/index'
 
@@ -38,6 +39,7 @@ export default function App() {
           <Route path='/cpp-datastructure/content/:id' component={DataStructureContentContainer} />
 
           <Route exact path='/ue-basis' component={UEbasisContainer} />
+          <Route path='/ue-basis/content/:id' component={UEbasisContentContainer} />
 
           <Route path='/admin/login' component={LoginContainer} />
           <Route path='/admin/dashboard' component={DashboardContainer} />

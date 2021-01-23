@@ -12,30 +12,30 @@ import './index.scss'
 let id = ``
 let isAddPageChange = false
 
-@inject('bdatastructureStore')
+@inject('bUEBasisStore')
 @observer
 class BDataStructureEditor extends Component {
   async componentWillMount() {
-    const { match, bdatastructureStore } = this.props
+    const { match, bUEBasisStore } = this.props
     const path = match.path
 
     if(path.indexOf(`add`) > -1) {
       this.handleTitleInput(``)
       this.handlePreviewInput(``)
-      this.handleDatastructureInput(``)
+      this.handleUEBasisInput(``)
 
       storageUtils.removeId()
     } else {
       id = storageUtils.getId()
 
-      await bdatastructureStore.getDatastructureContentById({ id })
+      await bUEBasisStore.getUEBasisContentById({ id })
 
       setTimeout(() => {
-        const { gettingTitle, gettingPreview, gettingContent } = bdatastructureStore
+        const { gettingTitle, gettingPreview, gettingContent } = bUEBasisStore
 
         this.handleTitleInput(gettingTitle)
         this.handlePreviewInput(gettingPreview)
-        this.handleDatastructureInput(gettingContent)
+        this.handleUEBasisInput(gettingContent)
       }, 1000)
     }
   }
@@ -50,7 +50,7 @@ class BDataStructureEditor extends Component {
       if(!isAddPageChange) {
         this.handleTitleInput(``)
         this.handlePreviewInput(``)
-        this.handleDatastructureInput(``)
+        this.handleUEBasisInput(``)
 
         isAddPageChange = true
       }
@@ -60,42 +60,42 @@ class BDataStructureEditor extends Component {
   }
 
   handleTitleInput(value) {
-    const { bdatastructureStore } = this.props
+    const { bUEBasisStore } = this.props
 
-    bdatastructureStore.setDatastructureTitleInput(value)
+    bUEBasisStore.setUEBasisTitleInput(value)
   }
 
   handlePreviewInput(value) {
-    const { bdatastructureStore } = this.props
+    const { bUEBasisStore } = this.props
 
-    bdatastructureStore.setDatastructurePreviewInput(value)
+    bUEBasisStore.setUEBasisPreviewInput(value)
   }
 
-  handleDatastructureInput(value) {
-    const { bdatastructureStore } = this.props
+  handleUEBasisInput(value) {
+    const { bUEBasisStore } = this.props
 
-    bdatastructureStore.setDatastructureInput(value)
+    bUEBasisStore.setUEBasisInput(value)
   }
 
   handleResetConfirm() {
-    const { bdatastructureStore } = this.props
+    const { bUEBasisStore } = this.props
 
-    bdatastructureStore.clearDatastructureInput()
+    bUEBasisStore.clearUEBasisInput()
   }
 
   render() {
-    const { bdatastructureStore } = this.props
-    const { title, value, preview } = bdatastructureStore
+    const { bUEBasisStore } = this.props
+    const { title, value, preview } = bUEBasisStore
 
     const handleSaveConfirm = async() =>  {
-      const { bdatastructureStore } = this.props
-      const { title, value, preview } = bdatastructureStore
+      const { bUEBasisStore } = this.props
+      const { title, value, preview } = bUEBasisStore
   
       if(id) {
-        await bdatastructureStore.updateDatastructureContent({ id, title, value, preview })
+        await bUEBasisStore.updateUEBasisContent({ id, title, value, preview })
       } else {
         if(title && value && preview) {
-          await bdatastructureStore.setDatastructureContent({ title, value, preview })
+          await bUEBasisStore.setUEBasisContent({ title, value, preview })
         } else {
           message.error(`plz infilling title and value`)
         }
@@ -127,7 +127,7 @@ class BDataStructureEditor extends Component {
             autoFocus
             value={value}
             className={`cppsummaryeditor-textarea`}
-            onChange={e => this.handleDatastructureInput(e.target.value)}
+            onChange={e => this.handleUEBasisInput(e.target.value)}
           />
           <ReactMarkdown
             source={value}

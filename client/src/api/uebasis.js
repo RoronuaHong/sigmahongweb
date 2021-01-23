@@ -1,10 +1,10 @@
 import axios from './http'
 
-function setUEBasisEditorContent(params) {
+function setUEBasisContent(params) {
   return axios.post(`/uebasis/add`, params)
 }
 
-function updateUEBasisEditorContent(params) {
+function updateUEBasisContent(params) {
   return axios.post(`/uebasis/update`, params)
 }
 
@@ -16,21 +16,21 @@ function getUEBasisContentById(params) {
   return axios.post(`/uebasis/content`, params)
 }
 
-function delUEBasisEditorContent(params) {
+function delUEBasisContent(params) {
   return axios.post(`/uebasis/delete`, params)
 }
 
-function delManyUEBasisEditorContent(params) {
+function delManyUEBasisContent(params) {
   return axios.post(`/uebasis/deletemany`, params)
 }
 
 const uebasis = {
   getUEBasisContentById,
-  setUEBasisEditorContent,
+  setUEBasisContent,
   getUEBasisContent,
-  updateUEBasisEditorContent,
-  delUEBasisEditorContent,
-  delManyUEBasisEditorContent,
+  updateUEBasisContent,
+  delUEBasisContent,
+  delManyUEBasisContent,
 }
 
 export default uebasis
