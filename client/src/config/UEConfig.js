@@ -8,21 +8,21 @@ const UEList = [{
   name: `Basis`,
   link: `/ue-basis`,
   img: UEBasis
-}, {
+},  {
   id: 1,
-  name: `Inside`,
-  link: `/ue-inside`,
-  img: UEInside
-}, {
-  id: 2,
   name: `Production`,
   link: `/ue-production`,
   img: UEProd
+}/*, {
+  id: 2,
+  name: `Inside`,
+  link: `/ue-inside`,
+  img: UEInside
 }, {
   id: 3,
   name: `Graphics`,
   link: `/ue-graphics`,
   img: UEGraphics
-}]
+}*/]
 
 export default UEList

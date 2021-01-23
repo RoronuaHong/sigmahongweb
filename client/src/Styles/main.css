@@ -10,7 +10,16 @@ body {
   line-height: 1.5715;
   background-color: #fff;
 }
-a { background: transparent; text-decoration: none; -webkit-tap-highlight-color: transparent; color: #1a1a1a; }
+a {     
+  color: #1890ff;
+  text-decoration: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  -webkit-text-decoration-skip: objects;
+}
 a:active { outline: 0; }
 a:active { color: #3990e6; }
 
