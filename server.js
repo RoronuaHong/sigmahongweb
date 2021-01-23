@@ -7,6 +7,7 @@ const path = require('path')
 const userRouter = require('./routes/user')
 const loginRouter = require('./routes/login')
 const cppsryRouter = require('./routes/cppsry')
+const chromeRouter = require('./routes/chrome')
 const uebasisRouter = require('./routes/uebasis')
 const algorithmRouter = require('./routes/algorithm')
 const datastructureRouter = require('./routes/datastructure')
@@ -39,8 +40,9 @@ connection.on('error', (error) => {
 
 // HTTP request logger
 app.use(morgan('tiny'))
-app.use('/login', loginRouter)
 app.use('/user', userRouter)
+app.use('/login', loginRouter)
+app.use('/chrome', chromeRouter)
 app.use('/uebasis', uebasisRouter)
 app.use('/cppsummary', cppsryRouter)
 app.use('/algorithm', algorithmRouter)

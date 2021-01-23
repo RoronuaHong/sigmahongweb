@@ -12,30 +12,30 @@ import './index.scss'
 let id = ``
 let isAddPageChange = false
 
-@inject('bUEBasisStore')
+@inject('bChromeStore')
 @observer
-class BUEBasisEditor extends Component {
+class BDataStructureEditor extends Component {
   async componentWillMount() {
-    const { match, bUEBasisStore } = this.props
+    const { match, bChromeStore } = this.props
     const path = match.path
 
     if(path.indexOf(`add`) > -1) {
       this.handleTitleInput(``)
       this.handlePreviewInput(``)
-      this.handleUEBasisInput(``)
+      this.handleChromeInput(``)
 
       storageUtils.removeId()
     } else {
       id = storageUtils.getId()
 
-      await bUEBasisStore.getUEBasisContentById({ id })
+      await bChromeStore.getChromeContentById({ id })
 
       setTimeout(() => {
-        const { gettingTitle, gettingPreview, gettingContent } = bUEBasisStore
+        const { gettingTitle, gettingPreview, gettingContent } = bChromeStore
 
         this.handleTitleInput(gettingTitle)
         this.handlePreviewInput(gettingPreview)
-        this.handleUEBasisInput(gettingContent)
+        this.handleChromeInput(gettingContent)
       }, 1000)
     }
   }
@@ -50,7 +50,7 @@ class BUEBasisEditor extends Component {
       if(!isAddPageChange) {
         this.handleTitleInput(``)
         this.handlePreviewInput(``)
-        this.handleUEBasisInput(``)
+        this.handleChromeInput(``)
 
         isAddPageChange = true
       }
@@ -60,42 +60,42 @@ class BUEBasisEditor extends Component {
   }
 
   handleTitleInput(value) {
-    const { bUEBasisStore } = this.props
+    const { bChromeStore } = this.props
 
-    bUEBasisStore.setUEBasisTitleInput(value)
+    bChromeStore.setChromeTitleInput(value)
   }
 
   handlePreviewInput(value) {
-    const { bUEBasisStore } = this.props
+    const { bChromeStore } = this.props
 
-    bUEBasisStore.setUEBasisPreviewInput(value)
+    bChromeStore.setChromePreviewInput(value)
   }
 
-  handleUEBasisInput(value) {
-    const { bUEBasisStore } = this.props
+  handleChromeInput(value) {
+    const { bChromeStore } = this.props
 
-    bUEBasisStore.setUEBasisInput(value)
+    bChromeStore.setChromeInput(value)
   }
 
   handleResetConfirm() {
-    const { bUEBasisStore } = this.props
+    const { bChromeStore } = this.props
 
-    bUEBasisStore.clearUEBasisInput()
+    bChromeStore.clearChromeInput()
   }
 
   render() {
-    const { bUEBasisStore } = this.props
-    const { title, value, preview } = bUEBasisStore
+    const { bChromeStore } = this.props
+    const { title, value, preview } = bChromeStore
 
     const handleSaveConfirm = async() =>  {
-      const { bUEBasisStore } = this.props
-      const { title, value, preview } = bUEBasisStore
+      const { bChromeStore } = this.props
+      const { title, value, preview } = bChromeStore
   
       if(id) {
-        await bUEBasisStore.updateUEBasisContent({ id, title, value, preview })
+        await bChromeStore.updateChromeContent({ id, title, value, preview })
       } else {
         if(title && value && preview) {
-          await bUEBasisStore.setUEBasisContent({ title, value, preview })
+          await bChromeStore.setChromeContent({ title, value, preview })
         } else {
           message.error(`plz infilling title and value`)
         }
@@ -127,7 +127,7 @@ class BUEBasisEditor extends Component {
             autoFocus
             value={value}
             className={`cppsummaryeditor-textarea`}
-            onChange={e => this.handleUEBasisInput(e.target.value)}
+            onChange={e => this.handleChromeInput(e.target.value)}
           />
           <ReactMarkdown
             source={value}
@@ -166,4 +166,4 @@ const Components = ({ value, language }) => {
   )
 }
 
-export default BUEBasisEditor
+export default BDataStructureEditor

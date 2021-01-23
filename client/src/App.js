@@ -19,6 +19,8 @@ import DataStructureContainer from './Containers/DataStructureContainer/DataStru
 import UEbasisContainer from './Containers/UEPageContainer/UEbasisContainer/index'
 import UEbasisContentContainer from './Containers/UEPageContainer/UEbasisContentContainer/index'
 
+import ChromeExtensionsContainer from './Containers/ToolsPageContainer/ChromeExtensionsContainer/index'
+
 import DataStructureContentContainer from './Containers/DataStructureContainer/DataStructureContentContainer/index'
 
 import AlgorithmContentContainer from './Containers/AlgorithmContainer/AlgorithmContentContainer/index'
@@ -41,6 +43,8 @@ export default function App() {
 
           <Route exact path='/ue-basis' component={UEbasisContainer} />
           <Route path='/ue-basis/content/:id' component={UEbasisContentContainer} />
+
+          <Route exact path='/tools-chrome' component={ChromeExtensionsContainer} />
 
           <Route path='/admin/login' component={LoginContainer} />
           <Route path='/admin/dashboard' component={DashboardContainer} />

@@ -2,6 +2,7 @@ import {
   HomeOutlined,
   EditOutlined,
   FileAddOutlined,
+  ContainerOutlined,
   UnorderedListOutlined,
 } from '@ant-design/icons'
 
@@ -76,6 +77,15 @@ const menuList = [{
     title: `Edit`,
     key: `/admin/dashboard/uebasiseditor/edit`,
     icon: <EditOutlined />
+  }]
+}, {
+  title: `ChromeEditor`,
+  key: `/admin/dashboard/chromeeditor`,
+  icon: <EditOutlined />,
+  children: [{
+    title: `Content`,
+    key: `/admin/dashboard/chromeeditor/content`,
+    icon: <ContainerOutlined />
   }]
 }]
 

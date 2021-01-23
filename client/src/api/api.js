@@ -6,6 +6,7 @@ import cppsummary from './cppsummary'
 import algorithm from './algorithm'
 import datastructure from './datastructure'
 import uebasis from './uebasis'
+import chrome from './chrome'
 
 const api = {
   login,
@@ -13,6 +14,7 @@ const api = {
   cppsummary,
   datastructure,
   uebasis,
+  chrome,
 }
 
 export default api
