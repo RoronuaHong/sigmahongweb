@@ -8,7 +8,7 @@ function updateUEBasisEditorContent(params) {
   return axios.post(`/uebasis/update`, params)
 }
 
-function getUEBasisEditorContent(params) {
+function getUEBasisContent(params) {
   return axios.get(`/uebasis/get`, params)
 }
 
@@ -27,7 +27,7 @@ function delManyUEBasisEditorContent(params) {
 const uebasis = {
   getUEBasisContentById,
   setUEBasisEditorContent,
-  getUEBasisEditorContent,
+  getUEBasisContent,
   updateUEBasisEditorContent,
   delUEBasisEditorContent,
   delManyUEBasisEditorContent,

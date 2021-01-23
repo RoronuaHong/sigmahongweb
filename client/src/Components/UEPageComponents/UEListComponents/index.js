@@ -11,7 +11,7 @@ class UEListComponents extends Component {
   componentWillMount() {
     const { bUEBasisStore } = this.props
 
-    bUEBasisStore.getUEBasisEditorContent()
+    bUEBasisStore.getUEBasisContent()
   }
 
   renderUEList = () => {

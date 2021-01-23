@@ -63,8 +63,8 @@ class BUEBasisStore {
   }
 
   @action
-  getUEBasisEditorContent(params) {
-    api.uebasis.getUEBasisEditorContent(params).then(value => {
+  getUEBasisContent(params) {
+    api.uebasis.getUEBasisContent(params).then(value => {
       this.gettingValue = value.data
     })
   }

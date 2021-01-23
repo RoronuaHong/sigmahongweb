@@ -18,6 +18,9 @@ import BAlgorithmLists from '../BAlgorithmLists/index'
 import BDataStructureEditor from '../BDataStructureEditor/index'
 import BDataStructureLists from '../BDataStructureLists/index'
 
+import BUEBasisEditor from '../BUEBasisEditor/index'
+import BUEBasisLists from '../BUEBasisLists/index'
+
 const { Footer, Sider, Content } = Layout
 
 class DashboardContainer extends Component {
@@ -52,6 +55,10 @@ class DashboardContainer extends Component {
               <Route path={`/admin/dashboard/datastructureeditor/search`} component={BDataStructureLists} />
               <Route path={`/admin/dashboard/datastructureeditor/add`} component={BDataStructureEditor} />
               <Route path={`/admin/dashboard/datastructureeditor/edit`} component={BDataStructureEditor} />
+
+              <Route path={`/admin/dashboard/uebasiseditor/search`} component={BUEBasisLists} />
+              <Route path={`/admin/dashboard/uebasiseditor/add`} component={BUEBasisEditor} />
+              <Route path={`/admin/dashboard/uebasiseditor/edit`} component={BUEBasisEditor} />
 
               <Redirect to={`/admin/dashboard/home`} />
             </Switch>

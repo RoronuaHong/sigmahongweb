@@ -60,6 +60,23 @@ const menuList = [{
     key: `/admin/dashboard/datastructureeditor/edit`,
     icon: <EditOutlined />
   }]
+}, {
+  title: `UEBasisEditor`,
+  key: `/admin/dashboard/uebasiseditor`,
+  icon: <EditOutlined />,
+  children: [{
+    title: `List`,
+    key: `/admin/dashboard/uebasiseditor/search`,
+    icon: <UnorderedListOutlined />
+  }, {
+    title: `Add`,
+    key: `/admin/dashboard/uebasiseditor/add`,
+    icon: <FileAddOutlined />
+  }, {
+    title: `Edit`,
+    key: `/admin/dashboard/uebasiseditor/edit`,
+    icon: <EditOutlined />
+  }]
 }]
 
 export default menuList
