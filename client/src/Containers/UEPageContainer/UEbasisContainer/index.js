@@ -2,9 +2,9 @@ import { Layout } from 'antd'
 import { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 
-import CppSummaryListComponents from '../../../Components/CppPageComponents/CppSummaryListComponents/index'
-import HeaderComponents from '../../../Components/CppPageComponents/HeaderComponents/index'
-import ContentComponents from '../../../Components/CppPageComponents/ContentComponents/index'
+import UEListComponents from '../../../Components/UEPageComponents/UEListComponents/index'
+import HeaderComponents from '../../../Components/UEPageComponents/HeaderComponents/index'
+import ContentComponents from '../../../Components/UEPageComponents/ContentComponents/index'
 
 import './index.scss'
 
@@ -12,20 +12,20 @@ const { Footer } = Layout
 
 @inject('cppSummaryStore')
 @observer
-class SummaryContainer extends Component {
+class UEBasisContainer extends Component {
   render() {
     return (
-      <div className={`summary-wrapper`}>
+      <div className={`ue-wrapper`}>
         <Layout>
           <HeaderComponents />
           <ContentComponents>
-            <CppSummaryListComponents />
+            <UEListComponents />
           </ContentComponents>
           <Footer style={{
             textAlign: `center`,
             color: `rgba(0, 0, 0, 0.5)`
           }}>
-            SigmaHongWeb CppSummary
+            SigmaHongWeb UE Basis
           </Footer>
         </Layout>
       </div>
@@ -33,4 +33,4 @@ class SummaryContainer extends Component {
   }
 }
 
-export default SummaryContainer
+export default UEBasisContainer
