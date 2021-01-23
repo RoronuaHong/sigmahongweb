@@ -127,6 +127,7 @@ class BAlgorithmEditor extends Component {
           />
           <ReactMarkdown
             source={value}
+            escapeHtml={false}
             className={`cppsummaryeditor-markdown`}
             renderers={{
               code: Components

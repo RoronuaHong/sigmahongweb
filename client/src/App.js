@@ -1,4 +1,5 @@
 import './Styles/main.css'
+import './Styles/markdownStyle.scss'
 import './Styles.css'
 import 'antd/dist/antd.css'
 

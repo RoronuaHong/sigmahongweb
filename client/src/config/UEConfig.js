@@ -1,6 +1,6 @@
+import UEProd from '../assets/Images/HomePage/ue-prod.png'
 import UEBasis from '../assets/Images/HomePage/ue-basis.png'
 import UEInside from '../assets/Images/HomePage/ue-inside.png'
-import UEProd from '../assets/Images/HomePage/ue-prod.png'
 import UEGraphics from '../assets/Images/HomePage/ue-graphics.png'
 
 const UEList = [{
