@@ -1,11 +1,14 @@
-import './index.scss';
+import './index.scss'
 
 import { Component, Fragment } from 'react'
+import ReactAudioPlayer from 'react-audio-player'
 import ReactFullpage from '@fullpage/react-fullpage'
 
 import { navList, fullpageList } from '../../config/NavConfig'
 
 import Header from '../../Components/HomePageComponents/Header'
+
+import OnePiece from '../../assets/audioes/OnePiece.mp3'
 
 const SEL = 'custom-section'
 const SECTION_SEL = `.${SEL}`
@@ -87,6 +90,14 @@ class HomePageContainer extends Component {
             )}
           />
         </div>
+        <ReactAudioPlayer
+          loop
+          volume={0.2}
+          className={`andio-player`}
+          src={OnePiece}
+          autoPlay
+          controls
+        />
       </Fragment>  
     )
   }

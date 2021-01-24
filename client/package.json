@@ -24,6 +24,7 @@
     "qs": "^6.9.4",
     "react": "^17.0.1",
     "react-app-rewired": "^2.1.8",
+    "react-audio-player": "^0.14.0",
     "react-dom": "^17.0.1",
     "react-ga": "^3.3.0",
     "react-json-pretty": "^2.2.0",
