@@ -1,5 +1,5 @@
 const router = require('express').Router()
-let UEProd = require('../models/ueprod.model')
+let UEProd = require('../models/ueprod.model.js')
 
 router.route('/').get((req, res) => {
   UEProd.find()

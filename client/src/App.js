@@ -19,6 +19,9 @@ import DataStructureContainer from './Containers/DataStructureContainer/DataStru
 import UEbasisContainer from './Containers/UEPageContainer/UEbasisContainer/index'
 import UEbasisContentContainer from './Containers/UEPageContainer/UEbasisContentContainer/index'
 
+import UEProdListsContainer from './Containers/UEProdContainer/UEProdListsContainer/index'
+import UEprodContentContainer from './Containers/UEProdContainer/UEProdContentContainer/index'
+
 import ChromeExtensionsContainer from './Containers/ToolsPageContainer/ChromeExtensionsContainer/index'
 
 import DataStructureContentContainer from './Containers/DataStructureContainer/DataStructureContentContainer/index'
@@ -43,6 +46,9 @@ export default function App() {
 
           <Route exact path='/ue-basis' component={UEbasisContainer} />
           <Route path='/ue-basis/content/:id' component={UEbasisContentContainer} />
+
+          <Route exact path='/ue-production' component={UEProdListsContainer} />
+          <Route path='/ue-production/content/:id' component={UEprodContentContainer} />
 
           <Route exact path='/tools-chrome' component={ChromeExtensionsContainer} />
 

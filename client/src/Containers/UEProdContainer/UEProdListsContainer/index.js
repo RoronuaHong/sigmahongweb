@@ -2,9 +2,9 @@ import { Layout } from 'antd'
 import { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 
-import UEListComponents from '../../../Components/UEPageComponents/UEListComponents/index'
-import HeaderComponents from '../../../Components/UEPageComponents/HeaderComponents/index'
-import ContentComponents from '../../../Components/UEPageComponents/ContentComponents/index'
+import UEListComponents from '../../../Components/UEProdComponents/UEListComponents/index'
+import HeaderComponents from '../../../Components/UEProdComponents/HeaderComponents/index'
+import ContentComponents from '../../../Components/UEProdComponents/ContentComponents/index'
 
 import './index.scss'
 
