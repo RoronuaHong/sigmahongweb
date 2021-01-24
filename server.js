@@ -9,6 +9,7 @@ const loginRouter = require('./routes/login')
 const cppsryRouter = require('./routes/cppsry')
 const chromeRouter = require('./routes/chrome')
 const uebasisRouter = require('./routes/uebasis')
+const ueprodRouter = require('./routes/ueprod')
 const algorithmRouter = require('./routes/algorithm')
 const datastructureRouter = require('./routes/datastructure')
 

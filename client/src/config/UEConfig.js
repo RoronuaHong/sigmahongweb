@@ -2,6 +2,7 @@ import UEProd from '../assets/Images/HomePage/ue-prod.png'
 import UEBasis from '../assets/Images/HomePage/ue-basis.png'
 import UEInside from '../assets/Images/HomePage/ue-inside.png'
 import UEGraphics from '../assets/Images/HomePage/ue-graphics.png'
+import UEResource from '../assets/Images/HomePage/ue-resource.png'
 
 const UEList = [{
   id: 0,
@@ -23,6 +24,11 @@ const UEList = [{
   name: `Graphics`,
   link: `/ue-graphics`,
   img: UEGraphics
+}, {
+  id: 4,
+  name: `Resource`,
+  link: `/ue-resource`,
+  img: UEResource
 }*/]
 
 export default UEList
