@@ -49,7 +49,7 @@ router.route('/get').get((req, res) => {
       }
 
       return res.status(200).json({
-        msg: 'ue ueprod content get success',
+        msg: 'ue prod content get success',
         status: 1,
         data
       })
@@ -57,7 +57,7 @@ router.route('/get').get((req, res) => {
   } else {
     UEProd.find()
       .then(data => res.json({
-        msg: 'ue ueprod list get success',
+        msg: 'ue prod list get success',
         status: 1,
         data
       }))
@@ -76,7 +76,7 @@ router.route('/update').post((req, res) => {
 
   UEProd.updateOne(conditions, req.body)
     .then(() => res.status(200).json({
-      msg: 'ue ueprod update success',
+      msg: 'ue prod update success',
       status: 1,
       data: { title, value, preview }
     }))
@@ -92,7 +92,7 @@ router.route('/delete').post((req, res) => {
   UEProd.deleteOne(conditions)
     .then(delRes => {
       return res.status(200).json({
-        msg: 'ue ueprod delete success',
+        msg: 'ue prod delete success',
         status: 1
       })
     }
@@ -125,7 +125,7 @@ router.route('/content').post((req, res) => {
     }
 
     return res.status(200).json({
-      msg: 'ue ueprod content get success',
+      msg: 'ue prod content get success',
       status: 1,
       data
     })
@@ -141,7 +141,7 @@ router.route('/deletemany').post((req, res) => {
   UEProd.remove(conditions)
     .then(delRes => {
       return res.status(200).json({
-        msg: 'ue ueprod deletemany success',
+        msg: 'ue prod deletemany success',
         status: 1
       })
     }

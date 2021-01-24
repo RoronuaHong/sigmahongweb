@@ -20,7 +20,7 @@ class UEListComponents extends Component {
 
     return gettingValue && gettingValue.map(item => (
       <div className={`ue-li`} key={item._id}>
-        <a href={`/ue-basis/content/${item._id}`} target='_blank' rel='noreferrer'>
+        <a href={`/ue-production/content/${item._id}`} target='_blank' rel='noreferrer'>
           <h2>
             {/* <font color={`#EE0000`}>{`[置顶]`}</font> */}
             {item.title}
