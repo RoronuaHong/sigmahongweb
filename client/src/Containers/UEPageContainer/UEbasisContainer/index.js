@@ -10,7 +10,7 @@ import './index.scss'
 
 const { Footer } = Layout
 
-@inject('cppSummaryStore')
+@inject('bUEBasisStore')
 @observer
 class UEBasisContainer extends Component {
   render() {

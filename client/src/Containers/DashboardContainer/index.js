@@ -21,6 +21,9 @@ import BDataStructureLists from '../BDataStructureLists/index'
 import BUEBasisEditor from '../BUEBasisEditor/index'
 import BUEBasisLists from '../BUEBasisLists/index'
 
+import BUEProdEditor from '../BUEProdEditor/index'
+import BUEProdLists from '../BUEProdLists/index'
+
 import BChromeExtensionsEditor from '../BChromeExtensionsEditor/index'
 
 const { Footer, Sider, Content } = Layout
@@ -61,6 +64,10 @@ class DashboardContainer extends Component {
               <Route path={`/admin/dashboard/uebasiseditor/search`} component={BUEBasisLists} />
               <Route path={`/admin/dashboard/uebasiseditor/add`} component={BUEBasisEditor} />
               <Route path={`/admin/dashboard/uebasiseditor/edit`} component={BUEBasisEditor} />
+
+              <Route path={`/admin/dashboard/ueprodeditor/search`} component={BUEProdLists} />
+              <Route path={`/admin/dashboard/ueprodeditor/add`} component={BUEProdEditor} />
+              <Route path={`/admin/dashboard/ueprodeditor/edit`} component={BUEProdEditor} />
 
               <Route path={`/admin/dashboard/chromeeditor/content`} component={BChromeExtensionsEditor} />
 

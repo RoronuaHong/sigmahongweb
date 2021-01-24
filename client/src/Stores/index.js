@@ -5,6 +5,7 @@ import BCppSummaryStore from './BCppSummaryStore'
 import BAlgorithmStore from './BAlgorithmStore'
 import BDatastructureStore from './BDatastructureStore'
 import BUEBasisStore from './BUEBasisStore'
+import BUEProdStore from './BUEProdStore'
 import ChromeStore from './ChromeStore'
 
 export class RootStore {
@@ -13,6 +14,7 @@ export class RootStore {
 
     bChromeStore = new ChromeStore(this)
     bUEBasisStore = new BUEBasisStore(this)
+    bUEProdStore = new BUEProdStore(this)
     balgorithmStore = new BAlgorithmStore(this)
     bcppSummaryStore = new BCppSummaryStore(this)
     bdatastructureStore = new BDatastructureStore(this)

@@ -10,9 +10,9 @@ import './index.scss'
 
 const { Footer } = Layout
 
-@inject('cppSummaryStore')
+@inject('bUEProdStore')
 @observer
-class UEBasisContainer extends Component {
+class UEProdListsContainer extends Component {
   render() {
     return (
       <div className={`ue-wrapper`}>
@@ -25,7 +25,7 @@ class UEBasisContainer extends Component {
             textAlign: `center`,
             color: `rgba(0, 0, 0, 0.5)`
           }}>
-            SigmaHongWeb UE Basis
+            SigmaHongWeb UE Production
           </Footer>
         </Layout>
       </div>
@@ -33,4 +33,4 @@ class UEBasisContainer extends Component {
   }
 }
 
-export default UEBasisContainer
+export default UEProdListsContainer

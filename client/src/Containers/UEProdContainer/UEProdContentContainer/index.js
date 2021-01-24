@@ -2,23 +2,23 @@ import { Layout } from 'antd'
 import { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 
-import HeaderComponents from '../../../Components/UEPageComponents/HeaderComponents/index'
-import ArticleContentComponents from '../../../Components/UEPageComponents/ArticleContentComponents/index'
+import HeaderComponents from '../../../Components/UEProdComponents/HeaderComponents/index'
+import ArticleContentComponents from '../../../Components/UEProdComponents/ArticleContentComponents/index'
 
 import './index.scss'
 
 const { Footer } = Layout
 
-@inject('bUEBasisStore')
+@inject('bUEProdStore')
 @observer
 class UEProdContentContainer extends Component {
   async componentWillMount() {
-    const { match, history, bUEBasisStore } = this.props
+    const { match, history, bUEProdStore } = this.props
     const id = match.params.id
 
-    await bUEBasisStore.getUEBasisContentById({ id })
+    await bUEProdStore.getUEProdContentById({ id })
 
-    const { gettingTitle, gettingContent } = bUEBasisStore
+    const { gettingTitle, gettingContent } = bUEProdStore
 
     if(!gettingTitle && !gettingContent) {
       history.replace('/ue-production')
@@ -26,8 +26,8 @@ class UEProdContentContainer extends Component {
   }
 
   render() {
-    const { bUEBasisStore } = this.props
-    const { gettingTitle, gettingContent } = bUEBasisStore
+    const { bUEProdStore } = this.props
+    const { gettingTitle, gettingContent } = bUEProdStore
 
     return (
       <div className={`ue-wrapper`}>
@@ -38,7 +38,7 @@ class UEProdContentContainer extends Component {
             textAlign: `center`,
             color: `rgba(0, 0, 0, 0.5)`
           }}>
-            SigmaHongWeb UEBasis
+            SigmaHongWeb UEProd
           </Footer>
         </Layout>
       </div>

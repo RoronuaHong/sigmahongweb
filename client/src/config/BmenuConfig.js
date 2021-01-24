@@ -79,6 +79,23 @@ const menuList = [{
     icon: <EditOutlined />
   }]
 }, {
+  title: `UEProdEditor`,
+  key: `/admin/dashboard/ueprodeditor`,
+  icon: <EditOutlined />,
+  children: [{
+    title: `List`,
+    key: `/admin/dashboard/ueprodeditor/search`,
+    icon: <UnorderedListOutlined />
+  }, {
+    title: `Add`,
+    key: `/admin/dashboard/ueprodeditor/add`,
+    icon: <FileAddOutlined />
+  }, {
+    title: `Edit`,
+    key: `/admin/dashboard/ueprodeditor/edit`,
+    icon: <EditOutlined />
+  }]
+}, {
   title: `ChromeEditor`,
   key: `/admin/dashboard/chromeeditor`,
   icon: <EditOutlined />,

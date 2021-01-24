@@ -5,18 +5,18 @@ import { inject, observer } from 'mobx-react'
 
 import './index.scss'
 
-@inject('bUEBasisStore')
+@inject('bUEProdStore')
 @observer
 class UEListComponents extends Component {
   componentWillMount() {
-    const { bUEBasisStore } = this.props
+    const { bUEProdStore } = this.props
 
-    bUEBasisStore.getUEBasisContent()
+    bUEProdStore.getUEProdContent()
   }
 
   renderUEList = () => {
-    const { bUEBasisStore } = this.props
-    const { gettingValue } = bUEBasisStore
+    const { bUEProdStore } = this.props
+    const { gettingValue } = bUEProdStore
 
     return gettingValue && gettingValue.map(item => (
       <div className={`ue-li`} key={item._id}>
