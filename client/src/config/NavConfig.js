@@ -1,6 +1,7 @@
 import MainList from '../Components/HomePageComponents/Cpp/MainList'
 import UEMainList from '../Components/HomePageComponents/UE/MainList'
 import ToolsMainList from '../Components/HomePageComponents/Tools/MainList'
+import MusicMainList from '../Components/HomePageComponents/Music/MainList'
 
 import CppImage from '../assets/Images/HomePage/cpp.jpg'
 import UeImage from '../assets/Images/HomePage/ue.jpg'
@@ -78,6 +79,7 @@ const fullpageList = [{
   text: 'Music',
   anchors: `nusic`,
   image: musicImage,
+  child: <MusicMainList />,
 }]
 
 export {
