@@ -1,5 +1,6 @@
 import { message } from 'antd'
 import {
+  toJS,
   action,
   observable,
   makeObservable,
@@ -12,18 +13,18 @@ class BMusicStore {
     makeObservable(this)
   }
 
-  @observable content = ``
-  @observable url = ``
-  @observable gettingContent = ``
-  @observable gettingUrl = ``
+  @observable data = []
+  @observable gettingData = ``
 
   @action
   getMusicContentById(params) {
+    message.destroy()
+
     api.music.getMusicContentById(params).then(data => {
       if(data && data.status) {
-        
+        this.gettingData = data.data.data
       } else {
-        
+        message.error('error')
       }
     })
   }

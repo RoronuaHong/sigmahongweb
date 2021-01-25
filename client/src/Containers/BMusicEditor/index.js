@@ -57,11 +57,11 @@ class BUEBasisEditor extends Component {
 
   render() {
     const { bMusicStore } = this.props
-    const { data } = bMusicStore
+    const { data, gettingData } = bMusicStore
 
     const handleSaveConfirm = async() =>  {
       const { bMusicStore } = this.props
-      const { data } = bMusicStore
+      const { gettingData } = bMusicStore
 
       message.destroy()
 
@@ -73,13 +73,11 @@ class BUEBasisEditor extends Component {
       }
     }
 
-    console.log(data)
-
     return (
       <Card>
         <Table
           columns={this.initColumns()}
-          dataSource={[]}
+          dataSource={gettingData}
         />
       </Card>
     )
