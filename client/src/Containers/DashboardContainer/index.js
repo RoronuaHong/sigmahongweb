@@ -24,6 +24,9 @@ import BUEBasisLists from '../BUEBasisLists/index'
 import BUEProdEditor from '../BUEProdEditor/index'
 import BUEProdLists from '../BUEProdLists/index'
 
+import BMusicEditor from '../BMusicEditor/index'
+import BMusicLists from '../BMusicLists/index'
+
 import BChromeExtensionsEditor from '../BChromeExtensionsEditor/index'
 
 const { Footer, Sider, Content } = Layout
@@ -68,6 +71,10 @@ class DashboardContainer extends Component {
               <Route path={`/admin/dashboard/ueprodeditor/search`} component={BUEProdLists} />
               <Route path={`/admin/dashboard/ueprodeditor/add`} component={BUEProdEditor} />
               <Route path={`/admin/dashboard/ueprodeditor/edit`} component={BUEProdEditor} />
+
+              <Route path={`/admin/dashboard/musiceditor/search`} component={BMusicLists} />
+              <Route path={`/admin/dashboard/musiceditor/add`} component={BMusicEditor} />
+              <Route path={`/admin/dashboard/musiceditor/edit`} component={BMusicEditor} />
 
               <Route path={`/admin/dashboard/chromeeditor/content`} component={BChromeExtensionsEditor} />
 

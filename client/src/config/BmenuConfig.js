@@ -104,6 +104,19 @@ const menuList = [{
     key: `/admin/dashboard/chromeeditor/content`,
     icon: <ContainerOutlined />
   }]
+}, {
+  title: `MusicEditor`,
+  key: `/admin/dashboard/musiceditor`,
+  icon: <EditOutlined />,
+  children: [{
+    title: `List`,
+    key: `/admin/dashboard/musiceditor/search`,
+    icon: <ContainerOutlined />
+  }, {
+    title: `Edit`,
+    key: `/admin/dashboard/musiceditor/edit`,
+    icon: <EditOutlined />
+  }]
 }]
 
 export default menuList

@@ -24,6 +24,8 @@ import UEprodContentContainer from './Containers/UEProdContainer/UEProdContentCo
 
 import ChromeExtensionsContainer from './Containers/ToolsPageContainer/ChromeExtensionsContainer/index'
 
+import MusicContainer from './Containers/MusicContainer/index'
+
 import DataStructureContentContainer from './Containers/DataStructureContainer/DataStructureContentContainer/index'
 
 import AlgorithmContentContainer from './Containers/AlgorithmContainer/AlgorithmContentContainer/index'
@@ -51,6 +53,8 @@ export default function App() {
           <Route path='/ue-production/content/:id' component={UEprodContentContainer} />
 
           <Route exact path='/tools-chrome' component={ChromeExtensionsContainer} />
+
+          <Route exact path='/music/:name' component={MusicContainer} />
 
           <Route path='/admin/login' component={LoginContainer} />
           <Route path='/admin/dashboard' component={DashboardContainer} />

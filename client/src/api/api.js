@@ -8,6 +8,7 @@ import datastructure from './datastructure'
 import uebasis from './uebasis'
 import ueprod from './ueprod'
 import chrome from './chrome'
+import music from './music'
 
 const api = {
   login,
@@ -17,6 +18,7 @@ const api = {
   uebasis,
   chrome,
   ueprod,
+  music,
 }
 
 export default api

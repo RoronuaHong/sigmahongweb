@@ -7,11 +7,13 @@ import BDatastructureStore from './BDatastructureStore'
 import BUEBasisStore from './BUEBasisStore'
 import BUEProdStore from './BUEProdStore'
 import ChromeStore from './ChromeStore'
+import BMusicStore from './BMusicStore'
 
 export class RootStore {
     algorithmStore = new AlgorithmStore(this)
     cppSummaryStore = new CppSummaryStore(this)
 
+    bMusicStore = new BMusicStore(this)
     bChromeStore = new ChromeStore(this)
     bUEBasisStore = new BUEBasisStore(this)
     bUEProdStore = new BUEProdStore(this)
