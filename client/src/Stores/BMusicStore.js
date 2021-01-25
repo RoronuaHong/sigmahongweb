@@ -12,11 +12,18 @@ class BMusicStore {
     makeObservable(this)
   }
 
+  @observable content = ``
+  @observable url = ``
+  @observable gettingContent = ``
+  @observable gettingUrl = ``
+
   @action
-  setMusicContent(params) {
-    api.music.setMusicContent(params).then(data => {
+  getMusicContentById(params) {
+    api.music.getMusicContentById(params).then(data => {
       if(data && data.status) {
-        message.success(data.msg)
+        
+      } else {
+        
       }
     })
   }

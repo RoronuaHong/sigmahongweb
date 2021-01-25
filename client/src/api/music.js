@@ -4,21 +4,21 @@ function setMusicContent(params) {
   return axios.post(`/music/add`, params)
 }
 
-function getMusicContent(params) {
-  return axios.get(`/music/get`, params)
+function getMusicContentById(params) {
+  return axios.post(`/music/content`, params)
 }
 
 function delMusicContent(params) {
-  return axios.post(`/uebasis/delete`, params)
+  return axios.post(`/music/delete`, params)
 }
 
 function updateMusicContent(params) {
-  return axios.post(`/uebasis/update`, params)
+  return axios.post(`/music/update`, params)
 }
 
 const music = {
   setMusicContent,
-  getMusicContent,
+  getMusicContentById,
   delMusicContent,
   updateMusicContent
 }

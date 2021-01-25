@@ -3,16 +3,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const musicSchema = new Schema({
-  content: {
-    type: String,
+  data: {
+    type: Array,
     require: true,
     trim: true
   },
-  url: {
-    type: String,
-    require: true,
-    trim: true,
-  }
 }, {
   timestamps: true
 })

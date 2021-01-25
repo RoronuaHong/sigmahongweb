@@ -1,159 +1,87 @@
 import { React, Component } from 'react'
-import { message, Button, Input } from 'antd'
-import ReactMarkdown from 'react-markdown'
+import { message, Card, Table } from 'antd'
 import { inject, observer } from 'mobx-react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 
+import LinkButton from '../../Widgets/LinkButton'
 import storageUtils from '../../utils/storageUtils'
 
 import './index.scss'
 
 let id = ``
-let isAddPageChange = false
 
-@inject('bUEBasisStore')
+@inject('bMusicStore')
 @observer
 class BUEBasisEditor extends Component {
   async componentWillMount() {
-    const { match, bUEBasisStore } = this.props
+    const { match, bMusicStore } = this.props
     const path = match.path
 
-    if(path.indexOf(`add`) > -1) {
-      this.handleTitleInput(``)
-      this.handlePreviewInput(``)
-      this.handleUEBasisInput(``)
+    id = storageUtils.getId()
+    await bMusicStore.getMusicContentById({ id })
 
-      storageUtils.removeId()
-    } else {
-      id = storageUtils.getId()
+    setTimeout(() => {
 
-      await bUEBasisStore.getUEBasisContentById({ id })
-
-      setTimeout(() => {
-        const { gettingTitle, gettingPreview, gettingContent } = bUEBasisStore
-
-        this.handleTitleInput(gettingTitle)
-        this.handlePreviewInput(gettingPreview)
-        this.handleUEBasisInput(gettingContent)
-      }, 1000)
-    }
+    })
   }
 
-  componentDidUpdate() {
-    const { match } = this.props
-
-    if(match.path.indexOf(`add`) > -1) {
-      id = ``
-      storageUtils.removeId()
-
-      if(!isAddPageChange) {
-        this.handleTitleInput(``)
-        this.handlePreviewInput(``)
-        this.handleUEBasisInput(``)
-
-        isAddPageChange = true
-      }
-    } else {
-      isAddPageChange = false
-    }
+  handleDelete = id => {
+    console.log(id)
   }
 
-  handleTitleInput(value) {
-    const { bUEBasisStore } = this.props
+  initColumns = () => {
+    const columns = [{
+      title: 'Content',
+      width: 200,
+      dataIndex: 'content',
+      key: `content`
+    }, {
+      title: 'Url',
+      dataIndex: 'url',
+      key: `url`
+    }, {
+      title: 'Operation',
+      width: 200,
+      render: (text, record) => {
+        return (
+          <LinkButton onClick={() => this.handleDelete(record._id)}>Delete</LinkButton>
+        )
+      },
+      dataIndex: 'operation',
+      key: `operation`
+    }]
 
-    bUEBasisStore.setUEBasisTitleInput(value)
-  }
-
-  handlePreviewInput(value) {
-    const { bUEBasisStore } = this.props
-
-    bUEBasisStore.setUEBasisPreviewInput(value)
-  }
-
-  handleUEBasisInput(value) {
-    const { bUEBasisStore } = this.props
-
-    bUEBasisStore.setUEBasisInput(value)
-  }
-
-  handleResetConfirm() {
-    const { bUEBasisStore } = this.props
-
-    bUEBasisStore.clearUEBasisInput()
+    return columns
   }
 
   render() {
-    const { bUEBasisStore } = this.props
-    const { title, value, preview } = bUEBasisStore
+    const { bMusicStore } = this.props
+    const { data } = bMusicStore
 
     const handleSaveConfirm = async() =>  {
-      const { bUEBasisStore } = this.props
-      const { title, value, preview } = bUEBasisStore
+      const { bMusicStore } = this.props
+      const { data } = bMusicStore
 
+      message.destroy()
+
+      // FIXME: 更新歌曲数量
       if(id) {
-        await bUEBasisStore.updateUEBasisContent({ id, title, value, preview })
+        await bMusicStore.updateMusicContent({ data })
       } else {
-        if(title && value && preview) {
-          await bUEBasisStore.setUEBasisContent({ title, value, preview })
-        } else {
-          message.error(`plz infilling title and value`)
-        }
+        message.error(`id isn't exist`)
       }
     }
 
+    console.log(data)
+
     return (
-      <>
-        <div className={`cppsummaryeditor-header`}>
-          <div className={`cppsummaryeditor-title`}>
-            <Input
-              value={title}
-              placeholder={`Title`}
-              onChange={e => this.handleTitleInput(e.target.value)}
-            />
-          </div>
-        </div>
-        <div className={`cppsummaryeditor-content`}>
-          <div className={`cppsummaryeditor-preview`}>
-            <Input
-              value={preview}
-              placeholder={`Preview`}
-              onChange={e => this.handlePreviewInput(e.target.value)}
-            />
-          </div>
-        </div>
-        <div className={`cppsummaryeditor-wrapper`}>
-          <textarea
-            autoFocus
-            value={value}
-            className={`cppsummaryeditor-textarea`}
-            onChange={e => this.handleUEBasisInput(e.target.value)}
-          />
-          <ReactMarkdown
-            source={value}
-            escapeHtml={false}
-            className={`cppsummaryeditor-markdown`}
-            renderers={{
-              code: Components
-            }}
-          />
-        </div>
-        <div className={`cppsummaryeditor-confirm-content`}>
-          <Button 
-            type={`primary`} 
-            className={`confirm-save`}
-            onClick={handleSaveConfirm}
-          >
-            保存
-          </Button>
-          <Button 
-            className={`confirm-reset`}
-            onClick={() => this.handleResetConfirm()}
-          >
-            清空
-          </Button>
-        </div>
-      </>
+      <Card>
+        <Table
+          columns={this.initColumns()}
+          dataSource={[]}
+        />
+      </Card>
     )
   }
 }
