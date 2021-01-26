@@ -4,50 +4,50 @@ import PropTypes from 'prop-types'
 import './index.scss' 
 
 const Icon = forwardRef((props, ref) => {
-    const { type, className, size, backdrop, color, click, mouseEnter, mouseOut } = props 
+  const { type, className, size, backdrop, color, click, mouseEnter, mouseOut } = props 
 
-    const cls = classnames(
-      {
-          iconfont: true,
-          [`icon-${type}`]: true,
-          [`icon-color-${color}`]: color ? true : false
-      },
-      className
-    )
+  const cls = classnames(
+    {
+      iconfont: true,
+      [`icon-${type}`]: true,
+      [`icon-color-${color}`]: color ? true : false
+    },
+    className
+  )
 
-    const handleClick = useCallback(
-      e => {
-          click && click(e) 
-      },
-      [click]
+  const handleClick = useCallback(
+    e => {
+        click && click(e) 
+    },
+    [click]
+  ) 
+
+  const handleMouseEnter = useCallback(() => {
+    mouseEnter && mouseEnter() 
+  }, [mouseEnter]) 
+
+  const handleMouseOut = useCallback(() => {
+    mouseOut && mouseOut() 
+  }, [mouseOut]) 
+
+  const MyIcon = (
+    <i
+      className={cls}
+      onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseOut={handleMouseOut}
+    ></i>
+  ) 
+
+  if (backdrop) {
+    return (
+        <span className='backdrop'>
+            {MyIcon}
+        </span>
     ) 
+  }
 
-    const handleMouseEnter = useCallback(() => {
-      mouseEnter && mouseEnter() 
-    }, [mouseEnter]) 
-
-    const handleMouseOut = useCallback(() => {
-      mouseOut && mouseOut() 
-    }, [mouseOut]) 
-
-    const MyIcon = (
-      <i
-        className={cls}
-        onClick={handleClick}
-        onMouseEnter={handleMouseEnter}
-        onMouseOut={handleMouseOut}
-      ></i>
-    ) 
-
-    if (backdrop) {
-      return (
-          <span className='backdrop'>
-              {MyIcon}
-          </span>
-      ) 
-    }
-
-    return MyIcon 
+  return MyIcon 
 }) 
 
 Icon.defaultProps = {

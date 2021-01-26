@@ -1,6 +1,7 @@
 import {React, Component, useMemo} from 'react' 
 
 import Icon from '../Icon/index'
+import Volume from '../Volume/index'
 
 import './index.scss'
 
@@ -10,7 +11,8 @@ class MusicContainer extends Component {
       content: `touchme`,
       url: `https://p-def2.pcloud.com/cfZObmdvWZKWf46nZeq4R7ZZwPcuG7ZlXZZyPpZZc3CLZiFZYpZ7FZV7Z55ZW7ZBFZPFZu5ZBpZv0ZIVZTHZoHZRusEYJHwYTbQUkTupd5P4jlXHDM7/TouchMe.mp3`
     },
-    playingState: 'pause'
+    playingState: 'pause',
+    volume: 0.75
   }
 
   handleClickPrev = () => {
@@ -25,6 +27,14 @@ class MusicContainer extends Component {
     console.log(`12345`)
   }
 
+  handleVolumeInput = () => {
+
+  }
+
+  handleVolumeChange = () => {
+
+  }
+
   playIcon = () => {
     const { playingState } = this.state
     
@@ -34,7 +44,7 @@ class MusicContainer extends Component {
   }
 
   render() {
-    const { currentSong } = this.state
+    const { volume, currentSong } = this.state
 
     return (
       <div className='mini-player-wrapper'>
@@ -69,6 +79,20 @@ class MusicContainer extends Component {
           </div>
           <Icon size={24} className='icon' type='next' click={this.handleClickNext} />
         </div>
+				<div className='volume-item'>
+					<Volume
+						volume={volume}
+						onVolumeInput={this.handleVolumeInput}
+						onVolumeChange={this.handleVolumeChange}
+					/>
+				</div>
+        <audio
+          // src={currentSong.url}
+          // ref={audio}
+          // onCanPlay={ready}
+          // onEnded={end}
+          // onTimeUpdate={updateTime}
+        ></audio>
       </div>
     )
   }

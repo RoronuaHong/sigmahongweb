@@ -2,7 +2,7 @@
   display: inline-block;
   border-radius: 50%;
   &:hover {
-      background-color: var(--round-hover-bgcolor);
+    background-color: var(--round-hover-bgcolor);
   }
 }
 .iconfont {
@@ -12,12 +12,12 @@
   // 通过prop传入这几个字段
   // 可以使用默认的几个颜色
   &-theme {
-      color: #d33a31;
+    color: #d33a31;
   }
   &-white {
-      color: #fff;
+    color: #fff;
   }
   &-shallow {
-      color: var(--font-color-shallow-grey);
+    color: var(--font-color-shallow-grey);
   }
 }
