@@ -5,6 +5,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import {
   PlusOutlined,
+  SaveOutlined,
 } from '@ant-design/icons'
 
 import LinkButton from '../../Widgets/LinkButton'
@@ -32,7 +33,11 @@ class BUEBasisEditor extends Component {
   handleAddOk = async() => {
     const { bMusicStore } = this.props
     const { gettingData, addingContent, addingArtist, addingUrl, addingImage } = bMusicStore
+
+    const date = (new Date()).getTime()
+      
     const data = {
+      id: date,
       content: addingContent,
       artist: addingArtist,
       url: addingUrl,
@@ -48,11 +53,11 @@ class BUEBasisEditor extends Component {
     })
   }
 
-  handleDelete = async(content) => {
+  handleDelete = async(id) => {
     const { bMusicStore } = this.props
     const { gettingData } = bMusicStore
 
-    const newData = gettingData && gettingData.filter(item => content !== item.content)
+    const newData = gettingData && gettingData.filter(item => id !== item.id)
 
     await bMusicStore.updateMusicContent({ id, data: JSON.stringify(newData) })
   }
@@ -60,6 +65,13 @@ class BUEBasisEditor extends Component {
   handleAddCancel = () => this.setState({ isAddModalVisible: false })
 
   handleAddMusicContent = () => this.setState({ isAddModalVisible: true })
+
+  handleSaveMusicContent = async() => {
+    const { bMusicStore } = this.props
+    const { gettingData } = bMusicStore
+
+    await bMusicStore.updateMusicContent({ id, data: JSON.stringify(gettingData) })
+  }
 
   handleAddContentInput = value => {
     const { bMusicStore } = this.props
@@ -87,6 +99,11 @@ class BUEBasisEditor extends Component {
 
   initColumns = () => {
     const columns = [{
+      title: 'ID',
+      width: 50,
+      dataIndex: 'id',
+      key: `id`,
+    }, {
       title: 'Content',
       width: 200,
       dataIndex: 'content',
@@ -97,6 +114,16 @@ class BUEBasisEditor extends Component {
             key={text}
             defaultValue={record.content}
             placeholder={`Content`}
+            onChange={e => {
+              const { bMusicStore } = this.props
+              const { gettingData } = bMusicStore
+
+              gettingData.map(item => {
+                if(item.id === record.id) {
+                  item.content = e.target.value
+                }
+              })
+            }}
           />
         )
       }
@@ -110,6 +137,16 @@ class BUEBasisEditor extends Component {
             key={text}
             defaultValue={record.artist}
             placeholder={`Artist`}
+            onChange={e => {
+              const { bMusicStore } = this.props
+              const { gettingData } = bMusicStore
+
+              gettingData.map(item => {
+                if(item.id === record.id) {
+                  item.artist = e.target.value
+                }
+              })
+            }}
           />
         )
       }
@@ -123,6 +160,16 @@ class BUEBasisEditor extends Component {
             key={text}
             defaultValue={record.url}
             placeholder={`Url`}
+            onChange={e => {
+              const { bMusicStore } = this.props
+              const { gettingData } = bMusicStore
+
+              gettingData.map(item => {
+                if(item.id === record.id) {
+                  item.url = e.target.value
+                }
+              })
+            }}
           />
         )
       }
@@ -136,6 +183,16 @@ class BUEBasisEditor extends Component {
             key={text}
             defaultValue={record.image}
             placeholder={`Image`}
+            onChange={e => {
+              const { bMusicStore } = this.props
+              const { gettingData } = bMusicStore
+
+              gettingData.map(item => {
+                if(item.id === record.id) {
+                  item.image = e.target.value
+                }
+              })
+            }}
           />
         )
       }
@@ -144,7 +201,7 @@ class BUEBasisEditor extends Component {
       width: 200,
       render: (text, record) => {
         return (
-          <LinkButton onClick={() => this.handleDelete(record.content)}>Delete</LinkButton>
+          <LinkButton onClick={() => this.handleDelete(record.id)}>Delete</LinkButton>
         )
       },
       dataIndex: 'operation',
@@ -159,7 +216,7 @@ class BUEBasisEditor extends Component {
     const { bMusicStore } = this.props
     const { addingContent, addingArtist, addingUrl, addingImage, gettingData } = bMusicStore
 
-    gettingData && gettingData.map(item => item.key = item.content)
+    gettingData && gettingData.map(item => item.key = item.id)
 
     const extra = (
       <>
@@ -168,6 +225,13 @@ class BUEBasisEditor extends Component {
           onClick={this.handleAddMusicContent}
         >
           <PlusOutlined /> Add
+        </Button>
+        <Button
+          type={`primary`}
+          style={{marginRight: `10px`}}
+          onClick={this.handleSaveMusicContent}
+        >
+          <SaveOutlined /> Save
         </Button>
       </>
     )

@@ -17,18 +17,26 @@ class MusicContainer extends Component {
     await bMusicStore.getMusicContentById({ id: params.id })
   }
 
+  // FIXME: 获取前台图片。
   render() {
     const { bMusicStore } = this.props
     const { gettingData } = bMusicStore
 
+    const image = gettingData[0] && gettingData[0].image
+
+    console.log(image)
+
     return (
       <div className='music-wrapper'>
         <HeaderComponents />
-        <div className='music-content'>
+        <div className={`music-content`}>
           <div className='music-menu'>
             <MenuComponents
               MenuList={gettingData}
             />
+          </div>
+          <div className={`music-right-content`}>
+            <img className={`music-right-img`} src={image} alt={`image`} />
           </div>
         </div>
         <MiniPlayerComponents />
