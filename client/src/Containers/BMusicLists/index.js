@@ -8,6 +8,10 @@ import storageUtils from '../../utils/storageUtils'
 import './index.scss'
 
 class BMusicLists extends Component {
+  state = {
+    selectedRowKeys: []
+  }
+
   handleEdit = id => {
     const { history } = this.props
 
@@ -37,6 +41,8 @@ class BMusicLists extends Component {
   }
 
   render() {
+    const { selectedRowKeys } = this.state
+  
     return (
       <Card>
         <Table

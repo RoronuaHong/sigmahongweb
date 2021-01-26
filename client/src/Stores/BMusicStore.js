@@ -15,6 +15,8 @@ class BMusicStore {
 
   @observable data = []
   @observable gettingData = ``
+  @observable addingContent = ``
+  @observable addingUrl = ``
 
   @action
   getMusicContentById(params) {
@@ -36,8 +38,20 @@ class BMusicStore {
     api.music.updateMusicContent(params).then(data => {
       if(data && data.status) {
         message.success(data.msg)
+
+        this.gettingData = data.data
       }
     })
+  }
+
+  @action
+  setAddContentInput(value) {
+    this.addingContent = value
+  }
+
+  @action
+  setAddUrlInput(value) {
+    this.addingUrl = value
   }
 }
 

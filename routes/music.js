@@ -62,13 +62,13 @@ router.route('/content').post((req, res) => {
  */
 router.route('/update').post((req, res) => {
   const conditions = { _id: req.body.id }
-  const data = req.body.data
+  req.body.data = JSON.parse(req.body.data)
 
   Music.updateOne(conditions, req.body)
     .then(() => res.status(200).json({
       msg: 'music update success',
       status: 1,
-      data
+      data: req.body.data
     }))
     .catch(err => res.status(400).json('Error: ' + err))
 })

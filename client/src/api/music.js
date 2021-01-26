@@ -1,9 +1,5 @@
 import axios from './http'
 
-function setMusicContent(params) {
-  return axios.post(`/music/add`, params)
-}
-
 function getMusicContentById(params) {
   return axios.post(`/music/content`, params)
 }
@@ -17,7 +13,6 @@ function updateMusicContent(params) {
 }
 
 const music = {
-  setMusicContent,
   getMusicContentById,
   delMusicContent,
   updateMusicContent

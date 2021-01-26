@@ -78,7 +78,11 @@ class HeaderContainer extends Component {
           <LinkButton onClick={() => this.handleLogout()}>退出</LinkButton>
         </div>
         <div className={`header-bottom`}>
-        <div className={`header-bottom-left`}>{title}</div>
+        <div className={`header-bottom-left`}>
+          {title}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          {`` || ``}
+        </div>
           <div className={`header-bottom-right`}>
             <span className={`header-bottom-time`}>{formattedTime}</span>
           </div>

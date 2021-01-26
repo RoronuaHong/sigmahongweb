@@ -8,19 +8,13 @@ function MenuComponents() {
         <div className='menu-wrapper'>
           <ul className={`menu-list`}>
             <li key={`1`} className='menu-item'>
-                <NavLink exact to={`/`}>
-                    <span className='menu-title'>音乐1</span>
-                </NavLink>
+                <span className='menu-title'>音乐1</span>
             </li>
             <li key={`2`} className='menu-item'>
-                <NavLink exact to={`/`}>
-                    <span className='menu-title'>音乐2</span>
-                </NavLink>
+                <span className='menu-title'>音乐2</span>
             </li>
             <li key={`3`} className='menu-item'>
-                <NavLink exact to={`/`}>
-                    <span className='menu-title'>音乐3</span>
-                </NavLink>
+                <span className='menu-title'>音乐3</span>
             </li>
           </ul>
         </div>
