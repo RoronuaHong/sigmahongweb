@@ -1,7 +1,12 @@
-import {React, Component, useMemo} from 'react' 
+import { React, Component, useRef } from 'react' 
 
-import Icon from '../Icon/index'
 import Volume from '../Volume/index'
+import {
+  PauseOutlined,
+  StepForwardFilled,
+  StepBackwardFilled,
+  CaretRightOutlined,
+} from '@ant-design/icons'
 
 import './index.scss'
 
@@ -9,9 +14,9 @@ class MusicContainer extends Component {
   state = {
     currentSong: {
       content: `touchme`,
-      url: `https://p-def2.pcloud.com/cfZObmdvWZKWf46nZeq4R7ZZwPcuG7ZlXZZyPpZZc3CLZiFZYpZ7FZV7Z55ZW7ZBFZPFZu5ZBpZv0ZIVZTHZoHZRusEYJHwYTbQUkTupd5P4jlXHDM7/TouchMe.mp3`
+      url: `https://p-def6.pcloud.com/cfZWruxiWZiOnEEnZeq4R7ZZe6ufG7ZlXZZyPpZZJ3yYZOHZ55Z7JZlJZYpZTpZBFZj5ZipZf7Z4HZppZVHZcHZ5CDj02K6InyUUCvaojzim4W9WCSX/Puzzle.mp3`
     },
-    playingState: 'pause',
+    playingState: false,
     volume: 0.75
   }
 
@@ -23,61 +28,71 @@ class MusicContainer extends Component {
     console.log(`下一首`)
   }
 
-  handlePlaySong = () => {
-    console.log(`12345`)
-  }
-
-  handleVolumeInput = () => {
-    
-  }
-
-  handleVolumeChange = () => {
-
-  }
-
-  playIcon = () => {
+  handlePlaySong = async() => {
     const { playingState } = this.state
-    
+
+    if(!playingState) {
+      await this.audio.play()
+    } else {
+      await this.audio.pause()
+    }
+
     this.setState({
-      playingState: playingState ? 'pause' : 'play'
+      playingState: playingState ? false : true
+    })
+  }
+
+  handleVolumeInput = value => {
+    this.audio.volume = value / 100
+
+    this.setState({
+      volume: value / 100
+    })
+  }
+
+  handleVolumeChange = value => {
+    this.audio.volume = value / 100
+
+    this.setState({
+      volume: value / 100
     })
   }
 
   render() {
-    const { volume, currentSong } = this.state
+    const { volume, currentSong, playingState } = this.state
 
     return (
       <div className='mini-player-wrapper'>
         <div className='song'>
           {currentSong.content && (
-            <>
-              {/* <div className='img-wrap'>
-                <img src={currentSong.img} alt='' className='blur' />
-                <div className='player-control'>
-                  <Icon size={24} type={isPlayerShow ? "shrink" : "open"} color='white' />
-                </div>
-              </div> */}
-              <div className='content'>
-                <div className='top'>
-                  <p className='name'>{currentSong.content}</p>
-                  <p className='split'>-</p>
-                  <p className='artists'>{`None`}</p>
-                </div>
-                {/* <div className='time'>
-                  <span className='played-time'>{formatTime(currentTime)}</span>
-                  <span className='split'>/</span>
-                  <span className='total-time'>{formatTime(currentSong.duration / 1000)}</span>
-                </div> */}
+            <div className='content'>
+              <div className='top'>
+                <p className='name'>{currentSong.content}</p>
+                <p className='split'>-</p>
+                <p className='artists'>{`None`}</p>
               </div>
-            </>
+            </div>
           )}
         </div>
         <div className='control'>
-          <Icon size={24} className='icon' type='prev' click={this.handleClickPrev} />
+          <StepBackwardFilled
+            style={{ fontSize: `30px`, color: `#d33a31` }}
+            onClick={this.handleClickPrev} 
+          />
           <div className='play-icon' onClick={this.handlePlaySong} >
-            <Icon size={24} type={this.playIcon}/>
+            {!playingState ? <CaretRightOutlined
+              className={`play-button`}
+              style={{ fontSize: `25px`, color: `#fff` }}
+            /> :
+            <PauseOutlined
+              className={`play-button`}
+              style={{ fontSize: `25px`, color: `#fff` }}
+            />}
           </div>
-          <Icon size={24} className='icon' type='next' click={this.handleClickNext} />
+          <StepForwardFilled
+            style={{ fontSize: `30px`, color: `#d33a31` }}
+            onClick={this.handleClickNext}
+          />
         </div>
 				<div className='volume-item'>
 					<Volume
@@ -87,11 +102,8 @@ class MusicContainer extends Component {
 					/>
 				</div>
         <audio
-          // src={currentSong.url}
-          // ref={audio}
-          // onCanPlay={ready}
-          // onEnded={end}
-          // onTimeUpdate={updateTime}
+          src={currentSong.url}
+          ref={ref => this.audio = ref}
         ></audio>
       </div>
     )

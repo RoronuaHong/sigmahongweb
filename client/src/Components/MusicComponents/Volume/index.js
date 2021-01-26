@@ -1,12 +1,15 @@
 import React, { useMemo, useState } from 'react' 
 import PropTypes from 'prop-types' 
-import Icon from '../Icon' 
 import ProgressBar from '../ProgressBar'
+import {
+  SoundOutlined
+} from '@ant-design/icons'
+
 import './index.scss'
 
 function Volume(props) {
-  const { volume, onVolumeChange, onVolumeInput } = props 
-  const [lastVolume, setLastVolume] = useState(volume) 
+  const { volume, onVolumeChange, onVolumeInput } = props
+  const [lastVolume, setLastVolume] = useState(volume)
 
   const onProgressChange = value => {
     onVolumeChange(value) 
@@ -17,22 +20,22 @@ function Volume(props) {
   }
 
   const volumeIconClick = () => {
-    const target = volume ? 0 : lastVolume 
+    const target = volume ? 0 : lastVolume
 
     if(volume) {
-      setLastVolume(volume) 
+      setLastVolume(volume)
     }
 
-    onProgressChange(target) 
+    onVolumeChange(target)
   }
-
-  const type = useMemo(() => {
-    return +volume === 0 ? 'silence' : 'horn'
-  }, [volume]) 
 
   return (
     <div className='volume-wrap'>
-      <Icon type={type} size={20} className='volume-icon' click={volumeIconClick} />
+      <SoundOutlined
+        className={`volumn-sound`}
+        style={{ fontSize: `20px`, color: `#d33a31` }}
+        onClick={volumeIconClick}
+      />
       <div className='progress-wrap'>
         <ProgressBar
           progressChange={onProgressChange}

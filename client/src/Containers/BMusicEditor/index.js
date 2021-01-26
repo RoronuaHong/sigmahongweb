@@ -5,7 +5,6 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import {
   PlusOutlined,
-  SaveOutlined,
 } from '@ant-design/icons'
 
 import LinkButton from '../../Widgets/LinkButton'
