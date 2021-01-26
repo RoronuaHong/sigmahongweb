@@ -24,8 +24,6 @@ class MusicContainer extends Component {
 
     const image = gettingData[0] && gettingData[0].image
 
-    console.log(image)
-
     return (
       <div className='music-wrapper'>
         <HeaderComponents />

@@ -4,9 +4,9 @@ const MusicList = [{
   link: `/music/kurakimai/600ebdf459f9e77e8886e63c`,
   img: 'https://i.imgur.com/ixtwFY6.jpg'
 }, {
-  id: 0,
+  id: 1,
   name: `Falcom`,
-  link: `/music/falcom`,
+  link: `/music/falcom/60102d41edb0318acc45f606`,
   img: 'https://i.imgur.com/Afwgn0E.jpg'
 }]
 

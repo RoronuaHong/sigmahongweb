@@ -8,6 +8,7 @@ import { navList, fullpageList } from '../../config/NavConfig'
 
 import Header from '../../Components/HomePageComponents/Header'
 
+import baiju from '../../assets/audioes/baiju.mp3'
 import OnePiece from '../../assets/audioes/OnePiece.mp3'
 
 const SEL = 'custom-section'
@@ -94,7 +95,7 @@ class HomePageContainer extends Component {
           loop
           volume={0.2}
           className={`andio-player`}
-          src={OnePiece}
+          src={baiju}
           autoPlay
           controls
         />

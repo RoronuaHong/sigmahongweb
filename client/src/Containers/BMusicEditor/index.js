@@ -53,12 +53,12 @@ class BUEBasisEditor extends Component {
     })
   }
 
-  handleDelete = async(id) => {
+  handleDelete = async(newId) => {
     const { bMusicStore } = this.props
     const { gettingData } = bMusicStore
 
-    const newData = gettingData && gettingData.filter(item => id !== item.id)
-
+    const newData = gettingData && gettingData.filter(item => newId !== item.id)
+    
     await bMusicStore.updateMusicContent({ id, data: JSON.stringify(newData) })
   }
 

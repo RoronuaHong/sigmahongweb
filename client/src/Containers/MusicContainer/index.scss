@@ -34,6 +34,7 @@
     .music-right-img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
   .menu-list {
@@ -56,7 +57,7 @@
       }
     }
     .menu-item:hover {
-      background-color: #aaa;
+      background-color: #ddd;
       cursor: pointer;
     }
   }
