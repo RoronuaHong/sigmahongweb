@@ -42,7 +42,7 @@ class BMusicLists extends Component {
 
   render() {
     const { selectedRowKeys } = this.state
-  
+
     return (
       <Card>
         <Table

@@ -1,4 +1,6 @@
-import { React, Component, useRef } from 'react' 
+import { React, Component } from 'react' 
+import { inject, observer } from 'mobx-react'
+import { withRouter } from 'react-router-dom'
 
 import Volume from '../Volume/index'
 
@@ -9,14 +11,18 @@ import {
   CaretRightOutlined,
 } from '@ant-design/icons'
 import { formatTime } from '../../../utils/tools' 
-import ProgressBar from '../ProgressBar'
+import NewProgressBar from '../NewProgressBar'
 
 import './index.scss'
 
-class MusicContainer extends Component {
+@inject('bMusicStore')
+@observer
+class MiniPlayerComponents extends Component {
   state = {
     currentSong: {
+      artist: `kurakimai`,
       content: `touchme`,
+      img: 'https://i.imgur.com/ixtwFY6.jpg',
       url: `https://p-def2.pcloud.com/cfZObmdvWZKWf46nZeq4R7ZZ0zDfG7ZlXZZyPpZZc3CLZiFZYpZ7FZV7Z55ZW7ZBFZPFZu5ZBpZv0ZIVZTHZoHZaxEytI2VrhpmGS7ifKVERpF2VvEX/TouchMe.mp3`
     },
     playingState: false,
@@ -25,12 +31,20 @@ class MusicContainer extends Component {
     duration: `00:00`,
   }
 
+  async componentWillMount() {
+    const { match, bMusicStore } = this.props
+    const { params } = match
+
+    await bMusicStore.getMusicContentById({ id: params.id })
+  }
+
   componentDidMount() {
     const audio = this.audio
 
     audio.addEventListener(`canplay`, () => {
       this.setState({
-        duration: formatTime(parseInt(audio.duration))
+        duration: formatTime(parseInt(audio.duration)),
+        durationUnFormat: parseInt(audio.duration)
       })
     })
   }
@@ -75,16 +89,16 @@ class MusicContainer extends Component {
 
   // 歌曲进度的数值
 	playedPercent = () => {
-		const { duration, currentTime } = this.state
+    const { durationUnFormat, currentUnFormatTime } = this.state
 
-		return Math.min(currentTime / duration, 1) * 100 || 0
+		return Math.min(parseInt(currentUnFormatTime) / parseInt(durationUnFormat), 1) * 100 || 0
 	}
 
   setTime = playedPercent => {
-		const { duration } = this.state
+    const duration = parseInt(this.audio.duration)
 		const time = duration * (playedPercent / 100)
 
-    // this.audio && (this.audio.currentTime = time)
+    this.audio && (this.audio.currentTime = time)
 
     this.setState({
       currentTime: formatTime(time)
@@ -97,7 +111,8 @@ class MusicContainer extends Component {
 
   updateTime = e => {
     this.setState({
-      currentTime: formatTime(e.target.currentTime)
+      currentTime: formatTime(e.target.currentTime),
+      currentUnFormatTime: e.target.currentTime
     })
 	}
 
@@ -112,7 +127,7 @@ class MusicContainer extends Component {
               <div className='top'>
                 <p className='name'>{currentSong.content}</p>
                 <p className='split'>-</p>
-                <p className='artists'>{`None`}</p>
+                <p className='artists'>{currentSong.artist}</p>
               </div>
               <div className='time'>
 								<span className='played-time'>{currentTime}</span>
@@ -150,7 +165,7 @@ class MusicContainer extends Component {
 					/>
 				</div>
         <div className='progress-bar-wrap'>
-					<ProgressBar
+					<NewProgressBar
 						progressChange={this.handleProgressChange}
 						progressInput={this.handleProgressChange}
 						percent={this.playedPercent()}
@@ -167,4 +182,4 @@ class MusicContainer extends Component {
   }
 }
 
-export default MusicContainer
+export default withRouter(MiniPlayerComponents)

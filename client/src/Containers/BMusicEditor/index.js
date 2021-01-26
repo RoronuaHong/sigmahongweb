@@ -22,19 +22,21 @@ class BUEBasisEditor extends Component {
   }
 
   async componentWillMount() {
-    const { match, bMusicStore } = this.props
-    const path = match.path
+    const { bMusicStore } = this.props
 
     id = storageUtils.getId()
     await bMusicStore.getMusicContentById({ id })
   }
 
+  //FIXME: 新增 url 和 artist。
   handleAddOk = async() => {
     const { bMusicStore } = this.props
-    const { gettingData, addingContent, addingUrl } = bMusicStore
+    const { gettingData, addingContent, addingArtist, addingUrl, addingImage } = bMusicStore
     const data = {
       content: addingContent,
-      url: addingUrl
+      artist: addingArtist,
+      url: addingUrl,
+      image: addingImage
     }
 
     gettingData.push(data)
@@ -55,20 +57,9 @@ class BUEBasisEditor extends Component {
     await bMusicStore.updateMusicContent({ id, data: JSON.stringify(newData) })
   }
 
-  handleAddCancel = () => {
-    this.setState({
-      isAddModalVisible: false
-    })
-  }
+  handleAddCancel = () => this.setState({ isAddModalVisible: false })
 
-  handleAddMusicContent = () => {
-    const { bMusicStore } = this.props
-    const { gettingData } = bMusicStore
-
-    this.setState({
-      isAddModalVisible: true
-    })
-  }
+  handleAddMusicContent = () => this.setState({ isAddModalVisible: true })
 
   handleAddContentInput = value => {
     const { bMusicStore } = this.props
@@ -76,10 +67,22 @@ class BUEBasisEditor extends Component {
     bMusicStore.setAddContentInput(value)
   }
 
+  handleAddArtistInput = value => {
+    const { bMusicStore } = this.props
+
+    bMusicStore.setAddArtistInput(value)
+  }
+
   handleAddUrlInput = value => {
     const { bMusicStore } = this.props
 
     bMusicStore.setAddUrlInput(value)
+  }
+
+  handleAddImageInput = value => {
+    const { bMusicStore } = this.props
+
+    bMusicStore.setAddImageInput(value)
   }
 
   initColumns = () => {
@@ -98,6 +101,19 @@ class BUEBasisEditor extends Component {
         )
       }
     }, {
+      title: 'Artist',
+      dataIndex: 'artist',
+      key: `artist`,
+      render: (text, record) => {
+        return (
+          <Input
+            key={text}
+            defaultValue={record.artist}
+            placeholder={`Artist`}
+          />
+        )
+      }
+    }, {
       title: 'Url',
       dataIndex: 'url',
       key: `url`,
@@ -107,6 +123,19 @@ class BUEBasisEditor extends Component {
             key={text}
             defaultValue={record.url}
             placeholder={`Url`}
+          />
+        )
+      }
+    }, {
+      title: 'Image',
+      dataIndex: 'image',
+      key: `image`,
+      render: (text, record) => {
+        return (
+          <Input
+            key={text}
+            defaultValue={record.image}
+            placeholder={`Image`}
           />
         )
       }
@@ -128,23 +157,9 @@ class BUEBasisEditor extends Component {
   render() {
     const { isAddModalVisible } = this.state
     const { bMusicStore } = this.props
-    const { data, addingContent, addingUrl, gettingData } = bMusicStore
+    const { addingContent, addingArtist, addingUrl, addingImage, gettingData } = bMusicStore
 
     gettingData && gettingData.map(item => item.key = item.content)
-
-    const handleSaveConfirm = async() =>  {
-      const { bMusicStore } = this.props
-      const { gettingData } = bMusicStore
-
-      message.destroy()
-
-      // FIXME: 更新歌曲数量
-      if(id) {
-        await bMusicStore.updateMusicContent({ data })
-      } else {
-        message.error(`id isn't exist`)
-      }
-    }
 
     const extra = (
       <>
@@ -179,23 +194,29 @@ class BUEBasisEditor extends Component {
           />
           &nbsp;&nbsp;&nbsp;
           <Input
+            key={`artist`}
+            value={addingArtist}
+            placeholder={`Artist`}
+            onChange={e => this.handleAddArtistInput(e.target.value)}
+          />
+          &nbsp;&nbsp;&nbsp;
+          <Input
             key={`url`}
             value={addingUrl}
             placeholder={`Url`}
             onChange={e => this.handleAddUrlInput(e.target.value)}
           />
+          &nbsp;&nbsp;&nbsp;
+          <Input
+            key={`image`}
+            value={addingImage}
+            placeholder={`Image`}
+            onChange={e => this.handleAddImageInput(e.target.value)}
+          />
         </Modal>
     </>
     )
   }
-}
-
-const Components = ({ value, language }) => {
-  return (
-    <SyntaxHighlighter language={language ?? null} style={docco}>
-      {value ?? ''}
-    </SyntaxHighlighter>
-  )
 }
 
 export default BUEBasisEditor

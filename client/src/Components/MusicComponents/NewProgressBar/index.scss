@@ -1,0 +1,18 @@
+.progress {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 3px;
+  background: -webkit-linear-gradient(#d33a31, #d33a31) no-repeat, #F5F5F5;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background: #d33a31;
+    cursor: pointer;
+  }
+}

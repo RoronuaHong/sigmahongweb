@@ -54,7 +54,7 @@ export default function App() {
 
           <Route exact path='/tools-chrome' component={ChromeExtensionsContainer} />
 
-          <Route exact path='/music/:name' component={MusicContainer} />
+          <Route exact path='/music/:name/:id' component={MusicContainer} />
 
           <Route path='/admin/login' component={LoginContainer} />
           <Route path='/admin/dashboard' component={DashboardContainer} />

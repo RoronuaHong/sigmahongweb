@@ -16,7 +16,9 @@ class BMusicStore {
   @observable data = []
   @observable gettingData = ``
   @observable addingContent = ``
+  @observable addingArtist = ``
   @observable addingUrl = ``
+  @observable addingImage = ``
 
   @action
   getMusicContentById(params) {
@@ -50,8 +52,18 @@ class BMusicStore {
   }
 
   @action
+  setAddArtistInput(value) {
+    this.addingArtist = value
+  }
+
+  @action
   setAddUrlInput(value) {
     this.addingUrl = value
+  }
+
+  @action
+  setAddImageInput(value) {
+    this.addingImage = value
   }
 }
 

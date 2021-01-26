@@ -1,24 +1,24 @@
 import React, { memo } from 'react'
-import { NavLink } from 'react-router-dom'
 
 import './index.scss'
 
-function MenuComponents() {
-    return (
-        <div className='menu-wrapper'>
-          <ul className={`menu-list`}>
-            <li key={`1`} className='menu-item'>
-                <span className='menu-title'>音乐1</span>
-            </li>
-            <li key={`2`} className='menu-item'>
-                <span className='menu-title'>音乐2</span>
-            </li>
-            <li key={`3`} className='menu-item'>
-                <span className='menu-title'>音乐3</span>
-            </li>
-          </ul>
-        </div>
-    )
+const MenuComponents = props => {
+  const { MenuList } = props
+
+  return (
+    <div className='menu-wrapper'>
+      <ul className={`menu-list`}>
+        {MenuList && MenuList.map(item => (
+          <li key={item.content} className='menu-item'>
+            <span className='menu-title'>{item.content}
+              &nbsp;&nbsp;-&nbsp;&nbsp;
+              <span className='menu-artist'>{item.artist}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 
 export default memo(MenuComponents)

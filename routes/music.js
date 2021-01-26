@@ -62,6 +62,7 @@ router.route('/content').post((req, res) => {
  */
 router.route('/update').post((req, res) => {
   const conditions = { _id: req.body.id }
+  
   req.body.data = JSON.parse(req.body.data)
 
   Music.updateOne(conditions, req.body)
