@@ -1,4 +1,4 @@
-import React, { memo, useMemo, forwardRef, useCallback } from 'react' 
+import React, { memo, forwardRef, useCallback } from 'react' 
 import classnames from 'classnames' 
 import PropTypes from 'prop-types' 
 import './index.scss' 

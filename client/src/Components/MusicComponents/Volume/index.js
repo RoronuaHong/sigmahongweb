@@ -10,36 +10,36 @@ function Volume(props) {
 
   const onProgressChange = value => {
     onVolumeChange(value) 
-  } 
+  }
 
   const onProgressInput = value => {
     onVolumeInput(value) 
-  } 
+  }
 
   const volumeIconClick = () => {
     const target = volume ? 0 : lastVolume 
 
-    if (volume) {
-        setLastVolume(volume) 
+    if(volume) {
+      setLastVolume(volume) 
     }
 
     onProgressChange(target) 
-  } 
+  }
 
   const type = useMemo(() => {
-    return +volume === 0 ? 'silence' : 'horn' 
+    return +volume === 0 ? 'silence' : 'horn'
   }, [volume]) 
 
   return (
     <div className='volume-wrap'>
-        <Icon type={type} size={20} className='volume-icon' click={volumeIconClick} />
-        <div className='progress-wrap'>
-            <ProgressBar
-                progressChange={onProgressChange}
-                progressInput={onProgressInput}
-                percent={volume}
-            />
-        </div>
+      <Icon type={type} size={20} className='volume-icon' click={volumeIconClick} />
+      <div className='progress-wrap'>
+        <ProgressBar
+          progressChange={onProgressChange}
+          progressInput={onProgressInput}
+          percent={volume}
+        />
+      </div>
     </div>
   ) 
 }

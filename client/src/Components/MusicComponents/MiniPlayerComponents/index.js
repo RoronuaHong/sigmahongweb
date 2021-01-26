@@ -28,7 +28,7 @@ class MusicContainer extends Component {
   }
 
   handleVolumeInput = () => {
-
+    
   }
 
   handleVolumeChange = () => {
