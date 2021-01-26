@@ -2,12 +2,10 @@ import './index.scss'
 
 import HeaderComponents from '../../Components/MusicComponents/HeaderComponents/index'
 import MenuComponents from '../../Components/MusicComponents/MenuComponents/index'
+import MiniPlayerComponents from '../../Components/MusicComponents/MiniPlayerComponents/index'
 
 import { Component } from 'react'
-import { inject, observer } from 'mobx-react'
 
-@inject('loginStore')
-@observer
 class MusicContainer extends Component {
   render() {
     return (
@@ -18,6 +16,7 @@ class MusicContainer extends Component {
             <MenuComponents />
           </div>
         </div>
+        <MiniPlayerComponents />
       </div>
     )
   }

@@ -1,0 +1,43 @@
+.mini-player-wrapper {
+  position: relative;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 8px 24px 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10000;
+  .song {
+    display: flex;
+    flex: 4;
+    overflow: hidden;
+  }
+  .control {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .play-icon {
+      position: relative;
+      width: 45px;
+      height: 45px;
+      margin: 0 16px;
+      border-radius: 50%;
+      background: #d33a31;
+      cursor: pointer;
+      i {
+          color: #fff;
+      }
+    }
+    .icon {
+      color: #d33a31;
+    }
+  }
+}
