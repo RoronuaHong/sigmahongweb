@@ -2,7 +2,8 @@ import React, { useMemo, useState } from 'react'
 import PropTypes from 'prop-types' 
 import ProgressBar from '../ProgressBar'
 import {
-  SoundOutlined
+  AudioOutlined,
+  AudioMutedOutlined
 } from '@ant-design/icons'
 
 import './index.scss'
@@ -31,11 +32,16 @@ function Volume(props) {
 
   return (
     <div className='volume-wrap'>
-      <SoundOutlined
+      {volume === 0 ? <AudioMutedOutlined 
         className={`volumn-sound`}
         style={{ fontSize: `18px`, color: `#d33a31` }}
         onClick={volumeIconClick}
-      />
+      /> : 
+      <AudioOutlined
+        className={`volumn-sound`}
+        style={{ fontSize: `18px`, color: `#d33a31` }}
+        onClick={volumeIconClick}
+      />}
       <div className='progress-wrap'>
         <ProgressBar
           progressChange={onProgressChange}
