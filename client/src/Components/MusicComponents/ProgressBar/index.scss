@@ -1,8 +1,8 @@
 .progress {
   width: 100%;
   -webkit-appearance: none;
-  height: 2px;
-  background: -webkit-linear-gradient(#d33a31, #d33a31) no-repeat, var(--progress-bgcolor);
+  height: 3px;
+  background: -webkit-linear-gradient(#d33a31, #d33a31) no-repeat, #F5F5F5;
   cursor: pointer;
   &:focus {
     outline: none;

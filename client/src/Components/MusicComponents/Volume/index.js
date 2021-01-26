@@ -23,7 +23,7 @@ function Volume(props) {
     const target = volume ? 0 : lastVolume
 
     if(volume) {
-      setLastVolume(volume)
+      setLastVolume(volume * 100)
     }
 
     onVolumeChange(target)
@@ -33,7 +33,7 @@ function Volume(props) {
     <div className='volume-wrap'>
       <SoundOutlined
         className={`volumn-sound`}
-        style={{ fontSize: `20px`, color: `#d33a31` }}
+        style={{ fontSize: `18px`, color: `#d33a31` }}
         onClick={volumeIconClick}
       />
       <div className='progress-wrap'>
@@ -49,7 +49,7 @@ function Volume(props) {
 
 Volume.defaultProps = {
   volume: 0
-} 
+}
 
 Volume.propTypes = {
   volume: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

@@ -20,7 +20,7 @@ function ProgressBar(props) {
   }
 
   const updateProgressBg = () => {
-    progress.current.style.backgroundSize = `${percent}% 100%`
+    progress.current.style.backgroundSize = `${percent * 100}% 100%`
   }
 
   useEffect(() => {
@@ -35,7 +35,7 @@ function ProgressBar(props) {
       max='100'
       min='0'
       step={step}
-      value={percent}
+      value={percent * 100}
       onChange={onProgressChange}
       onInput={onProgressInput}
       ref={progress}
