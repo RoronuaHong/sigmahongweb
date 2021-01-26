@@ -4,6 +4,7 @@
   left: 0;
   bottom: 0;
   width: 100%;
+  height: 85px;
   padding: 8px 24px 8px 16px;
   display: flex;
   justify-content: space-between;
@@ -12,6 +13,44 @@
     display: flex;
     flex: 4;
     overflow: hidden;
+    .content {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+      flex-direction: column;
+      justify-content: space-around;
+      margin-left: 20px;
+      .top {
+        display: flex;
+        align-items: flex-end;
+        white-space: nowrap;
+        p {
+          margin-bottom: 0;
+          color: #b1b1b1;
+        }
+        .name {
+          color: #333333;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .split {
+          font-size: 10px;
+          margin: 0 4px;
+        }
+        .artists {
+          font-size: 10px;
+        }
+      }
+      .time {
+        font-size: 10px;
+        color: #5c5c5c;
+        .split {
+          margin: 0 4px;
+        }
+        
+      }
+    }
   }
   .control {
     position: absolute;
@@ -42,5 +81,11 @@
     .icon {
       color: #d33a31;
     }
+  }
+  .progress-bar-wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -10px;
   }
 }
