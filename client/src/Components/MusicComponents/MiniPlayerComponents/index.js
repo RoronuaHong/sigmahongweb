@@ -23,7 +23,7 @@ class MiniPlayerComponents extends Component {
       artist: `kurakimai`,
       content: `touchme`,
       img: 'https://i.imgur.com/ixtwFY6.jpg',
-      url: `https://p-def2.pcloud.com/cfZObmdvWZKWf46nZeq4R7ZZ0zDfG7ZlXZZyPpZZc3CLZiFZYpZ7FZV7Z55ZW7ZBFZPFZu5ZBpZv0ZIVZTHZoHZaxEytI2VrhpmGS7ifKVERpF2VvEX/TouchMe.mp3`
+      url: `http://attachment.0sm.com/node0/2021/01/86010BF6A411C3EB-26f0a17a953d3bfa.mp3`
     },
     playingState: false,
     volume: 0.75,

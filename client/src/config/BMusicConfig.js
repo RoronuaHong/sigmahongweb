@@ -1,31 +1,45 @@
+import { musicId } from './MusicConfig'
+
 const BMusicList = [{
-  _id: `600ebdf459f9e77e8886e63c`,
+  _id: `${musicId.KurakiMai}`,
   key: `0`,
   content: `KurakiMai`
 }, {
-  _id: `60102d41edb0318acc45f606`,
+  _id: `${musicId.Falcom}`,
   key: `1`,
   content: `Falcom`
 }, {
-  _id: ``,
+  _id: `${musicId.Others}`,
   key: `2`,
-  content: `KurakiMai`
+  content: `Others`
 }, {
-  _id: ``,
+  _id: `${musicId.Southern}`,
   key: `3`,
-  content: `KurakiMai`
+  content: `Southern`
 }, {
-  _id: ``,
+  _id: `${musicId.English}`,
   key: `4`,
-  content: `KurakiMai`
+  content: `English`
 }, {
-  _id: ``,
+  _id: `${musicId.Chinese}`,
   key: `5`,
-  content: `KurakiMai`
+  content: `Chinese`
 }, {
-  _id: ``,
+  _id: `${musicId.Korean}`,
   key: `6`,
-  content: `KurakiMai`
+  content: `Korean`
+}, {
+  _id: `${musicId.Cantonese}`,
+  key: `7`,
+  content: `Cantonese`
+}, {
+  _id: `${musicId.Japanese}`,
+  key: `8`,
+  content: `Japanese`
+}, {
+  _id: `${musicId.BGM}`,
+  key: `9`,
+  content: `BGM`
 }]
 
 export default BMusicList
