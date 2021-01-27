@@ -7,6 +7,8 @@ import MiniPlayerComponents from '../../Components/MusicComponents/MiniPlayerCom
 
 import './index.scss'
 
+let image = ``
+
 @inject('bMusicStore')
 @observer
 class MusicContainer extends Component {
@@ -22,7 +24,7 @@ class MusicContainer extends Component {
     const { bMusicStore } = this.props
     const { gettingData } = bMusicStore
 
-    const image = gettingData[0] && gettingData[0].image
+    image = gettingData[0] && gettingData[0].image
 
     return (
       <div className='music-wrapper'>
@@ -34,7 +36,7 @@ class MusicContainer extends Component {
             />
           </div>
           <div className={`music-right-content`}>
-            <img className={`music-right-img`} src={image} alt={`image`} />
+            {image && <img className={`music-right-img`} src={image} alt={`image`} />}
           </div>
         </div>
         <MiniPlayerComponents />
