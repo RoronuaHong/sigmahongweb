@@ -19,10 +19,11 @@ class MusicContainer extends Component {
     await bMusicStore.getMusicContentById({ id: params.id })
   }
 
-  // FIXME: 获取前台图片。
+  onRef = ref => this.child = ref
+
   render() {
     const { bMusicStore } = this.props
-    const { gettingData } = bMusicStore
+    const { gettingData, currentId, setCurrentId } = bMusicStore
 
     image = gettingData[0] && gettingData[0].image
 
@@ -31,15 +32,19 @@ class MusicContainer extends Component {
         <HeaderComponents />
         <div className={`music-content`}>
           <div className='music-menu'>
-            <MenuComponents
+            <MenuComponents 
+              id={currentId}
               MenuList={gettingData}
+              bMusicStore={bMusicStore}
+              setCurrentId={setCurrentId} 
+              child={this.child}
             />
           </div>
           <div className={`music-right-content`}>
             {image && <img className={`music-right-img`} src={image} alt={`image`} />}
           </div>
         </div>
-        <MiniPlayerComponents />
+        <MiniPlayerComponents onRef={this.onRef} />
       </div>
     )
   }

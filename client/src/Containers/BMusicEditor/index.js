@@ -29,7 +29,6 @@ class BUEBasisEditor extends Component {
     await bMusicStore.getMusicContentById({ id })
   }
 
-  //FIXME: 新增 url 和 artist。
   handleAddOk = async() => {
     const { bMusicStore } = this.props
     const { gettingData, addingContent, addingArtist, addingUrl, addingImage } = bMusicStore
@@ -48,9 +47,7 @@ class BUEBasisEditor extends Component {
 
     await bMusicStore.updateMusicContent({ id, data: JSON.stringify(gettingData) })
 
-    this.setState({
-      isAddModalVisible: false
-    })
+    this.setState({ isAddModalVisible: false })
   }
 
   handleDelete = async(newId) => {
@@ -58,7 +55,7 @@ class BUEBasisEditor extends Component {
     const { gettingData } = bMusicStore
 
     const newData = gettingData && gettingData.filter(item => newId !== item.id)
-    
+
     await bMusicStore.updateMusicContent({ id, data: JSON.stringify(newData) })
   }
 

@@ -5,6 +5,7 @@ import {
   observable,
   makeObservable,
 } from 'mobx'
+import { observer } from 'mobx-react'
 
 import api from './../api/api'
 
@@ -19,6 +20,16 @@ class BMusicStore {
   @observable addingArtist = ``
   @observable addingUrl = ``
   @observable addingImage = ``
+  @observable currentAudio = {}
+  @observable currentId = 0
+  @observable currentIndex = 0
+  @observable currentSong = {
+    artist: ``,
+    content: ``,
+    img: ``,
+    url: ``
+  }
+  @observable playingState = false
 
   @action
   getMusicContentById(params) {
@@ -64,6 +75,31 @@ class BMusicStore {
   @action
   setAddImageInput(value) {
     this.addingImage = value
+  }
+
+  @action
+  setCurrentAudio = node => {
+    node && (this.currentAudio = node)
+  }
+
+  @action
+  setCurrentSong = data => {
+    this.currentSong = data
+  }
+
+  @action
+  setCurrentId = id => {
+    this.currentId = id
+  }
+
+  @action
+  setCurrentIndex = index => {
+    this.currentIndex = index
+  }
+
+  @action
+  setPlayingState = boolean => {
+    this.playingState = boolean
   }
 }
 

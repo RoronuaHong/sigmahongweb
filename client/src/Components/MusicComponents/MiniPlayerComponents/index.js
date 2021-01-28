@@ -19,14 +19,6 @@ import './index.scss'
 @observer
 class MiniPlayerComponents extends Component {
   state = {
-    index: 0,
-    currentSong: {
-      artist: ``,
-      content: ``,
-      img: '',
-      url: ``
-    },
-    playingState: false,
     volume: 0.75,
     currentTime: `00:00`,
     duration: `00:00`,
@@ -34,23 +26,32 @@ class MiniPlayerComponents extends Component {
 
   async componentWillMount() {
     const { match, bMusicStore } = this.props
-    const { gettingData } = bMusicStore
     const { params } = match
 
     await bMusicStore.getMusicContentById({ id: params.id })
   }
 
-  changeSong = (artist, content, img, url) => {
-    this.setState({ 
-      currentSong: { artist, content, img, url }, 
-      playingState: false
-    }, () => this.handlePlaySong())
+  handleChangeSong = async(artist, content, img, url, id) => {
+    const { onRef, bMusicStore } = this.props
+    const { setCurrentSong, setPlayingState } = bMusicStore
+    const data = { artist, content, img, url, id }
+
+    onRef(this)
+
+    await setCurrentSong(data)
+    await setPlayingState(false)
+
+    this.handlePlaySong()
   }
 
+  handleEndEvnet = () => {
+		this.handleClickNext()
+	}
+
   async componentDidMount() {
-    const { index } = this.state
     const { bMusicStore } = this.props
-    const { gettingData } = bMusicStore
+    const { currentIndex } = bMusicStore
+
     const audio = this.audio
 
     audio.addEventListener(`canplay`, () => {
@@ -62,23 +63,25 @@ class MiniPlayerComponents extends Component {
 
     setTimeout(() => {
       const { bMusicStore } = this.props
-      const { gettingData } = bMusicStore
+      const { gettingData, setCurrentId } = bMusicStore
 
-      const artist = gettingData[index] && gettingData[index].artist
-      const content = gettingData[index] && gettingData[index].content
-      const img = gettingData[index] && gettingData[index].img
-      const url = gettingData[index] && gettingData[index].url
+      const id = gettingData[currentIndex] && gettingData[currentIndex].id
+      const artist = gettingData[currentIndex] && gettingData[currentIndex].artist
+      const content = gettingData[currentIndex] && gettingData[currentIndex].content
+      const img = gettingData[currentIndex] && gettingData[currentIndex].img
+      const url = gettingData[currentIndex] && gettingData[currentIndex].url
 
-      this.changeSong(artist, content, img, url)
+      setCurrentId(id)
+
+      this.handleChangeSong(artist, content, img, url, id)
     }, 500)
   }
 
-  handleClickPrev = () => {
-    const { index } = this.state
+  handleClickPrev = async() => {
     const { bMusicStore } = this.props
-    const { gettingData } = bMusicStore
+    const { gettingData, currentIndex, setCurrentId, setCurrentIndex, setCurrentSong, setPlayingState } = bMusicStore
     const length = gettingData.length
-    let num = index
+    let num = currentIndex
 
     num--
 
@@ -90,24 +93,27 @@ class MiniPlayerComponents extends Component {
       num = 0
     }
 
-    this.setState({ 
-      index: num
-    }, () => {
-      const artist = gettingData[num] && gettingData[num].artist
-      const content = gettingData[num] && gettingData[num].content
-      const img = gettingData[num] && gettingData[num].img
-      const url = gettingData[num] && gettingData[num].url
+    const id = gettingData[num] && gettingData[num].id
+    const artist = gettingData[num] && gettingData[num].artist
+    const content = gettingData[num] && gettingData[num].content
+    const img = gettingData[num] && gettingData[num].img
+    const url = gettingData[num] && gettingData[num].url
 
-      this.setState({ currentSong: { artist, content, img, url }})
-    })
+    const data = { artist, content, img, url, id }
+
+    await setCurrentSong(data)
+    await setPlayingState(false)
+    await setCurrentIndex(num)
+    await setCurrentId(id)
+
+    this.handlePlaySong()
   }
 
-  handleClickNext = () => {
-    const { index } = this.state
+  handleClickNext = async() => {
     const { bMusicStore } = this.props
-    const { gettingData } = bMusicStore
+    const { gettingData, currentIndex, setCurrentId, setCurrentIndex, setCurrentSong, setPlayingState } = bMusicStore
     const length = gettingData.length
-    let num = index
+    let num = currentIndex
 
     num++
 
@@ -119,20 +125,25 @@ class MiniPlayerComponents extends Component {
       num = 0
     }
 
-    this.setState({ 
-      index: num 
-    }, () => {
-      const artist = gettingData[num] && gettingData[num].artist
-      const content = gettingData[num] && gettingData[num].content
-      const img = gettingData[num] && gettingData[num].img
-      const url = gettingData[num] && gettingData[num].url
+    const id = gettingData[num] && gettingData[num].id
+    const artist = gettingData[num] && gettingData[num].artist
+    const content = gettingData[num] && gettingData[num].content
+    const img = gettingData[num] && gettingData[num].img
+    const url = gettingData[num] && gettingData[num].url
 
-      this.changeSong(artist, content, img, url)
-    })
+    const data = { artist, content, img, url, id }
+
+    await setCurrentSong(data)
+    await setPlayingState(false)
+    await setCurrentIndex(num)
+    await setCurrentId(id)
+
+    this.handlePlaySong()
   }
 
   handlePlaySong = async() => {
-    const { playingState } = this.state
+    const { bMusicStore } = this.props
+    const { playingState, setPlayingState } = bMusicStore
 
     if(!playingState) {
       await this.audio.play()
@@ -140,9 +151,7 @@ class MiniPlayerComponents extends Component {
       await this.audio.pause()
     }
 
-    this.setState({
-      playingState: playingState ? false : true
-    })
+    await setPlayingState(playingState ? false : true)
   }
 
   handleVolumeInput = value => {
@@ -188,10 +197,19 @@ class MiniPlayerComponents extends Component {
       currentTime: formatTime(e.target.currentTime),
       currentUnFormatTime: e.target.currentTime
     })
-	}
+  }
+
+  setCurrentAudio = node => {
+    const { bMusicStore } = this.props
+    const { setCurrentAudio } = bMusicStore
+
+    setCurrentAudio(node)
+  }
 
   render() {
-    const { volume, currentSong, playingState, duration, currentTime } = this.state
+    const { volume, duration, currentTime } = this.state
+    const { bMusicStore } = this.props
+    const { currentSong, playingState } = bMusicStore
 
     return (
       <div className='mini-player-wrapper'>
@@ -247,9 +265,13 @@ class MiniPlayerComponents extends Component {
 					/>
 				</div>
         <audio
+          onEnded={this.handleEndEvnet}
           src={currentSong.url}
           onTimeUpdate={this.updateTime}
-          ref={ref => this.audio = ref}
+          ref={ref => {
+            this.setCurrentAudio(ref)
+            this.audio = ref
+          }}
         ></audio>
       </div>
     )

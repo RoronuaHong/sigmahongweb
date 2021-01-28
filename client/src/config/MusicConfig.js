@@ -24,42 +24,42 @@ const MusicList = [{
 }, {
   id: 2,
   name: `Others`,
-  link: `/music/falcom/${musicId.Others}`,
+  link: `/music/others/${musicId.Others}`,
   img: 'https://i.imgur.com/bqa4yOm.jpg'
 }, {
   id: 3,
   name: `Southern`,
-  link: `/music/falcom/${musicId.Southern}`,
+  link: `/music/southern/${musicId.Southern}`,
   img: 'https://i.imgur.com/IS14e0X.jpg'
 }, {
   id: 4,
   name: `English`,
-  link: `/music/falcom/${musicId.English}`,
+  link: `/music/english/${musicId.English}`,
   img: 'https://i.imgur.com/NK6Lqh5.jpg'
 }, {
   id: 5,
   name: `Chinese`,
-  link: `/music/falcom/${musicId.Chinese}`,
+  link: `/music/chinese/${musicId.Chinese}`,
   img: 'https://i.imgur.com/Kene9O9.jpg'
 }, {
   id: 6,
   name: `Korean`,
-  link: `/music/falcom/${musicId.Korean}`,
+  link: `/music/korean/${musicId.Korean}`,
   img: 'https://i.imgur.com/CIuy0YI.jpg'
 }, {
   id: 7,
   name: `Cantonese`,
-  link: `/music/falcom/${musicId.Cantonese}`,
+  link: `/music/cantonese/${musicId.Cantonese}`,
   img: 'https://i.imgur.com/Qw4rvRs.jpg'
 }, {
   id: 8,
   name: `Japanese`,
-  link: `/music/falcom/${musicId.Japanese}`,
+  link: `/music/japanese/${musicId.Japanese}`,
   img: 'https://i.imgur.com/RMLcmuN.jpg'
 }, {
   id: 9,
   name: `BGM`,
-  link: `/music/falcom/${musicId.BGM}`,
+  link: `/music/bgm/${musicId.BGM}`,
   img: 'https://i.imgur.com/ivaANv5.jpg'
 }]
 

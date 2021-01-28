@@ -56,6 +56,9 @@
         color: #aaa;
       }
     }
+    .menu-selected {
+      background-color: #ddd;
+    }
     .menu-item:hover {
       background-color: #ddd;
       cursor: pointer;
