@@ -19,11 +19,12 @@ import './index.scss'
 @observer
 class MiniPlayerComponents extends Component {
   state = {
+    index: 0,
     currentSong: {
-      artist: `kurakimai`,
-      content: `touchme`,
-      img: 'https://i.imgur.com/ixtwFY6.jpg',
-      url: `http://attachment.0sm.com/node0/2021/01/86010BF6A411C3EB-26f0a17a953d3bfa.mp3`
+      artist: ``,
+      content: ``,
+      img: '',
+      url: ``
     },
     playingState: false,
     volume: 0.75,
@@ -33,12 +34,23 @@ class MiniPlayerComponents extends Component {
 
   async componentWillMount() {
     const { match, bMusicStore } = this.props
+    const { gettingData } = bMusicStore
     const { params } = match
 
     await bMusicStore.getMusicContentById({ id: params.id })
   }
 
-  componentDidMount() {
+  changeSong = (artist, content, img, url) => {
+    this.setState({ 
+      currentSong: { artist, content, img, url }, 
+      playingState: false
+    }, () => this.handlePlaySong())
+  }
+
+  async componentDidMount() {
+    const { index } = this.state
+    const { bMusicStore } = this.props
+    const { gettingData } = bMusicStore
     const audio = this.audio
 
     audio.addEventListener(`canplay`, () => {
@@ -47,14 +59,76 @@ class MiniPlayerComponents extends Component {
         durationUnFormat: parseInt(audio.duration)
       })
     })
+
+    setTimeout(() => {
+      const { bMusicStore } = this.props
+      const { gettingData } = bMusicStore
+
+      const artist = gettingData[index] && gettingData[index].artist
+      const content = gettingData[index] && gettingData[index].content
+      const img = gettingData[index] && gettingData[index].img
+      const url = gettingData[index] && gettingData[index].url
+
+      this.changeSong(artist, content, img, url)
+    }, 500)
   }
 
   handleClickPrev = () => {
-    console.log(`上一首`)
+    const { index } = this.state
+    const { bMusicStore } = this.props
+    const { gettingData } = bMusicStore
+    const length = gettingData.length
+    let num = index
+
+    num--
+
+    if(num < 0) {
+      num = length - 1
+    }
+
+    if(num > length - 1) {
+      num = 0
+    }
+
+    this.setState({ 
+      index: num
+    }, () => {
+      const artist = gettingData[num] && gettingData[num].artist
+      const content = gettingData[num] && gettingData[num].content
+      const img = gettingData[num] && gettingData[num].img
+      const url = gettingData[num] && gettingData[num].url
+
+      this.setState({ currentSong: { artist, content, img, url }})
+    })
   }
 
   handleClickNext = () => {
-    console.log(`下一首`)
+    const { index } = this.state
+    const { bMusicStore } = this.props
+    const { gettingData } = bMusicStore
+    const length = gettingData.length
+    let num = index
+
+    num++
+
+    if(num < 0) {
+      num = length - 1
+    }
+
+    if(num > length - 1) {
+      num = 0
+    }
+
+    this.setState({ 
+      index: num 
+    }, () => {
+      const artist = gettingData[num] && gettingData[num].artist
+      const content = gettingData[num] && gettingData[num].content
+      const img = gettingData[num] && gettingData[num].img
+      const url = gettingData[num] && gettingData[num].url
+
+      this.changeSong(artist, content, img, url)
+    })
   }
 
   handlePlaySong = async() => {

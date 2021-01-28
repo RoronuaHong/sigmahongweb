@@ -86,3 +86,7 @@ ul.reset ul li {
    text-indent: 0;
    list-style-type: 0;
 }
+
+.ant-card-body {
+  border: none !important;
+}
