@@ -25,18 +25,18 @@ class MiniPlayerComponents extends Component {
   }
 
   async componentWillMount() {
-    const { match, bMusicStore } = this.props
+    const { onRef, match, bMusicStore } = this.props
     const { params } = match
 
     await bMusicStore.getMusicContentById({ id: params.id })
+ 
+    onRef(this)
   }
 
   handleChangeSong = async(artist, content, img, url, id) => {
-    const { onRef, bMusicStore } = this.props
+    const { bMusicStore } = this.props
     const { setCurrentSong, setPlayingState } = bMusicStore
     const data = { artist, content, img, url, id }
-
-    onRef(this)
 
     await setCurrentSong(data)
     await setPlayingState(false)
