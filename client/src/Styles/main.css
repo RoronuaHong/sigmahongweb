@@ -90,3 +90,6 @@ ul.reset ul li {
 .ant-card-body {
   border: none !important;
 }
+.ant-layout-content {
+  overflow: auto;
+}
