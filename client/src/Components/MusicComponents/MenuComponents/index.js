@@ -40,7 +40,10 @@ class MenuComponents extends Component {
               )}
               onClick={() => this.handleMenuClick(item.id, index)}
             >
-              <span className='menu-title'>{item.content}
+              <span className='menu-title'>
+                <span className={`menu-index`}>{`${index + 1}.`}</span>
+                &nbsp;&nbsp;
+                {item.content}
                 &nbsp;&nbsp;-&nbsp;&nbsp;
                 <span className='menu-artist'>{item.artist}</span>
               </span>
