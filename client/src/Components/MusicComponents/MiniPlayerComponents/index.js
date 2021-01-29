@@ -5,10 +5,13 @@ import { withRouter } from 'react-router-dom'
 import Volume from '../Volume/index'
 
 import {
+  SwapOutlined,
+  RedoOutlined,
   PauseOutlined,
   StepForwardFilled,
   StepBackwardFilled,
   CaretRightOutlined,
+  MenuUnfoldOutlined,
 } from '@ant-design/icons'
 import { formatTime } from '../../../utils/tools' 
 import NewProgressBar from '../NewProgressBar'
@@ -111,18 +114,22 @@ class MiniPlayerComponents extends Component {
 
   handleClickNext = async() => {
     const { bMusicStore } = this.props
-    const { gettingData, currentIndex, setCurrentId, setCurrentIndex, setCurrentSong, setPlayingState } = bMusicStore
+    const { gettingData, currentIndex, playingMode, PLAYINGMODE, setCurrentId, setCurrentIndex, setCurrentSong, setPlayingState } = bMusicStore
     const length = gettingData.length
     let num = currentIndex
 
-    num++
+    if(playingMode === PLAYINGMODE.RANDOM) {
+      num = Math.ceil(Math.random() * (length - 1))
+    } else if(playingMode === PLAYINGMODE.SEQUENCE) {
+      num++
 
-    if(num < 0) {
-      num = length - 1
-    }
+      if(num < 0) {
+        num = length - 1
+      }
 
-    if(num > length - 1) {
-      num = 0
+      if(num > length - 1) {
+        num = 0
+      }
     }
 
     const id = gettingData[num] && gettingData[num].id
@@ -139,6 +146,20 @@ class MiniPlayerComponents extends Component {
     await setCurrentId(id)
 
     this.handlePlaySong()
+  }
+
+  handleChangePlayMode = modeState => {
+    const { bMusicStore } = this.props
+    const { setPlayingMode, PLAYINGMODE } = bMusicStore
+    let curModeState = modeState
+
+    curModeState++
+
+    if(curModeState > PLAYINGMODE.RANDOM) {
+      curModeState = PLAYINGMODE.SEQUENCE
+    }
+
+    setPlayingMode(curModeState)
   }
 
   handlePlaySong = async() => {
@@ -199,17 +220,10 @@ class MiniPlayerComponents extends Component {
     })
   }
 
-  setCurrentAudio = node => {
-    const { bMusicStore } = this.props
-    const { setCurrentAudio } = bMusicStore
-
-    setCurrentAudio(node)
-  }
-
   render() {
     const { volume, duration, currentTime } = this.state
     const { bMusicStore } = this.props
-    const { currentSong, playingState } = bMusicStore
+    const { currentSong, playingState, playingMode, PLAYINGMODE } = bMusicStore
 
     return (
       <div className='mini-player-wrapper'>
@@ -249,13 +263,27 @@ class MiniPlayerComponents extends Component {
             onClick={this.handleClickNext}
           />
         </div>
-				<div className='volume-item'>
-					<Volume
-						volume={volume}
-						onVolumeInput={this.handleVolumeInput}
-						onVolumeChange={this.handleVolumeChange}
-					/>
-				</div>
+        <div className='mode'>
+          {playingMode === PLAYINGMODE.SEQUENCE && <MenuUnfoldOutlined 
+            style={{ fontSize: `20px`, color: `#d33a31` }}
+            onClick={() => this.handleChangePlayMode(PLAYINGMODE.SEQUENCE)}
+          />}
+          {playingMode === PLAYINGMODE.RANDOM && <RedoOutlined 
+            style={{ fontSize: `20px`, color: `#d33a31` }}
+            onClick={() => this.handleChangePlayMode(PLAYINGMODE.RANDOM)}
+          />}
+          {playingMode === PLAYINGMODE.LOOP && <SwapOutlined
+            style={{ fontSize: `20px`, color: `#d33a31` }}
+            onClick={() => this.handleChangePlayMode(PLAYINGMODE.LOOP)}
+          />}
+        </div>
+        <div className='volume-item'>
+          <Volume
+            volume={volume}
+            onVolumeInput={this.handleVolumeInput}
+            onVolumeChange={this.handleVolumeChange}
+          />
+        </div>
         <div className='progress-bar-wrap'>
 					<NewProgressBar
 						progressChange={this.handleProgressChange}
@@ -268,10 +296,7 @@ class MiniPlayerComponents extends Component {
           onEnded={this.handleEndEvnet}
           src={currentSong.url}
           onTimeUpdate={this.updateTime}
-          ref={ref => {
-            this.setCurrentAudio(ref)
-            this.audio = ref
-          }}
+          ref={ref => this.audio = ref}
         ></audio>
       </div>
     )

@@ -20,7 +20,6 @@ class BMusicStore {
   @observable addingArtist = ``
   @observable addingUrl = ``
   @observable addingImage = ``
-  @observable currentAudio = {}
   @observable currentId = 0
   @observable currentIndex = 0
   @observable currentSong = {
@@ -30,6 +29,12 @@ class BMusicStore {
     url: ``
   }
   @observable playingState = false
+  @observable PLAYINGMODE = {
+    SEQUENCE: 0,
+    LOOP: 1,
+    RANDOM: 2
+  }
+  @observable playingMode = this.PLAYINGMODE.SEQUENCE
 
   @action
   getMusicContentById(params) {
@@ -78,11 +83,6 @@ class BMusicStore {
   }
 
   @action
-  setCurrentAudio = node => {
-    node && (this.currentAudio = node)
-  }
-
-  @action
   setCurrentSong = data => {
     this.currentSong = data
   }
@@ -100,6 +100,11 @@ class BMusicStore {
   @action
   setPlayingState = boolean => {
     this.playingState = boolean
+  }
+
+  @action
+  setPlayingMode = modeState => {
+    this.playingMode = modeState
   }
 }
 
