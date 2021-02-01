@@ -24,7 +24,7 @@ class MiniPlayerComponents extends Component {
   state = {
     volume: 0.75,
     currentTime: `00:00`,
-    duration: `00:00`,
+    duration: `00:00`
   }
 
   async componentWillMount() {
@@ -32,8 +32,6 @@ class MiniPlayerComponents extends Component {
     const { params } = match
 
     await bMusicStore.getMusicContentById({ id: params.id })
- 
-    onRef(this)
   }
 
   handleChangeSong = async(artist, content, img, url, id) => {
@@ -77,7 +75,7 @@ class MiniPlayerComponents extends Component {
       setCurrentId(id)
 
       this.handleChangeSong(artist, content, img, url, id)
-    }, 500)
+    }, 1000)
   }
 
   handleClickPrev = async() => {
