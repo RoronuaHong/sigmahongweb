@@ -85,7 +85,7 @@ class BUEBasisEditor extends Component {
 
   render() {
     const { bUEBasisStore } = this.props
-    const { title, value, preview, gettingTop } = bUEBasisStore
+    const { title, value, preview, top } = bUEBasisStore
 
     const handleSaveConfirm = async() =>  {
       const { bUEBasisStore } = this.props
@@ -160,7 +160,7 @@ class BUEBasisEditor extends Component {
           </Button>
           &nbsp;&nbsp;&nbsp;
           <span>置顶&nbsp;:</span>&nbsp;&nbsp;&nbsp;
-          <Switch checked={gettingTop} onChange={onSwitchChange} />
+          <Switch checked={top} onChange={onSwitchChange} />
         </div>
       </>
     )

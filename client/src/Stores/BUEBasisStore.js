@@ -83,7 +83,7 @@ class BUEBasisStore {
         this.gettingTitle = data ? data.data.title : ``
         this.gettingContent = data ? data.data.value : ``
         this.gettingPreview = data ? data.data.preview : ``
-        this.gettingTop = data ? data.data.top : ``
+        this.gettingTop = data ? data.data.top : false
       } else {
         this.gettingTitle = ``
         this.gettingContent = ``
