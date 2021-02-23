@@ -19,6 +19,7 @@ class BUEBasisStore {
   @observable gettingTitle = `Loading...`
   @observable gettingPreview = `Loading...`
   @observable gettingContent = `Loading...`
+  @observable gettingTop = false
 
   @action
   setUEBasisTitleInput(title) {
@@ -36,10 +37,16 @@ class BUEBasisStore {
   }
 
   @action
+  setUEBasisTop(checked) {
+    this.top = checked
+  }
+
+  @action
   clearUEBasisInput() {
     this.title = ``
     this.value = ``
     this.preview = ``
+    this.top = false
   }
 
   @action
@@ -76,10 +83,12 @@ class BUEBasisStore {
         this.gettingTitle = data ? data.data.title : ``
         this.gettingContent = data ? data.data.value : ``
         this.gettingPreview = data ? data.data.preview : ``
+        this.gettingTop = data ? data.data.top : ``
       } else {
         this.gettingTitle = ``
         this.gettingContent = ``
         this.gettingPreview = ``
+        this.gettingTop = false
       }
     })
   }

@@ -1,5 +1,5 @@
 import { React, Component } from 'react'
-import { message, Button, Input } from 'antd'
+import { message, Button, Input, Switch } from 'antd'
 import ReactMarkdown from 'react-markdown'
 import { inject, observer } from 'mobx-react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
@@ -85,21 +85,27 @@ class BUEBasisEditor extends Component {
 
   render() {
     const { bUEBasisStore } = this.props
-    const { title, value, preview } = bUEBasisStore
+    const { title, value, preview, gettingTop } = bUEBasisStore
 
     const handleSaveConfirm = async() =>  {
       const { bUEBasisStore } = this.props
-      const { title, value, preview } = bUEBasisStore
-  
+      const { title, value, preview, top } = bUEBasisStore
+
       if(id) {
-        await bUEBasisStore.updateUEBasisContent({ id, title, value, preview })
+        await bUEBasisStore.updateUEBasisContent({ id, title, value, preview, top })
       } else {
         if(title && value && preview) {
-          await bUEBasisStore.setUEBasisContent({ title, value, preview })
+          await bUEBasisStore.setUEBasisContent({ title, value, preview, top })
         } else {
           message.error(`plz infilling title and value`)
         }
       }
+    }
+
+    const onSwitchChange = (checked) => {
+      const { bUEBasisStore } = this.props
+
+      bUEBasisStore.setUEBasisTop(checked)
     }
 
     return (
@@ -152,6 +158,9 @@ class BUEBasisEditor extends Component {
           >
             清空
           </Button>
+          &nbsp;&nbsp;&nbsp;
+          <span>置顶&nbsp;:</span>&nbsp;&nbsp;&nbsp;
+          <Switch checked={gettingTop} onChange={onSwitchChange} />
         </div>
       </>
     )

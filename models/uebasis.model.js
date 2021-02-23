@@ -17,6 +17,10 @@ const uebasisSchema = new Schema({
     type: String,
     require: true,
     trim: true
+  },
+  top: {
+    type: Boolean,
+    require: true
   }
 }, {
   timestamps: true
