@@ -69,7 +69,7 @@ class HeaderContainer extends Component {
     const { currentTime } = this.state
     const user = storageUtils.getUser()
     const title = this.getTitle()
-    const formattedTime = moment(currentTime).format(`YYYY-MM-DD hh:mm:ss`)
+    const formattedTime = moment(currentTime).format(`YYYY-MM-DD HH:mm:ss`)
 
     return (
       <div className={`header-wrapper`}>

@@ -37,7 +37,7 @@ class UEListComponents extends Component {
             </div>
           </a>
           <p className={`post-meta`}>
-            {moment(item.createdAt).format(`YYYY-MM-DD hh:mm:ss`)}
+            {moment(item.createdAt).format(`YYYY-MM-DD HH:mm:ss`)}
           </p>
           <hr/>
         </div>

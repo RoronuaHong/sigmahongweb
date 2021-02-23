@@ -47,7 +47,7 @@ class BAlgorithmLists extends Component {
     }, {
       title: 'Time',
       render: text => {
-        return moment(text).format(`YYYY-MM-DD hh:mm:ss`)
+        return moment(text).format(`YYYY-MM-DD HH:mm:ss`)
       },
       dataIndex: 'createdAt',
       key: `createdAt`
