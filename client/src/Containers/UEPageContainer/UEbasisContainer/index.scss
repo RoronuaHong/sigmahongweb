@@ -28,8 +28,9 @@
     background: #fff;
     .content-left {
       flex: 1;
+      min-width: 18%;
       .markdown-navigation  {
-        width: 70%;
+        width: 95%;
       }
     }
     .content-main {
